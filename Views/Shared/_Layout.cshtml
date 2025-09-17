@@ -48,9 +48,23 @@
             
         @if (User.Identity.IsAuthenticated)
         {
-        <b>Event History</b>
-        <a href="/EventHistory/Index">All Events History</a>
-        <a href="/EventHistory/MyVolunteer">Personal Volunteer</a>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" href="#" id="navbarDropdown" role="button">Event History</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/EventHistory/Index">All Events History</a></li>
+                        <li><a class="dropdown-item" href="/EventHistory/MyVolunteer">Personal Volunteer</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white" href="#" id="leaderboardDropdown" role="button">Leaderboard</a>
+                    <ul class="dropdown-menu" aria-labelledby="leaderboardDropdown">
+                        <li><a class="dropdown-item" href="/EventHistory/Leaderboard">🏆 Volunteer Leaderboard</a></li>
+                    </ul>
+                </li>
+            </ul>
         }
 
         <div>
@@ -102,4 +116,29 @@
     <script src="/js/app.js" asp-append-version="true"></script>
     @RenderSection("foot", false)
 </body>
+
+<head>
+    <style>
+        /* Ensure the dropdown menu is hidden by default */
+        .nav-item.dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%; /* Places the dropdown directly below the nav item */
+            left: 0;
+            z-index: 1000;
+        }
+        /* Show the dropdown when hovering over the parent nav item */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* Optional: Add some transitions for a smoother hover effect */
+        .nav-item.dropdown .dropdown-menu {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        /* Make sure the menu doesn't jump around */
+        .nav-item.dropdown {
+            position: relative;
+        }
+    </style>
+</head>
 </html>
