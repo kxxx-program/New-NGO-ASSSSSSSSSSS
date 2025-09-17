@@ -16,6 +16,7 @@ public class DB : DbContext
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Donation> Donations { get; set; }
+    public DbSet<Volunteer> Volunteers { get; set; }
 }
 
 // Entity Classes
@@ -78,4 +79,24 @@ public class Donation
     public string PaymentMethod { get; set; }
     public DateTime DonationDate { get; set; }
     public string? CreditCardNumber { get; set; }
+}
+public class Volunteer
+{
+    [Key]
+    public int VolunteerID { get; set; }
+
+    [Required]
+    [MaxLength(100)]
+    public string UserEmail { get; set; }
+
+    [Required]
+    [MaxLength(4)]
+    public string EventID { get; set; }
+
+    public DateTime VolunteerDate { get; set; }
+
+    public int Points { get; set; } = 100; // Default points for volunteering
+
+    [MaxLength(50)]
+    public string Status { get; set; } = "Active"; // Active, Completed, Donated, etc.
 }
