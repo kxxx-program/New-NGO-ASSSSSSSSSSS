@@ -16,6 +16,10 @@ public class DB : DbContext
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Donation> Donations { get; set; }
+
+    public DbSet<Volunteer> Volunteers { get; set; }
+
+    public DbSet<VolunteerEvent> VolunteerEvents { get; set; }
 }
 
 // Entity Classes
@@ -43,6 +47,9 @@ public class Event
     public string EventDescription { get; set; }
 
     public string? EventPhotoURL { get; set; }
+
+    //Connect to volunteerEvent 
+    public ICollection<VolunteerEvent> VolunteerEvents { get; set; } = [];
 }
 
 public class User
@@ -79,3 +86,47 @@ public class Donation
     public DateTime DonationDate { get; set; }
     public string? CreditCardNumber { get; set; }
 }
+
+public class Volunteer
+{
+    [Key, MaxLength(4)]
+    public string VolunteerID { get; set; }
+    [MaxLength(100)]
+    public string Name { get; set; }
+    [MaxLength(255)]
+    [EmailAddress]
+    public string Email { get; set; }
+
+    public string PhoneNumber { get; set; }
+
+    [Range(18, 70)]
+    public int Age { get; set; }
+
+
+
+    public ICollection<VolunteerEvent> VolunteerEvents { get; set; } = [];
+}
+
+public class VolunteerEvent
+{
+    [Key]
+    public string VolunteerEventID { get; set; }
+
+
+    public string VolunteerID { get; set; }
+    public Volunteer Volunteer { get; set; }
+
+    [MaxLength(4)]
+    public string EventID { get; set; }
+    public Event Event { get; set; }
+
+    //stuff like this create this class
+    public int Point { get; set; }
+    public DateTime ShiftStart { get; set; }
+    public int WorkHours { get; set; }
+
+    [MaxLength(20)]
+    public string EventCompletion { get; set; } = "Waiting";
+}
+
+

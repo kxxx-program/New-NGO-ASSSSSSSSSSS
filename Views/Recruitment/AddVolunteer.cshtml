@@ -1,0 +1,83 @@
+﻿@model NGO_Web_Demo.Models.VolunteerVM
+
+@{
+    ViewBag.Title = "Join as Volunteer";
+}
+
+
+<h1>Volunteer Recruitment</h1>
+
+<p>This is some bullshit</p>
+
+
+<form asp-action="AddVolunteer" asp-controller="Recruitment" method="post">
+    
+    <div>
+        <label asp-for="VolunteerID">ID</label>
+        <input asp-for="VolunteerID" autofocus data-upper>
+        <span asp-validation-for="VolunteerID"></span>
+    </div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+        <span asp-validation-for="Email"></span>
+
+    </div>
+    <div>
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber">
+        <span asp-validation-for="PhoneNumber"></span>
+    </div>
+    <div>
+        <label asp-for="Age"></label>
+        <input asp-for="Age" type="number">
+        <span asp-validation-for="Age"></span>
+    </div>
+
+    @* <div>
+        <label asp-for="ShiftStart"></label>
+        <input asp-for="ShiftStart" type="number">
+        <span asp-validation-for="ShiftStart"></span>
+    </div>
+    <div>
+        <label asp-for="WorkHours">Hours you would like to work</label>
+        <input asp-for="WorkHours" type="number" class="form-control" min="1" max="12" />
+        <span asp-validation-for="WorkHours" class="text-danger"></span>
+    </div> *@
+    
+
+
+
+        <section>
+            <button>Submit</button>
+            <button type="reset">Reset</button>
+        </section>
+
+
+
+
+
+</form>
+
+@section foot {
+    <script>
+        // Enable hidden file validation
+        $.validator.setDefaults({ ignore: '' });
+    </script>
+}
+
+
+@if (TempData["info"] != null)
+{
+    <p style="color:green">@TempData["Message"]</p>
+}
+
+<a asp-action="RecruitingInfo">View All Volunteers</a>
+
+
+

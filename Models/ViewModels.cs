@@ -265,8 +265,47 @@ public class PaymentVM
     public DateTime ParticipatedDate { get; set; }
     public string EventLocation { get; set; }
 
-    //Payemnt Fields
+    //Payment Fields
     public decimal Amount { get; set; }
     public string PaymentMethod { get; set; }
     public string? CreditCardNumber { get; set; }
+}
+
+public class VolunteerVM
+{
+    public string VolunteerID { get; set; }
+
+    [Required(ErrorMessage = "Name is required.")]
+    [StringLength(100, ErrorMessage = "Too Long! >:( (100 character max)")]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Email is required.")]
+    [EmailAddress(ErrorMessage = "Invalid email format (e.g., example@mail.com).")]
+    public string Email { get; set; }
+
+
+    [RegularExpression(@"^(?:\+60|0)[1-9]\d{7,9}$",
+            ErrorMessage = "Please enter valid phone number")]
+    public string PhoneNumber { get; set; }
+
+    [Required(ErrorMessage = "Please confirm your age.")]
+    [Range(18, 120, ErrorMessage = "Age must be between 18 and 120")]
+    public int Age { get; set; }
+
+    public string Event_Id { get; set;}
+
+
+
+}
+
+//Many to many relationship as volunteer can recruit for many event and event can have many recruited volunteer
+
+public class VolunteerEventVM
+{
+    public string VolunteerName { get; set; }
+    public string EventName { get; set; }
+    public int Point { get; set; }
+    public DateTime ShiftStart { get; set; }
+    public int WorkHours { get; set; }
+    public string EventCompletion { get; set; }
 }

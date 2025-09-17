@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NGO_Web_Demo.Models.VolunteerVM>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<h1>I guess at least it works</h1>
+
+<h3>Submitted Users:</h3>
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Volunteer ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Age</th>
+        
+    </tr>
+    @foreach (var v in Model)
+    {
+        <tr>
+            <td>@v.VolunteerID</td>
+            <td>@v.Name</td>
+            <td>@v.Email</td>
+            <td>@v.PhoneNumber</td>
+            <td>@v.Age</td>
+           
+        </tr>
+    }
+</table>
+
+<h1>Volunteer Recruitment!!</h1>
+<h3>Help out this event by landing your hand!</h3>
+
+<p>
+    <a asp-controller="Recruitment" asp-action="AddVolunteer" style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Click Me</a>
+</p>
