@@ -16,10 +16,14 @@ public class DB : DbContext
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Member> Members { get; set; }
     public DbSet<Donation> Donations { get; set; }
+<<<<<<< HEAD
 
     public DbSet<Volunteer> Volunteers { get; set; }
 
     public DbSet<VolunteerEvent> VolunteerEvents { get; set; }
+=======
+    public DbSet<Volunteer> Volunteers { get; set; }
+>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
 }
 
 // Entity Classes
@@ -86,6 +90,7 @@ public class Donation
     public DateTime DonationDate { get; set; }
     public string? CreditCardNumber { get; set; }
 }
+<<<<<<< HEAD
 
 public class Volunteer
 {
@@ -130,3 +135,25 @@ public class VolunteerEvent
 }
 
 
+=======
+public class Volunteer
+{
+    [Key]
+    public int VolunteerID { get; set; }
+
+    [Required]
+    [MaxLength(100)]
+    public string UserEmail { get; set; }
+
+    [Required]
+    [MaxLength(4)]
+    public string EventID { get; set; }
+
+    public DateTime VolunteerDate { get; set; }
+
+    public int Points { get; set; } = 100; // Default points for volunteering
+
+    [MaxLength(50)]
+    public string Status { get; set; } = "Active"; // Active, Completed, Donated, etc.
+}
+>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
