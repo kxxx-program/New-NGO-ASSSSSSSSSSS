@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F79F5CAF-44C3-4F9D-BC9F-5C47FCFA47D4}|NGO ASSSSSSSSSS\\NGO ASSSSSSSSSS.csproj|c:\\users\\user\\documents\\github\\ngo-assssssssssss\\ngo assssssssss\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F79F5CAF-44C3-4F9D-BC9F-5C47FCFA47D4}|NGO ASSSSSSSSSS\\NGO ASSSSSSSSSS.csproj|solutionrelative:ngo assssssssss\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\NGO ASSSSSSSSSS\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "NGO ASSSSSSSSSS\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\NGO ASSSSSSSSSS\\Properties\\launchSettings.json",
+              "RelativeToolTip": "NGO ASSSSSSSSSS\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-05T18:13:00.108Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

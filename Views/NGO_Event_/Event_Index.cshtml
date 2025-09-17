@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Event>
+
+@{
+    ViewBag.Title = "Event | Index";
+}
+
+@section head {
+    <style>
+        .event-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+        }
+    </style>
+}
+
+<p>@Model.Count() record(s)</p>
+<p>
+    <a href="@Url.Action("Event_Insert")" class="btn btn-primary">Add New Event</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Event ID</th>
+            <th>Event Title</th>
+            <th>Event Date</th>
+            <th>Event Location</th>
+            <th>Event Description</th>
+            <th>Photo</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.EventID</td>
+                <td>@e.EventTitle</td>
+                <td>@e.EventDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventLocation</td>
+                <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(e.EventPhotoURL))
+                    {
+                        <img src="/events/@e.EventPhotoURL" class="event-image" alt="@e.EventTitle">
+                    }
+                    else
+                    {
+                        <div class="event-image d-flex align-items-center justify-content-center bg-light">
+                            <small>No Image</small>
+                        </div>
+                    }
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-info" data-get="@Url.Action("Event_Update", new { id = e.EventID })">Update</button>
+                    <button class="btn btn-sm btn-danger" data-post="@Url.Action("Delete", new { id = e.EventID })"
+                            onclick="return confirm('Are you sure you want to delete this event?')">
+                        Delete
+                    </button>
+					<button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", new { id = e.EventID })">Details</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        <h4>No Events Found</h4>
+        <p>There are currently no events. <a href="@Url.Action("Event_Insert")">Create your first event</a>!</p>
+    </div>
+}

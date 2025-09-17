@@ -1,0 +1,357 @@
+﻿@using Azure
+@model EventDetailsVM
+
+@{
+    ViewBag.Title = "Event Details | " + Model.Event_Title;
+}
+
+<style>
+    .event-details-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .event-header {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .event-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 12px 0 0 12px;
+    }
+
+    .event-image-placeholder {
+        width: 100%;
+        height: 300px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        border-radius: 12px 0 0 12px;
+    }
+
+    .event-info {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .event-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .event-date {
+        font-size: 1.3rem;
+        color: #3498db;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .date-icon {
+        width: 24px;
+        height: 24px;
+        background: #3498db;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .event-status {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .status-upcoming {
+        background-color: #e8f5e8;
+        color: #27ae60;
+        border: 2px solid #27ae60;
+    }
+
+    .status-past {
+        background-color: #f8f8f8;
+        color: #7f8c8d;
+        border: 2px solid #bdc3c7;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 15px;
+        margin-top: auto;
+    }
+
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+    }
+
+    .btn-volunteer {
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        color: white;
+    }
+
+        .btn-volunteer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(238, 90, 82, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+    .btn-donate {
+        background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        color: white;
+    }
+
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(68, 160, 141, 0.3);
+            color: white;
+            text-decoration: none;
+        }
+
+    .btn:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .event-details {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .details-section {
+        padding: 30px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .location-icon, .description-icon {
+        width: 24px;
+        height: 24px;
+        background: #3498db;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 12px;
+    }
+
+    .event-location {
+        font-size: 1.2rem;
+        color: #2c3e50;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+    }
+
+    .event-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #34495e;
+        white-space: pre-wrap;
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #3498db;
+    }
+
+    .back-button {
+        margin-bottom: 20px;
+    }
+
+    .btn-back {
+        background: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+
+        .btn-back:hover {
+            background: #5a6268;
+            text-decoration: none;
+            color: white;
+        }
+
+    /* Responsive Design */
+    .event-header {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .event-image {
+        height: 250px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .event-image-placeholder {
+        height: 250px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .event-title {
+        font-size: 2rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .event-details-container {
+        padding: 10px;
+    }
+
+    }
+</style>
+
+<div class="event-details-container">
+    <div class="back-button">
+        <a asp-action="Index" class="btn-back">← Back to Event History</a>
+    </div>
+
+    <!-- Event Header Section -->
+    <div class="event-header">
+        <!-- Event Image -->
+        <div class="event-image-container">
+            @if (!string.IsNullOrEmpty(Model.Event_PhotoURL))
+            {
+                <img src="/events/@Model.Event_PhotoURL" alt="@Model.Event_Title" class="event-image">
+            }
+            else
+            {
+                <div class="event-image-placeholder">
+                    <span>📅 Event Image</span>
+                </div>
+            }
+        </div>
+
+        <!-- Event Info -->
+        <div class="event-info">
+            <div>
+                <h1 class="event-title">@Model.Event_Title</h1>
+
+                <div class="event-date">
+                    <div class="date-icon">📅</div>
+                    <span>@Model.Event_Date</span>
+                </div>
+
+                @if (Model.IsPastEvent)
+                {
+                    <div class="event-status status-past">
+                        📋 Past Event
+                    </div>
+                }
+                else if (Model.DaysUntilEvent == 0)
+                {
+                    <div class="event-status status-upcoming">
+                        🎉 Event is Today!
+                    </div>
+                }
+                else if (Model.DaysUntilEvent > 0)
+                {
+                    <div class="event-status status-upcoming">
+                        ⏰ @Model.DaysUntilEvent days to go
+                    </div>
+                }
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                @if (Model.IsPastEvent)
+                {
+                    <button class="btn btn-volunteer" disabled>
+                        👥 Volunteer (Past Event)
+                    </button>
+                    <a href="/NGO_Event_/Event_Payment" class="btn btn-donate">
+                        💝 Donate (Past Event)
+                    </a>
+                }
+                else
+                {
+                    <a href="#" class="btn btn-volunteer" onclick="alert('Volunteer registration feature coming soon!')">
+                        👥 Volunteer Now
+                    </a>
+                    <a href="@Url.Action("Event_Payment")" class="btn btn-donate" onclick="alert('Donation feature coming soon!')">
+                        💝 Donate Now
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Section -->
+    <div class="event-details">
+        <div class="details-section">
+            <!-- Location -->
+            <h2 class="section-title">
+                <div class="location-icon">📍</div>
+                Location
+            </h2>
+            <div class="event-location">
+                @Model.Event_Location
+            </div>
+        </div>
+
+        <div class="details-section" style="border-top: 1px solid #e9ecef;">
+            <!-- Description -->
+            <h2 class="section-title">
+                <div class="description-icon">📝</div>
+                Description
+            </h2>
+            <div class="event-description">
+                @Model.Event_Description
+            </div>
+        </div>
+    </div>
+</div>

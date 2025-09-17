@@ -1,0 +1,726 @@
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\appsettings.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.runtime.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.endpoints.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.exe
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.deps.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.runtimeconfig.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Humanizer.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\SixLabors.ImageSharp.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\X.PagedList.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\X.PagedList.Mvc.Core.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.csproj.AssemblyReference.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfo.cs
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cs
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\scopedcss\bundle\NGO_Web_Demo.styles.css
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\scopedcss\projectbundle\NGO_Web_Demo.bundle.scp.css
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\elx3g78ecm-b9sayid5wm.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\qcajj98c62-61n19gt1b8.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\ge4b4595nw-xtxxf3hu2r.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\fqioqhsp5s-bqjiyaj88i.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\llswdebora-c2jlpeoesf.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\bxtmlh7g9x-erw9l3u2r3.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\qn21r35t3b-aexeepp0ev.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\56zxxudxos-d7shbmvgxk.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\ppah84xjbi-ausgxo2sd3.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\i2i794v9h8-k8d9w2qqmf.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\cnm5y4i4vr-cosvhxvwiu.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\bbf3t6q2oz-ub07r2b239.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\1227772y2y-fvhpjtyr6v.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\s6idp7fuff-b7pk76d08c.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\wilnlnrvg4-fsbi9cje9m.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\pk40fywk8s-rzd6atqjts.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\od58drbz71-ee0r1s7dh0.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\xbt368cdey-dxx9fxp4il.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\tdl9g8fj8m-jd9uben2k1.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\esd6eu8wno-khv3u5hwcm.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\jlh8wdp548-r4e9w2rdcm.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\gkpbcb6orw-lcd1t2u6c8.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\nhjp7hdy51-c2oey78nd0.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\ccsibv69ra-tdbxkamptv.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\inwc1p3suy-j5mq2jizvt.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\i3320r6lsh-06098lyss8.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\zs474hy5w5-nvvlpmu67g.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\s5yflu9ptv-s35ty4nyc5.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\7z3md7hjgr-pj5nd1wqec.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\bizp7ymz74-46ein0sx1k.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\jeypxxa1kq-v0zj4ognzu.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\0fxva8lzre-37tfw0ft22.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\p76sfn4pso-hrwsygsryq.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\2npw0lbo1k-pk9g2wxc8p.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\1j2lqru494-ft3s53vfgj.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\ghzl0ig9ux-6cfz1n2cew.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\xlho31r8hi-6pdc2jztkx.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\vj18d7rnkg-493y06b0oq.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\0eze700lvq-iovd86k7lj.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\r73rzprmga-vr1egmr9el.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\2wmudeztc6-kbrnm935zg.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\tb5u6mi973-jj8uyg4cgr.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\fgo1hqga2g-y7v9cxd14o.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\bug3tf5e6j-notf2xhcfb.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\5a0apwufjp-h1s4sie4z3.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\7q8q7yogos-63fj8s7r0e.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\n4b1gd6f4p-0j3bgjxly4.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\uyr136f621-47otxtyo56.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\gik28yw31e-4v8eqarkd7.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\66mvmnlwvx-356vix0kms.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\90mcivcdkv-83jwlth58m.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\vyq5t1yqjq-mrlpezrjn3.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\0tjp2zwlu4-lzl9nlhx6b.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\qxumm3n843-ag7o75518u.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\i1ez21lb4l-x0q3zqp4vz.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\z8pk63tsz0-0i3buxo5is.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\5pc7n4og5t-o1o13a6vjx.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\pcq3q5vg4l-ttgo8qnofa.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\k55j5pb8y1-2z0ns9nrw6.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\kyc94rbtdf-muycvpuwrr.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\fnyj33o0dq-87fc7y1x7t.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\fr2z1qfi7z-mlv21k5csn.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\1f826bc2k3-3uz0vsy72a.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\aduwfpjei6-3uz0vsy72a.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_.E2C00E57.Up2Date
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\refint\NGO_Web_Demo.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\NGO_Web_Demo.genruntimeconfig.cache
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\ref\NGO_Web_Demo.dll
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\1qy3v83rmh-azd544o43i.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\j3xnxkwtn7-getg8mlsvl.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\84lqapijl4-o1o13a6vjx.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\br8z9cat9i-8ve2wm9mbw.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\xr3py116lr-ag7o75518u.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\p9fcjm7tfn-48y08845bh.gz
+C:\Users\User\Documents\Web & Mobile\Assignment\NGO_Web_Demo\obj\Debug\net9.0\compressed\ovy278oyd0-w4yx1k1cmq.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\appsettings.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.runtime.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.endpoints.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.exe
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.deps.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.runtimeconfig.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Humanizer.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\SixLabors.ImageSharp.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Formats.Asn1.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Text.Json.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\X.PagedList.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\X.PagedList.Mvc.Core.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.csproj.AssemblyReference.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfoInputs.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfo.cs
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.csproj.CoreCompileInputs.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cs
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.sourcelink.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\bundle\NGO_Web_Demo.styles.css
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\projectbundle\NGO_Web_Demo.bundle.scp.css
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ovy278oyd0-w4yx1k1cmq.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1qy3v83rmh-6ydxnrtiio.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\elx3g78ecm-b9sayid5wm.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qcajj98c62-61n19gt1b8.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\j3xnxkwtn7-getg8mlsvl.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\84lqapijl4-m9qm4tazc0.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\br8z9cat9i-8ve2wm9mbw.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xr3py116lr-gk0pw8i4co.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\p9fcjm7tfn-48y08845bh.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ge4b4595nw-xtxxf3hu2r.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fqioqhsp5s-t1cqhe9u97.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\llswdebora-c2jlpeoesf.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bxtmlh7g9x-sejl45xvog.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qn21r35t3b-aexeepp0ev.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\56zxxudxos-xvp3kq03qx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ppah84xjbi-ausgxo2sd3.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i2i794v9h8-22vffe00uq.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\cnm5y4i4vr-cosvhxvwiu.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bbf3t6q2oz-qesaa3a1fm.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1227772y2y-fvhpjtyr6v.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\s6idp7fuff-tmc1g35s3z.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\wilnlnrvg4-fsbi9cje9m.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\pk40fywk8s-rxsg74s51o.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\od58drbz71-ee0r1s7dh0.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xbt368cdey-q9ht133ko3.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\tdl9g8fj8m-jd9uben2k1.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\esd6eu8wno-gye83jo8yx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\jlh8wdp548-r4e9w2rdcm.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\gkpbcb6orw-wl58j5mj3v.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\nhjp7hdy51-c2oey78nd0.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ccsibv69ra-d4r6k3f320.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\inwc1p3suy-j5mq2jizvt.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i3320r6lsh-keugtjm085.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\zs474hy5w5-nvvlpmu67g.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\s5yflu9ptv-zub09dkrxp.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\7z3md7hjgr-pj5nd1wqec.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bizp7ymz74-43atpzeawx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\jeypxxa1kq-v0zj4ognzu.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0fxva8lzre-ynyaa8k90p.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\p76sfn4pso-hrwsygsryq.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\2npw0lbo1k-c63t5i9ira.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1j2lqru494-ft3s53vfgj.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ghzl0ig9ux-4094rpi4f9.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xlho31r8hi-6pdc2jztkx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\vj18d7rnkg-hd3gran6i8.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0eze700lvq-iovd86k7lj.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\r73rzprmga-ltid2c489k.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\2wmudeztc6-kbrnm935zg.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\tb5u6mi973-8vyfqsqgz1.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fgo1hqga2g-y7v9cxd14o.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bug3tf5e6j-u9q1upor1n.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\5a0apwufjp-h1s4sie4z3.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\7q8q7yogos-4d85u1mtcx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\n4b1gd6f4p-0j3bgjxly4.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\uyr136f621-03hjc8e09r.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\gik28yw31e-48y08845bh.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\66mvmnlwvx-356vix0kms.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\90mcivcdkv-83jwlth58m.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\vyq5t1yqjq-mrlpezrjn3.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0tjp2zwlu4-worgj0nhwm.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qxumm3n843-gk0pw8i4co.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i1ez21lb4l-x0q3zqp4vz.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\z8pk63tsz0-d6nrnj6jjx.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\5pc7n4og5t-m9qm4tazc0.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\pcq3q5vg4l-ttgo8qnofa.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\k55j5pb8y1-jjsuc0puko.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\kyc94rbtdf-9vr69e8ynj.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fnyj33o0dq-87fc7y1x7t.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fr2z1qfi7z-mlv21k5csn.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1f826bc2k3-3uz0vsy72a.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\aduwfpjei6-3uz0vsy72a.gz
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_.E2C00E57.Up2Date
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\refint\NGO_Web_Demo.dll
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.genruntimeconfig.cache
+C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\ref\NGO_Web_Demo.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\appsettings.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.runtime.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.staticwebassets.endpoints.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.exe
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.deps.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.runtimeconfig.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Azure.Core.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Azure.Identity.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Humanizer.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Identity.Client.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\SixLabors.ImageSharp.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.ClientModel.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Drawing.Common.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Memory.Data.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Runtime.Caching.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\X.PagedList.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\X.PagedList.Mvc.Core.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.csproj.AssemblyReference.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfoInputs.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.AssemblyInfo.cs
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.RazorAssemblyInfo.cs
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.sourcelink.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\bundle\NGO_Web_Demo.styles.css
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\scopedcss\projectbundle\NGO_Web_Demo.bundle.scp.css
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ovy278oyd0-w4yx1k1cmq.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1qy3v83rmh-6ydxnrtiio.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\elx3g78ecm-b9sayid5wm.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qcajj98c62-61n19gt1b8.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\j3xnxkwtn7-getg8mlsvl.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\84lqapijl4-m9qm4tazc0.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\br8z9cat9i-8ve2wm9mbw.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xr3py116lr-gk0pw8i4co.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\p9fcjm7tfn-48y08845bh.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ge4b4595nw-xtxxf3hu2r.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fqioqhsp5s-t1cqhe9u97.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\llswdebora-c2jlpeoesf.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bxtmlh7g9x-sejl45xvog.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qn21r35t3b-aexeepp0ev.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\56zxxudxos-xvp3kq03qx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ppah84xjbi-ausgxo2sd3.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i2i794v9h8-22vffe00uq.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\cnm5y4i4vr-cosvhxvwiu.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bbf3t6q2oz-qesaa3a1fm.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1227772y2y-fvhpjtyr6v.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\s6idp7fuff-tmc1g35s3z.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\wilnlnrvg4-fsbi9cje9m.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\pk40fywk8s-rxsg74s51o.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\od58drbz71-ee0r1s7dh0.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xbt368cdey-q9ht133ko3.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\tdl9g8fj8m-jd9uben2k1.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\esd6eu8wno-gye83jo8yx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\jlh8wdp548-r4e9w2rdcm.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\gkpbcb6orw-wl58j5mj3v.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\nhjp7hdy51-c2oey78nd0.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ccsibv69ra-d4r6k3f320.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\inwc1p3suy-j5mq2jizvt.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i3320r6lsh-keugtjm085.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\zs474hy5w5-nvvlpmu67g.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\s5yflu9ptv-zub09dkrxp.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\7z3md7hjgr-pj5nd1wqec.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bizp7ymz74-43atpzeawx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\jeypxxa1kq-v0zj4ognzu.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0fxva8lzre-ynyaa8k90p.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\p76sfn4pso-hrwsygsryq.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\2npw0lbo1k-c63t5i9ira.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1j2lqru494-ft3s53vfgj.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\ghzl0ig9ux-4094rpi4f9.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\xlho31r8hi-6pdc2jztkx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\vj18d7rnkg-hd3gran6i8.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0eze700lvq-iovd86k7lj.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\r73rzprmga-ltid2c489k.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\2wmudeztc6-kbrnm935zg.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\tb5u6mi973-8vyfqsqgz1.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fgo1hqga2g-y7v9cxd14o.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\bug3tf5e6j-u9q1upor1n.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\5a0apwufjp-h1s4sie4z3.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\7q8q7yogos-4d85u1mtcx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\n4b1gd6f4p-0j3bgjxly4.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\uyr136f621-03hjc8e09r.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\gik28yw31e-48y08845bh.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\66mvmnlwvx-356vix0kms.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\90mcivcdkv-83jwlth58m.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\vyq5t1yqjq-mrlpezrjn3.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\0tjp2zwlu4-worgj0nhwm.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\qxumm3n843-gk0pw8i4co.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\i1ez21lb4l-x0q3zqp4vz.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\z8pk63tsz0-d6nrnj6jjx.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\5pc7n4og5t-m9qm4tazc0.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\pcq3q5vg4l-ttgo8qnofa.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\k55j5pb8y1-jjsuc0puko.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\kyc94rbtdf-9vr69e8ynj.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fnyj33o0dq-87fc7y1x7t.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\fr2z1qfi7z-mlv21k5csn.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\1f826bc2k3-3uz0vsy72a.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\compressed\aduwfpjei6-3uz0vsy72a.gz
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_.E2C00E57.Up2Date
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\refint\NGO_Web_Demo.dll
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.pdb
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\NGO_Web_Demo.genruntimeconfig.cache
+C:\Users\User\Documents\GitHub\NGO-ASSSSSSSSSSSS\obj\Debug\net9.0\ref\NGO_Web_Demo.dll

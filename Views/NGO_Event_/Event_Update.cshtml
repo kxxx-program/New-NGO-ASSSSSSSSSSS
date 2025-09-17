@@ -1,0 +1,89 @@
+﻿@model EventUpdateVM
+
+@{
+    ViewBag.Title = "Event | Update";
+}
+
+<div class="card border-0">
+<form class="form" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+ <div class="form-row">
+
+    <div class="card-header">
+        <label asp-for="Event_Id">Event ID:</label>
+        <b>@Model.Event_Id</b>
+        <input asp-for="Event_Id" type="hidden">
+    </div>
+
+            <div class="col-md">
+        <label asp-for="Event_Title">Event Title:</label>
+        <input asp-for="Event_Title" autofocus class="form-control">
+        <span asp-validation-for="Event_Title" class="text-danger"></span>
+    </div>
+
+            <div class="col-md">
+        <label asp-for="Event_Date">Event Date:</label>
+        <input asp-for="Event_Date" type="date" class="form-control">
+        <span asp-validation-for="Event_Date" class="text-danger"></span>
+    </div>
+
+            <div class="col-md">
+        <label asp-for="Event_Location">Event Location:</label>
+        <input asp-for="Event_Location" class="form-control">
+        <span asp-validation-for="Event_Location" class="text-danger"></span>
+    </div>
+
+            <div class="col-md">
+        <label asp-for="Event_Description">Event Description:</label>
+        <textarea asp-for="Event_Description" rows="5" class="form-control"></textarea>
+        <span asp-validation-for="Event_Description" class="text-danger"></span>
+    </div>
+
+            <div class="col-md">
+        <label asp-for="Event_Photo">Event Photo:</label>
+        <label class="upload">
+            <input asp-for="Event_Photo" accept="image/jpeg,image/png" hidden>
+            @if (!string.IsNullOrEmpty(Model.Event_PhotoURL))
+            {
+                <img src="/events/@Model.Event_PhotoURL" alt="Current Event Photo" style="max-width: 200px; max-height: 200px; border: 1px solid #ccc;">
+                <p>Click image to change photo</p>
+            }
+            else
+            {
+                <div style="width: 200px; height: 200px; border: 2px dashed #ccc; display: flex; align-items: center; justify-content: center;">
+                    <span>Click to add photo</span>
+                </div>
+            }
+        </label>
+        <span asp-validation-for="Event_Photo" class="text-danger"></span>
+    </div>
+
+    <section>
+        <button type="submit" class="btn btn-primary">Update Event</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+        <a asp-action="Event_Index" class="btn btn-secondary">Cancel</a>
+    </section>
+</div>
+</form>
+</div>
+
+
+<!-- DEBUG: JavaScript to show form data being submitted -->
+<script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        console.log('=== FORM SUBMISSION DEBUG ===');
+        const formData = new FormData(this);
+
+        for (let [key, value] of formData.entries()) {
+            if (value instanceof File) {
+                console.log(`${key}: ${value.name} (${value.size} bytes)`);
+            } else {
+                console.log(`${key}: "${value}"`);
+            }
+        }
+
+        // Don't prevent submission, just log
+        console.log('Form is being submitted...');
+    });
+</script>

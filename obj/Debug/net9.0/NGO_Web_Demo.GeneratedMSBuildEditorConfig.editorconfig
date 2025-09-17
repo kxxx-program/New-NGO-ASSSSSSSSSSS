@@ -1,0 +1,133 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = NGO_Web_Demo
+build_property.RootNamespace = NGO_Web_Demo
+build_property.ProjectDir = C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\khshu\Documents\GitHub\NGO-ASSSSSSSSSSSS
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/UpdatePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVcGRhdGVQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Account/UpdateProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxVcGRhdGVQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/EventHistory/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIaXN0b3J5XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/EventHistory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIaXN0b3J5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/EventHistory/MyVolunteer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXZlbnRIaXN0b3J5XE15Vm9sdW50ZWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Home/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Home/Both.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCb3RoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Home/Member.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZW1iZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/NGO_Event_/Event_Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkdPX0V2ZW50X1xFdmVudF9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/NGO_Event_/Event_Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkdPX0V2ZW50X1xFdmVudF9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/NGO_Event_/Event_Insert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkdPX0V2ZW50X1xFdmVudF9JbnNlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/NGO_Event_/Event_Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkdPX0V2ZW50X1xFdmVudF9QYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/NGO_Event_/Event_Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkdPX0V2ZW50X1xFdmVudF9VcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Shared/_CheckBoxList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGVja0JveExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Shared/_RadioButtonList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9SYWRpb0J1dHRvbkxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/khshu/Documents/GitHub/NGO-ASSSSSSSSSSSS/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2a0j1apvud

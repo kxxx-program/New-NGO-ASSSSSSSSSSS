@@ -1,0 +1,78 @@
+﻿@model EventInsertVM
+
+@{
+    ViewBag.Title = "Event | Insert";
+}
+
+<div class="mb-3">
+    <a href="@Url.Action("Event_Index")" class="btn btn-primary">
+        <i class="bi bi-arrow-left me-1"></i>Back to Event Index
+    </a>
+</div>
+
+    <div class="card border-0">
+        <form class="form" method="post" enctype="multipart/form-data" style="text-wrap:nowrap">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-row">
+                <div class="card-header">
+                    <label asp-for="Event_Id"></label>
+                    <b>@Model.Event_Id</b>
+                    <input asp-for="Event_Id" type="hidden" />
+                </div>
+
+                <div class="col-md">
+                    <label asp-for="Event_Title"></label>
+                    <input asp-for="Event_Title" class="form-control" autofocus required>
+                    <span asp-validation-for="Event_Title" class="text-danger"></span>
+                </div>
+
+                <div class="col-md">
+                    <label asp-for="Event_Date"></label>
+                    <input asp-for="Event_Date" type="date" class="form-control" required>
+                    <span asp-validation-for="Event_Date" class="text-danger"></span>
+                </div>
+
+                <div class="col-md">
+                    <label asp-for="Event_Location"></label>
+                    <input asp-for="Event_Location" class="form-control" required>
+                    <span asp-validation-for="Event_Location" class="text-danger"></span>
+                </div>
+
+                <div class="col-md">
+                    <label asp-for="Event_Description"></label>
+                    <textarea asp-for="Event_Description" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Event_Description" class="text-danger"></span>
+                </div>
+
+                <div class="col-md">
+                    <label asp-for="Event_Photo"></label>
+                    <div class="upload">
+                        <input asp-for="Event_Photo" accept="image/jpeg,image/png" class="form-control" type="file">
+                        <small class="form-text text-muted">Supported formats: JPG, PNG (Max size: 1MB)</small>
+                        <span asp-validation-for="Event_Photo" class="text-danger"></span>
+                    </div>
+                 </div>
+
+
+            <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+@section foot {
+    <script>
+        // Enable validation for file inputs
+        $.validator.setDefaults({ ignore: '' });
+
+        // Preview image when selected
+        document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                console.log('Selected file:', file.name, file.size, 'bytes');
+            }
+        });
+    </script>
+}

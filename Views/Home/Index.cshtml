@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home | Index";
+}
+
+<form class="form" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <label>Photo</label>
+    <label class="upload">
+        <input type="file" name="photo" accept="image/jpeg,image/png" hidden>
+        <img src="/images/photo.jpg">
+    </label>
+    @Html.ValidationMessage("photo")
+
+    <section>
+        <button>Upload</button>
+        <button type="reset">Reset</button>
+    </section>
+</form>
