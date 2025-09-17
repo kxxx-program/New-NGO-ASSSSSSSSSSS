@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Models;
 
@@ -23,16 +24,21 @@ public class Event
 {
     [Key, MaxLength(4)]
     public string EventID { get; set; }
+
     [MaxLength(100)]
     public string EventTitle { get; set; }
     [MaxLength(200)]
-    public DateTime EventDate { get; set; }
+    public DateTime EventStartDate { get; set; }
+    [MaxLength(200)]
+    public DateTime EventEndDate { get; set; }
+    public string EventStatus { get; set; } = "Upcoming";
     [MaxLength(100)]
     public string EventLocation { get; set; }
     [MaxLength(500)]
     public string EventDescription { get; set; }
-
     public string? EventPhotoURL { get; set; }
+
+
 }
 
 public class User
@@ -43,7 +49,7 @@ public class User
     public string Hash { get; set; }
     [MaxLength(100)]
     public string Name { get; set; }
-
+    public DateTime ParticipatedDate { get; set; }
     public string Role => GetType().Name;
 }
 
@@ -63,6 +69,7 @@ public class Donation
     public int DonationID { get; set; }
     public string UserEmail { get; set; }
     public string EventId { get; set; }
+    [Column(TypeName = "decimal(18, 2)")]
     public decimal Amount { get; set; }
     public string PaymentMethod { get; set; }
     public DateTime DonationDate { get; set; }

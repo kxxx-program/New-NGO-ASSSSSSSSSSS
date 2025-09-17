@@ -25,6 +25,7 @@ public class PaymentController : Controller
         }
 
         var e = db.Events.Find(id);
+        var u = db.Users.Find(User.Identity?.Name);
         if (e == null)
         {
             TempData["Info"] = "Event not found.";
@@ -35,17 +36,17 @@ public class PaymentController : Controller
         {
             EventID = e.EventID,
             EventTitle = e.EventTitle,
-            EventDate = e.EventDate,
+            ParticipatedDate = u.ParticipatedDate,
             EventLocation = e.EventLocation
         };
 
         return View("~/Views/NGO_Event/Event_Payment.cshtml", model);
     }
 
-   //POST: Payment/ProcessPayment
-   [HttpPost]
-   [Authorize]
-   [ValidateAntiForgeryToken]
+    //POST: Payment/ProcessPayment
+    [HttpPost]
+    [Authorize]
+    [ValidateAntiForgeryToken]
     public IActionResult Process(PaymentVM model)
     {
         if (!ModelState.IsValid)
@@ -61,7 +62,7 @@ public class PaymentController : Controller
             Amount = model.Amount,
             PaymentMethod = model.PaymentMethod,
             DonationDate = DateTime.Now,
-            CreditCardNumber = model.PaymentMethod == "Credit Card" && !string.IsNullOrEmpty(model.CreditCardNumber)?EncryptionHelper.Encrypt(model.CreditCardNumber):null
+            CreditCardNumber = model.PaymentMethod == "Credit Card" && !string.IsNullOrEmpty(model.CreditCardNumber) ? EncryptionHelper.Encrypt(model.CreditCardNumber) : null
         };
 
         db.Donations.Add(donation);

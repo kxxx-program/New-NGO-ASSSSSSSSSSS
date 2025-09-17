@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics.Eventing.Reader;
+using Demo.Models; // Added for Event model
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using NGO_Web_Demo;
 using NGO_Web_Demo.Models;
-using Demo.Models; // Added for Event model
 
 namespace NGO_Web_Demo.Controllers;
 
@@ -21,6 +23,7 @@ public class NGO_Event_Controller : Controller
     public IActionResult Event_Index()
     {
         var model = db.Events.ToList(); // Added ToList() to ensure data is loaded
+
         return View(model);
     }
 
@@ -52,7 +55,9 @@ public class NGO_Event_Controller : Controller
         {
             Event_Id = NextId(),
             Event_Title = "",
-            Event_Date = DateTime.Today.AddDays(1),
+            Event_Start_Date = DateTime.Today.AddDays(1),
+            Event_End_Date = DateTime.Today.AddDays(2),
+            Event_Status = "",
             Event_Location = "",
             Event_Description = ""
         };
@@ -80,6 +85,29 @@ public class NGO_Event_Controller : Controller
             }
         }
 
+        if (vm.Event_Start_Date < DateTime.Today)
+        {
+            ModelState.AddModelError("Event_Start_Date", "Start date cannot be in the past.");
+        }
+
+        if (vm.Event_End_Date < vm.Event_Start_Date)
+        {
+            ModelState.AddModelError("Event_End_Date", "End date cannot be before start date.");
+        }
+
+        if (vm.Event_Start_Date > DateTime.Today)
+        {
+            vm.Event_Status = "Upcoming";
+        }
+        else if (vm.Event_End_Date < DateTime.Today)
+        {
+            vm.Event_Status = "Concluded";
+        }
+        else
+        {
+            vm.Event_Status = "Ongoing";
+        }
+
         if (ModelState.IsValid)
         {
             try
@@ -95,7 +123,9 @@ public class NGO_Event_Controller : Controller
                 {
                     EventID = vm.Event_Id,
                     EventTitle = vm.Event_Title,
-                    EventDate = vm.Event_Date,
+                    EventStartDate = vm.Event_Start_Date,
+                    EventEndDate = vm.Event_End_Date,
+                    EventStatus = vm.Event_Status,
                     EventLocation = vm.Event_Location,
                     EventDescription = vm.Event_Description,
                     EventPhotoURL = photoUrl // FIXED: Use the photoUrl variable, not save again
@@ -131,7 +161,8 @@ public class NGO_Event_Controller : Controller
         {
             Event_Id = e.EventID,
             Event_Title = e.EventTitle,
-            Event_Date = e.EventDate,
+            Event_Start_Date = e.EventStartDate,
+            Event_End_Date = e.EventEndDate,
             Event_Location = e.EventLocation,
             Event_Description = e.EventDescription,
             Event_PhotoURL = e.EventPhotoURL,
@@ -167,6 +198,29 @@ public class NGO_Event_Controller : Controller
             }
         }
 
+        if (vm.Event_Start_Date < DateTime.Today)
+        {
+            ModelState.AddModelError("Event_Start_Date", "Start date cannot be in the past.");
+        }
+
+        if (vm.Event_End_Date < vm.Event_Start_Date)
+        {
+            ModelState.AddModelError("Event_End_Date", "End date cannot be before start date.");
+        }
+
+        if (vm.Event_Start_Date > DateTime.Today)
+        {
+            vm.Event_Status = "Upcoming";
+        }
+        else if (vm.Event_End_Date < DateTime.Today)
+        {
+            vm.Event_Status = "Concluded";
+        }
+        else
+        {
+            vm.Event_Status = "Ongoing";
+        }
+
         if (ModelState.IsValid)
         {
             try
@@ -174,16 +228,18 @@ public class NGO_Event_Controller : Controller
                 System.Diagnostics.Debug.WriteLine("ModelState is valid, updating entity...");
 
                 // Log old values
-                System.Diagnostics.Debug.WriteLine($"OLD - Title: {e.EventTitle}, Date: {e.EventDate}");
+                System.Diagnostics.Debug.WriteLine($"OLD - Title: {e.EventTitle}, Date: {e.EventStartDate}");
 
                 // Update the entity properties
                 e.EventTitle = vm.Event_Title;
-                e.EventDate = vm.Event_Date;
+                e.EventStartDate = vm.Event_Start_Date;
+                e.EventEndDate = vm.Event_End_Date;
+                e.EventStatus = vm.Event_Status;
                 e.EventLocation = vm.Event_Location;
                 e.EventDescription = vm.Event_Description;
 
                 // Log new values
-                System.Diagnostics.Debug.WriteLine($"NEW - Title: {e.EventTitle}, Date: {e.EventDate}");
+                System.Diagnostics.Debug.WriteLine($"NEW - Title: {e.EventTitle}, Start Date: {e.EventStartDate}, End Date: {e.EventEndDate}");
 
                 // Handle photo update
                 if (vm.Event_Photo != null)
@@ -284,7 +340,9 @@ public class NGO_Event_Controller : Controller
         {
             Event_Id = e.EventID,
             Event_Title = e.EventTitle,
-            Event_Date = e.EventDate,
+            Event_Start_Date = e.EventStartDate,
+            Event_End_Date = e.EventEndDate,
+            Event_Status = e.EventStatus,
             Event_Location = e.EventLocation,
             Event_Description = e.EventDescription,
             Event_PhotoURL = e.EventPhotoURL

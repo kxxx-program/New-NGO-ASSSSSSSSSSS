@@ -20,12 +20,14 @@
     <a href="@Url.Action("Event_Insert")" class="btn btn-primary">Add New Event</a>
 </p>
 
-<table class="table table-striped">
+<table class="table table-striped ">
     <thead>
         <tr>
             <th>Event ID</th>
             <th>Event Title</th>
-            <th>Event Date</th>
+            <th>Event Start Date</th>
+            <th>Event End Date</th>
+            <th>Event Status</th>
             <th>Event Location</th>
             <th>Event Description</th>
             <th>Photo</th>
@@ -38,7 +40,9 @@
             <tr>
                 <td>@e.EventID</td>
                 <td>@e.EventTitle</td>
-                <td>@e.EventDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventStatus</td>
                 <td>@e.EventLocation</td>
                 <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
                 <td>
@@ -59,7 +63,7 @@
                             onclick="return confirm('Are you sure you want to delete this event?')">
                         Delete
                     </button>
-					<button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", new { id = e.EventID })">Details</button>
+                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", new { id = e.EventID })">Details</button>
                 </td>
             </tr>
         }

@@ -17,7 +17,9 @@ namespace NGO_Web_Demo.Migrations
                 {
                     EventID = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
                     EventTitle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    EventDate = table.Column<DateTime>(type: "datetime2", maxLength: 200, nullable: false),
+                    EventStartDate = table.Column<DateTime>(type: "datetime2", maxLength: 200, nullable: false),
+                    EventEndDate = table.Column<DateTime>(type: "datetime2", maxLength: 200, nullable: false),
+                    EventStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EventLocation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EventDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     EventPhotoURL = table.Column<string>(type: "nvarchar(max)", nullable: true)

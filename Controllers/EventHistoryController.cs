@@ -40,7 +40,8 @@ namespace NGO_Web_Demo.Controllers
             {
                 Event_Id = e.EventID,
                 Event_Title = e.EventTitle,
-                Event_Date = e.EventDate,
+                Event_Start_Date = e.EventStartDate,
+                Event_End_Date = e.EventEndDate,
                 Event_Location = e.EventLocation,
                 Event_Description = e.EventDescription,
                 Event_PhotoURL = e.EventPhotoURL

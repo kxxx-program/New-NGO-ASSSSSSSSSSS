@@ -91,6 +91,7 @@ public class EmailVM
     public bool IsBodyHtml { get; set; }
 }
 
+//Event View Models and stuff
 public class EventInsertVM
 {
     [StringLength(4)]
@@ -105,9 +106,16 @@ public class EventInsertVM
     public string Event_Title { get; set; }
 
     [Required(ErrorMessage = "Event date is required")]
-    [Display(Name = "Event Date")]
+    [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Date { get; set; }
+    public DateTime Event_Start_Date { get; set; }
+
+    [Required(ErrorMessage = "Event date is required")]
+    [Display(Name = "Event End Date")]
+    [DataType(DataType.Date)]
+    public DateTime Event_End_Date { get; set; }
+
+    public string Event_Status { get; set; } = "Upcoming";
 
     [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
     [Display(Name = "Event Description")]
@@ -117,6 +125,8 @@ public class EventInsertVM
     [StringLength(100, ErrorMessage = "Location cannot exceed 100 characters")]
     [Display(Name = "Event Location")]
     public string Event_Location { get; set; }
+
+
 
     // Other properties
     [Display(Name = "Event Photo")]
@@ -134,9 +144,16 @@ public class EventUpdateVM
     public string Event_Title { get; set; }
 
     [Required(ErrorMessage = "Event date is required")]
-    [Display(Name = "Event Date")]
+    [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Date { get; set; }
+    public DateTime Event_Start_Date { get; set; }
+
+    [Required(ErrorMessage = "Event date is required")]
+    [Display(Name = "Event End Date")]
+    [DataType(DataType.Date)]
+    public DateTime Event_End_Date { get; set; }
+
+    public string Event_Status { get; set; } = "Upcoming";
 
     [StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
     [Display(Name = "Event Description")]
@@ -163,9 +180,15 @@ public class EventDetailsVM
     [Display(Name = "Event Title")]
     public string Event_Title { get; set; } = "";
 
-    [Display(Name = "Event Date")]
+    [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Date { get; set; }
+    public DateTime Event_Start_Date { get; set; }
+
+    [Display(Name = "Event End Date")]
+    [DataType(DataType.Date)]
+    public DateTime Event_End_Date { get; set; }
+
+    public string Event_Status { get; set; } = "Upcoming";
 
     [Display(Name = "Event Location")]
     public string Event_Location { get; set; } = "";
@@ -182,7 +205,7 @@ public class EventDetailsVM
     {
         get
         {
-            return (Event_Date - DateTime.Today).Days;
+            return (Event_Start_Date - DateTime.Today).Days;
         }
     }
 
@@ -191,7 +214,7 @@ public class EventDetailsVM
     {
         get
         {
-            return Event_Date < DateTime.Today;
+            return Event_End_Date < DateTime.Today;
         }
     }
 
@@ -200,16 +223,18 @@ public class EventDetailsVM
     {
         get
         {
-            return Event_Date.ToString("dddd, MMMM dd, yyyy");
+            return Event_Start_Date.ToString("dddd, MMMM dd, yyyy");
         }
     }
 }
+
+//Payment View Model
 
 public class PaymentVM
 {
     public string EventID { get; set; }
     public string EventTitle { get; set; }
-    public DateTime EventDate { get; set; }
+    public DateTime ParticipatedDate { get; set; }
     public string EventLocation { get; set; }
 
     //Payemnt Fields

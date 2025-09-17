@@ -80,7 +80,10 @@
                         <i class="bi bi-geo-alt"></i> @e.EventLocation
                     </p>
                     <p class="card-text">
-                        <i class="bi bi-calendar"></i> @e.EventDate.ToString("dd MMMM yyyy")
+                        <i class="bi bi-calendar"></i> @e.EventStartDate.ToString("dd MMMM yyyy")
+                    </p>
+                    <p class="card-text">
+                        <i class="bi bi-calendar"></i> @e.EventEndDate.ToString("dd MMMM yyyy")
                     </p>
                     <p class="card-text">
                         @(e.EventDescription?.Length > 100 ? e.EventDescription.Substring(0, 100) + "..." : e.EventDescription)
