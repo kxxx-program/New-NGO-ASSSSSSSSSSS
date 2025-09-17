@@ -17,6 +17,7 @@ namespace NGO_Web_Demo.Migrations
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Hash = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ParticipatedDate = table.Column<DateTime>(type: "datetime2", maxLength: 200, nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     PhotoURL = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
