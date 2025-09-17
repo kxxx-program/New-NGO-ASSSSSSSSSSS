@@ -108,12 +108,22 @@ public class EventInsertVM
     [Required(ErrorMessage = "Event date is required")]
     [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Start_Date { get; set; }
+    public DateOnly Event_Start_Date { get; set; }
 
     [Required(ErrorMessage = "Event date is required")]
     [Display(Name = "Event End Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_End_Date { get; set; }
+    public DateOnly Event_End_Date { get; set; }
+
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event Start Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_Start_Time { get; set; }
+
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event End Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_End_Time { get; set; }
 
     public string Event_Status { get; set; } = "Upcoming";
 
@@ -125,8 +135,6 @@ public class EventInsertVM
     [StringLength(100, ErrorMessage = "Location cannot exceed 100 characters")]
     [Display(Name = "Event Location")]
     public string Event_Location { get; set; }
-
-
 
     // Other properties
     [Display(Name = "Event Photo")]
@@ -146,12 +154,21 @@ public class EventUpdateVM
     [Required(ErrorMessage = "Event date is required")]
     [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Start_Date { get; set; }
+    public DateOnly Event_Start_Date { get; set; }
 
     [Required(ErrorMessage = "Event date is required")]
     [Display(Name = "Event End Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_End_Date { get; set; }
+    public DateOnly Event_End_Date { get; set; }
+
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event Start Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_Start_Time { get; set; }
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event End Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_End_Time { get; set; }
 
     public string Event_Status { get; set; } = "Upcoming";
 
@@ -182,11 +199,20 @@ public class EventDetailsVM
 
     [Display(Name = "Event Start Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_Start_Date { get; set; }
+    public DateOnly Event_Start_Date { get; set; }
 
     [Display(Name = "Event End Date")]
     [DataType(DataType.Date)]
-    public DateTime Event_End_Date { get; set; }
+    public DateOnly Event_End_Date { get; set; }
+
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event Start Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_Start_Time { get; set; }
+    [Required(ErrorMessage = "Event time is required")]
+    [Display(Name = "Event End Time")]
+    [DataType(DataType.Time)]
+    public TimeSpan Event_End_Time { get; set; }
 
     public string Event_Status { get; set; } = "Upcoming";
 
@@ -205,7 +231,8 @@ public class EventDetailsVM
     {
         get
         {
-            return (Event_Start_Date - DateTime.Today).Days;
+            TimeSpan difference = Event_Start_Date.ToDateTime(TimeOnly.MinValue) - DateTime.Today;
+            return (int)difference.TotalDays;
         }
     }
 
@@ -214,9 +241,10 @@ public class EventDetailsVM
     {
         get
         {
-            return Event_End_Date < DateTime.Today;
+            return Event_End_Date < DateOnly.FromDateTime(DateTime.Today);
         }
     }
+    
 
     [Display(Name = "Formatted Date")]
     public string FormattedDate

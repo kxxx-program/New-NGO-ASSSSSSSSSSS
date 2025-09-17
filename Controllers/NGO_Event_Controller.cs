@@ -55,8 +55,8 @@ public class NGO_Event_Controller : Controller
         {
             Event_Id = NextId(),
             Event_Title = "",
-            Event_Start_Date = DateTime.Today.AddDays(1),
-            Event_End_Date = DateTime.Today.AddDays(2),
+            Event_Start_Date = DateOnly.MinValue,
+            Event_End_Date = DateOnly.MaxValue,
             Event_Status = "",
             Event_Location = "",
             Event_Description = ""
@@ -85,21 +85,41 @@ public class NGO_Event_Controller : Controller
             }
         }
 
-        if (vm.Event_Start_Date < DateTime.Today)
+        if (vm.Event_Start_Date < DateOnly.FromDateTime(DateTime.Today))
         {
             ModelState.AddModelError("Event_Start_Date", "Start date cannot be in the past.");
         }
 
+        // This check is fine as it's DateOnly to DateOnly
         if (vm.Event_End_Date < vm.Event_Start_Date)
         {
             ModelState.AddModelError("Event_End_Date", "End date cannot be before start date.");
         }
 
-        if (vm.Event_Start_Date > DateTime.Today)
+        // Validation for time-of-day still applies if needed
+        if (vm.Event_Start_Time < TimeSpan.FromHours(8) || vm.Event_Start_Time > TimeSpan.FromHours(18))
+        {
+            ModelState.AddModelError("Event_Start_Time", "Start time must be between 08:00 and 18:00.");
+        }
+
+        // 2. Validate that the end time is after the start time.
+        if (vm.Event_End_Time <= vm.Event_Start_Time)
+        {
+            ModelState.AddModelError("Event_End_Time", "End date and time must be after the start date and time.");
+        }
+
+        // 3. Validate that the event duration is not more than 24 hours.
+        TimeSpan duration = vm.Event_End_Time - vm.Event_Start_Time;
+        if (duration > TimeSpan.FromHours(24))
+        {
+            ModelState.AddModelError("Event_End_Time", "Event duration cannot exceed 24 hours.");
+        }
+
+        if (vm.Event_Start_Date > DateOnly.FromDateTime(DateTime.Today))
         {
             vm.Event_Status = "Upcoming";
         }
-        else if (vm.Event_End_Date < DateTime.Today)
+        else if (vm.Event_End_Date < DateOnly.FromDateTime(DateTime.Today))
         {
             vm.Event_Status = "Concluded";
         }
@@ -125,6 +145,8 @@ public class NGO_Event_Controller : Controller
                     EventTitle = vm.Event_Title,
                     EventStartDate = vm.Event_Start_Date,
                     EventEndDate = vm.Event_End_Date,
+                    EventStartTime = vm.Event_Start_Time,
+                    EventEndTime = vm.Event_End_Time,
                     EventStatus = vm.Event_Status,
                     EventLocation = vm.Event_Location,
                     EventDescription = vm.Event_Description,
@@ -163,6 +185,8 @@ public class NGO_Event_Controller : Controller
             Event_Title = e.EventTitle,
             Event_Start_Date = e.EventStartDate,
             Event_End_Date = e.EventEndDate,
+            Event_Start_Time = e.EventStartTime,
+            Event_End_Time = e.EventEndTime,
             Event_Location = e.EventLocation,
             Event_Description = e.EventDescription,
             Event_PhotoURL = e.EventPhotoURL,
@@ -198,21 +222,41 @@ public class NGO_Event_Controller : Controller
             }
         }
 
-        if (vm.Event_Start_Date < DateTime.Today)
+        if (vm.Event_Start_Date < DateOnly.FromDateTime(DateTime.Today))
         {
             ModelState.AddModelError("Event_Start_Date", "Start date cannot be in the past.");
         }
 
+        // This check is fine as it's DateOnly to DateOnly
         if (vm.Event_End_Date < vm.Event_Start_Date)
         {
             ModelState.AddModelError("Event_End_Date", "End date cannot be before start date.");
         }
 
-        if (vm.Event_Start_Date > DateTime.Today)
+        // Validation for time-of-day still applies if needed
+        if (vm.Event_Start_Time < TimeSpan.FromHours(8) || vm.Event_Start_Time > TimeSpan.FromHours(18))
+        {
+            ModelState.AddModelError("Event_Start_Time", "Start time must be between 08:00 and 18:00.");
+        }
+
+        // 2. Validate that the end time is after the start time.
+        if (vm.Event_End_Time <= vm.Event_Start_Time)
+        {
+            ModelState.AddModelError("Event_End_Time", "End date and time must be after the start date and time.");
+        }
+
+        // 3. Validate that the event duration is not more than 24 hours.
+        TimeSpan duration = vm.Event_End_Time - vm.Event_Start_Time;
+        if (duration > TimeSpan.FromHours(24))
+        {
+            ModelState.AddModelError("Event_End_Time", "Event duration cannot exceed 24 hours.");
+        }
+
+        if (vm.Event_Start_Date > DateOnly.FromDateTime(DateTime.Today))
         {
             vm.Event_Status = "Upcoming";
         }
-        else if (vm.Event_End_Date < DateTime.Today)
+        else if (vm.Event_End_Date < DateOnly.FromDateTime(DateTime.Today))
         {
             vm.Event_Status = "Concluded";
         }
@@ -234,6 +278,8 @@ public class NGO_Event_Controller : Controller
                 e.EventTitle = vm.Event_Title;
                 e.EventStartDate = vm.Event_Start_Date;
                 e.EventEndDate = vm.Event_End_Date;
+                e.EventStartTime = vm.Event_Start_Time;
+                e.EventEndTime = vm.Event_End_Time;
                 e.EventStatus = vm.Event_Status;
                 e.EventLocation = vm.Event_Location;
                 e.EventDescription = vm.Event_Description;
@@ -342,6 +388,8 @@ public class NGO_Event_Controller : Controller
             Event_Title = e.EventTitle,
             Event_Start_Date = e.EventStartDate,
             Event_End_Date = e.EventEndDate,
+            Event_Start_Time = e.EventStartTime,
+            Event_End_Time = e.EventEndTime,
             Event_Status = e.EventStatus,
             Event_Location = e.EventLocation,
             Event_Description = e.EventDescription,

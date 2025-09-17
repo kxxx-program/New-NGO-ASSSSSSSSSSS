@@ -40,6 +40,18 @@
             </div>
 
             <div class="col-md">
+                <label asp-for="Event_Start_Time"></label>
+                <input asp-for="Event_Start_Time" type="time" class="form-control" required>
+                <span asp-validation-for="Event_Start_Time" class="text-danger"></span>
+            </div>
+
+            <div class="col-md">
+                <label asp-for="Event_End_Time"></label>
+                <input asp-for="Event_End_Time" type="time" class="form-control" required>
+                <span asp-validation-for="Event_End_Time" class="text-danger"></span>
+            </div>
+
+            <div class="col-md">
                 <label asp-for="Event_Location"></label>
                 <input asp-for="Event_Location" class="form-control" required>
                 <span asp-validation-for="Event_Location" class="text-danger"></span>

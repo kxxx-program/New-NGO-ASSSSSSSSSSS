@@ -19,7 +19,6 @@ public class DB : DbContext
 }
 
 // Entity Classes
-
 public class Event
 {
     [Key, MaxLength(4)]
@@ -27,18 +26,23 @@ public class Event
 
     [MaxLength(100)]
     public string EventTitle { get; set; }
-    [MaxLength(200)]
-    public DateTime EventStartDate { get; set; }
-    [MaxLength(200)]
-    public DateTime EventEndDate { get; set; }
+
+    public DateOnly EventStartDate { get; set; }
+
+    public DateOnly EventEndDate { get; set; }
+
+    public TimeSpan EventStartTime { get; set; }
+    public TimeSpan EventEndTime { get; set; }
+
     public string EventStatus { get; set; } = "Upcoming";
+
     [MaxLength(100)]
     public string EventLocation { get; set; }
+
     [MaxLength(500)]
     public string EventDescription { get; set; }
+
     public string? EventPhotoURL { get; set; }
-
-
 }
 
 public class User

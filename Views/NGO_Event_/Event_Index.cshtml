@@ -27,6 +27,7 @@
             <th>Event Title</th>
             <th>Event Start Date</th>
             <th>Event End Date</th>
+            <th>Event Time</th>
             <th>Event Status</th>
             <th>Event Location</th>
             <th>Event Description</th>
@@ -42,6 +43,7 @@
                 <td>@e.EventTitle</td>
                 <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
                 <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventStartTime to @e.EventEndTime</td>
                 <td>@e.EventStatus</td>
                 <td>@e.EventLocation</td>
                 <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
