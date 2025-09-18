@@ -270,8 +270,10 @@ public class PaymentVM
     public string PaymentMethod { get; set; }
     public string? CreditCardNumber { get; set; }
 }
-<<<<<<< HEAD
+//HEAD
 
+
+//Volunteer and VolunteerEvent
 public class VolunteerVM
 {
     public string VolunteerID { get; set; }
@@ -300,6 +302,7 @@ public class VolunteerVM
 }
 
 //Many to many relationship as volunteer can recruit for many event and event can have many recruited volunteer
+public enum EventStatus { Pending, Completed, Cancelled }
 
 public class VolunteerEventVM
 {
@@ -308,36 +311,38 @@ public class VolunteerEventVM
     public int Point { get; set; }
     public DateTime ShiftStart { get; set; }
     public int WorkHours { get; set; }
-    public string EventCompletion { get; set; }
-}
-=======
-//    @*  Volunteer View Model
-public class VolunteerVM
-{
-    public int VolunteerID { get; set; }
-    public string UserEmail { get; set; }
-    public string EventID { get; set; }
-    public string EventTitle { get; set; }
-    public DateTime EventDate { get; set; }
-    public string EventLocation { get; set; }
-    public DateTime VolunteerDate { get; set; }
-    public int Points { get; set; }
-    public string Status { get; set; }
-    public bool IsPastEvent => EventDate < DateTime.Today;
+    public EventStatus EventCompletion { get; set; }
 }
 
-// Leaderboard View Model
-public class LeaderboardVM
-{
-    public int Rank { get; set; }
-    public string UserEmail { get; set; }
-    public string UserName { get; set; }
-    public int TotalPoints { get; set; }
-    public int TotalEvents { get; set; }
-    public DateTime LastActivity { get; set; }
 
-    // Helper properties for display
-    public string DisplayName => string.IsNullOrEmpty(UserName) ? UserEmail : UserName;
-    public string LastActivityFormatted => LastActivity.ToString("dd MMM yyyy");
-} // *@
->>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
+//=======
+//    @*  Volunteer View Model (CHIEN SIN TESTING VM)
+//public class VolunteerVM
+//{
+//    public int VolunteerID { get; set; }
+//    public string UserEmail { get; set; }
+//    public string EventID { get; set; }
+//    public string EventTitle { get; set; }
+//    public DateTime EventDate { get; set; }
+//    public string EventLocation { get; set; }
+//    public DateTime VolunteerDate { get; set; }
+//    public int Points { get; set; }
+//    public string Status { get; set; }
+//    public bool IsPastEvent => EventDate < DateTime.Today;
+//}
+
+//// Leaderboard View Model
+//public class LeaderboardVM
+//{
+//    public int Rank { get; set; }
+//    public string UserEmail { get; set; }
+//    public string UserName { get; set; }
+//    public int TotalPoints { get; set; }
+//    public int TotalEvents { get; set; }
+//    public DateTime LastActivity { get; set; }
+
+//    // Helper properties for display
+//    public string DisplayName => string.IsNullOrEmpty(UserName) ? UserEmail : UserName;
+//    public string LastActivityFormatted => LastActivity.ToString("dd MMM yyyy");
+//} // *@
+//>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05

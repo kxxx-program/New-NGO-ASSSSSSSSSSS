@@ -39,13 +39,20 @@ public class RecruitmentController : Controller
     }
 
     //GET to display the form 
-    public IActionResult AddVolunteer()
+    public IActionResult AddVolunteer(string eventId)
     {
+    
+        var eventDetails = db.Events.FirstOrDefault(e => e.EventID == eventId);
+        if (eventDetails == null)
+            return NotFound();
+
         var vm = new VolunteerVM
         {
             VolunteerID = NextId(),
+            Event_Id = eventId
         };
         return View(vm);
+      
     }
 
     //POST to insert volunteer
