@@ -1,7 +1,130 @@
-﻿@{
+﻿@using Azure
+@model AdminDashboardVM
+
+@{
     ViewBag.Title = "Home | Admin";
 }
 
-<p>Only [Admin] role can access this page.</p>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+    .sidebar {
+        height: 100vh;
+        background-color: #343a40;
+        padding-top: 1rem;
+    }
 
-<h1>Hello World</h1>
+    .sidebar a {
+        color: #ddd;
+        text-decoration: none;
+        display: block;
+        padding: 0.75rem 1rem;
+        border-radius: 0.3rem;
+    }
+
+    .sidebar a:hover {
+        background-color: #495057;
+        color: #fff;
+    }
+
+    .sidebar .active {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 sidebar">
+            <h5 class="text-white text-center">NGO Admin</h5>
+            <a href="@Url.Action("Admin", "Home")"
+                class="@(ViewBag.Title == "Home | Admin" ? "active" : "")">Dashboard</a>
+            <a href="@Url.Action("ManageEvents", "NGO_Event_")"
+                class="@(ViewBag.Title == "Manage Events" ? "active" : "")">Manage Events</a>
+            <a href="@Url.Action("ManageVolunteers", "NGO_Volunteer")"
+                class="@(ViewBag.Title == "Manage Volunteers" ? "active" : "")">Manage Volunteers</a>
+            <a href="@Url.Action("ManageDonations", "NGO_Donation")"
+                class="@(ViewBag.Title == "Manage Donations" ? "active" : "")">Manage Donations</a>
+            <a href="@Url.Action("Reports", "Home")" class="@(ViewBag.Title == "Reports" ? "active" : "")">Reports</a>
+            @* <a href="@Url.Action("Settings", "Home")" class="@(ViewBag.Title == "Settings" ? "active" : "")">Settings</a> *@
+            <a href="#">Organiser Approval</a>
+            <a href="@Url.Action("Logout", "Account")">Logout</a>
+        </nav>
+        <main class="col-md-10 p-4">
+            <h2>Dashboard</h2>
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="card text-bg-primary shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Users</h5>
+                            <p class="card-text fs-4">150</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-bg-success shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Events</h5>
+                            <p class="card-text fs-4">25</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-bg-warning shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Payments</h5>
+                            <p class="card-text fs-4">RM 12,500</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-bg-danger shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Pending Approvals</h5>
+                            <p class="card-text fs-4">3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h4>Recent Users</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Alice Lee</td>
+                                <td>alice@example.com</td>
+                                <td>Volunteer</td>
+                                <td><span class="badge bg-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>John Tan</td>
+                                <td>john@example.com</td>
+                                <td>Organiser</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mary Lim</td>
+                                <td>mary@example.com</td>
+                                <td>Donor</td>
+                                <td><span class="badge bg-success">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

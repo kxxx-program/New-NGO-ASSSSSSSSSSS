@@ -325,9 +325,9 @@
                     </a>
                 }
                 else
-                {   <a asp-action="AddVolunteer" asp-controller="Recruitment" asp-route-eventId-"@Model.Event_Id" class="btn btn-volunteer">
+                {  @*  <a asp-action="AddVolunteer" asp-controller="Recruitment" asp-route-eventId-"@Model.Event_Id" class="btn btn-volunteer">
                         Volunteer Now
-                    </a>
+                    </a> *@
                     <a href="@Url.Action("Event_Payment")" class="btn btn-donate" onclick="alert('Donation feature coming soon!')">
                         Donate Now
                     </a>

@@ -346,3 +346,15 @@ public class VolunteerEventVM
 //    public string LastActivityFormatted => LastActivity.ToString("dd MMM yyyy");
 //} // *@
 //>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
+
+
+public class AdminDashboardVM
+{
+    //public int TotalUsers { get; set; }
+    //public int TotalEvents { get; set; }
+    //public int TotalVolunteers { get; set; }
+    //public int TotalPayments { get; set; }
+    //public decimal TotalRevenue { get; set; }
+    //public List<EventSummary> UpcomingEvents { get; set; }
+    //public List<UserSummary> RecentUsers { get; set; }
+}
