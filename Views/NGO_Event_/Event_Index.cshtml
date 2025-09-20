@@ -1,7 +1,10 @@
-﻿@model IEnumerable<Event>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Event>
 
 @{
     ViewBag.Title = "Event | Index";
+    string[] fields = ["Photo", "EventTitle", "EventStartDate", "EventEndDate", "EventStartTime", "EventEndTime", "EventStatus", "EventLocation"];
 }
 
 @section head {
@@ -20,33 +23,38 @@
     <a href="@Url.Action("Event_Insert")" class="btn btn-primary">Add New Event</a>
 </p>
 
+<form>
+    @Html.TextBox("name", "",
+    new { type = "search", autofocus = "", data_trim = "" })
+    @Html.Hidden("sort")
+    @Html.Hidden("dir")
+    <button>Search</button>
+</form>
+
 <table class="table table-striped ">
     <thead>
         <tr>
-            <th>Event ID</th>
-            <th>Event Title</th>
-            <th>Event Start Date</th>
-            <th>Event End Date</th>
-            <th>Event Time</th>
-            <th>Event Status</th>
-            <th>Event Location</th>
-            <th>Event Description</th>
-            <th>Photo</th>
-            <th>Actions</th>
+            @foreach (var f in fields)
+            {
+                string d = "asc";
+                string c = "";
+
+                if (f == ViewBag.Sort)
+                {
+                    d = ViewBag.Dir == "des" ? "asc" : "des";
+                    c = ViewBag.Dir;
+                }
+
+                <th>
+                    <a href="?name=@ViewBag.Name&sort=@f&dir=@d" class="@c">@f</a>
+                </th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var e in Model)
         {
             <tr>
-                <td>@e.EventID</td>
-                <td>@e.EventTitle</td>
-                <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
-                <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
-                <td>@e.EventStartTime to @e.EventEndTime</td>
-                <td>@e.EventStatus</td>
-                <td>@e.EventLocation</td>
-                <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
                 <td>
                     @if (!string.IsNullOrEmpty(e.EventPhotoURL))
                     {
@@ -59,18 +67,33 @@
                         </div>
                     }
                 </td>
+                <td>@e.EventTitle</td>
+                <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventStartTime to @e.EventEndTime</td>
+                <td>@e.EventStatus</td>
+                <td>@e.EventLocation</td>
+                <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
                 <td>
                     <button class="btn btn-sm btn-info" data-get="@Url.Action("Event_Update", new { id = e.EventID })">Update</button>
                     <button class="btn btn-sm btn-danger" data-post="@Url.Action("Delete", new { id = e.EventID })"
                             onclick="return confirm('Are you sure you want to delete this event?')">
                         Delete
                     </button>
-                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", new { id = e.EventID })">Details</button>
+                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.EventID })">Details</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@{
+    var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
+    options.LinkToFirstPageFormat = "First";
+    options.LinkToLastPageFormat = "Last";
+    options.LinkToPreviousPageFormat = "Previous";
+    options.LinkToNextPageFormat = "Next";
+}
 
 @if (!Model.Any())
 {

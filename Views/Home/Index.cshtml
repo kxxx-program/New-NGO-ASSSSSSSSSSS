@@ -1,19 +1,84 @@
-﻿@{
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Event>
+
+@{
     ViewBag.Title = "Home | Index";
+    string[] fields = ["Photo", "EventTitle", "EventStartDate", "EventEndDate", "EventStartTime", "EventEndTime", "EventStatus", "EventLocation"];
 }
 
-<form class="form" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly"></div>
-
-    <label>Photo</label>
-    <label class="upload">
-        <input type="file" name="photo" accept="image/jpeg,image/png" hidden>
-        <img src="/images/photo.jpg">
-    </label>
-    @Html.ValidationMessage("photo")
-
-    <section>
-        <button>Upload</button>
-        <button type="reset">Reset</button>
-    </section>
+<form>
+    @Html.TextBox("name", "",
+    new { type = "search", autofocus = "", data_trim = "" })
+    @Html.Hidden("sort")
+    @Html.Hidden("dir")
+    <button>Search</button>
 </form>
+
+<table class="table table-striped ">
+    <thead>
+        <tr>
+            @foreach (var f in fields)
+            {
+                string d = "asc";
+                string c = "";
+
+                if (f == ViewBag.Sort)
+                {
+                    d = ViewBag.Dir == "des" ? "asc" : "des";
+                    c = ViewBag.Dir;
+                }
+
+                <th>
+                    <a href="?name=@ViewBag.Name&sort=@f&dir=@d" class="@c">@f</a>
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(e.EventPhotoURL))
+                    {
+                        <img src="/events/@e.EventPhotoURL" class="event-image" alt="@e.EventTitle">
+                    }
+                    else
+                    {
+                        <div class="event-image d-flex align-items-center justify-content-center bg-light">
+                            <small>No Image</small>
+                        </div>
+                    }
+                </td>
+                <td>@e.EventTitle</td>
+                <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
+                <td>@e.EventStartTime to @e.EventEndTime</td>
+                <td>@e.EventStatus</td>
+                <td>@e.EventLocation</td>
+                <td>@(e.EventDescription?.Length > 50 ? e.EventDescription.Substring(0, 50) + "..." : e.EventDescription)</td>
+                <td>
+                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.EventID })">Details</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
+    options.LinkToFirstPageFormat = "First";
+    options.LinkToLastPageFormat = "Last";
+    options.LinkToPreviousPageFormat = "Previous";
+    options.LinkToNextPageFormat = "Next";
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        <h4>No Events Found</h4>
+        <p>There are currently no events. <a href="@Url.Action("Event_Insert")">Create your first event</a>!</p>
+    </div>
+}
+

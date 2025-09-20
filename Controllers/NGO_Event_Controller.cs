@@ -1,10 +1,12 @@
 ﻿using System.Diagnostics.Eventing.Reader;
+using Azure;
 using Demo.Models; // Added for Event model
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using NGO_Web_Demo;
 using NGO_Web_Demo.Models;
+using X.PagedList.Extensions;
 
 namespace NGO_Web_Demo.Controllers;
 
@@ -20,11 +22,50 @@ public class NGO_Event_Controller : Controller
     }
 
     // GET: NGO_Event_/Event_Index
-    public IActionResult Event_Index()
+    public IActionResult Event_Index(string? name, string? sort, string? dir, int page = 1)
     {
         var model = db.Events.ToList(); // Added ToList() to ensure data is loaded
+                                        // (1) Searching ------------------------
+        ViewBag.Name = name = name?.Trim() ?? "";
 
-        return View(model);
+        var searched = db.Events.Where(e => e.EventTitle.Contains(name));
+
+        // (2) Sorting --------------------------
+        ViewBag.Sort = sort;
+        ViewBag.Dir = dir;
+
+        Func<Event, object> fn = sort switch
+        {
+            "Photo" => e => e.EventPhotoURL,
+            "Event Name" => e => e.EventTitle,
+            "Start Date" => e => e.EventStartDate,
+            "End Date" => e => e.EventEndDate,
+            "Start Time" => e => e.EventStartTime,
+            "End Time" => e => e.EventEndTime,
+            "Location" => e => e.EventLocation,
+            "Description" => e => e.EventDescription,
+            "Status" => e => e.EventStatus,
+            _ => e => e.EventID,
+        };
+
+        var sorted = dir == "des" ?
+                     searched.OrderByDescending(fn) :
+                     searched.OrderBy(fn);
+
+        // (3) Paging ---------------------------
+        if (page < 1)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = 1 });
+        }
+
+        var m = sorted.ToPagedList(page, 10);
+
+        if (page > m.PageCount && m.PageCount > 0)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
+        }
+
+        return View(m);
     }
 
     // GET: NGO_Event_/CheckId - Fixed for AJAX validation
@@ -396,8 +437,34 @@ public class NGO_Event_Controller : Controller
             Event_PhotoURL = e.EventPhotoURL
         };
 
+        ViewBag.IsOrganiser = IsUserOrganiser();
+
         return View(vm);
     }
+
+    private IActionResult RedirectBasedOnUserType()
+    {
+        if (IsUserOrganiser())
+        {
+            return RedirectToAction("Event_Index");
+        }
+        else
+        {
+            return RedirectToAction("Index", "Home");
+        }
+    }
+
+    private bool IsUserOrganiser()
+    {
+        // Option 1: Using ASP.NET Identity Roles
+        if (User.IsInRole("Admin") || User.IsInRole("Organiser"))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 
     public IActionResult Event_Payment()
     {

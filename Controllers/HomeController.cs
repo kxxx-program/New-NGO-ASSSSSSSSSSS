@@ -1,26 +1,71 @@
+using System.Net.Mail;
+using Azure;
+using Demo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NGO_Web_Demo;
 using NGO_Web_Demo.Models;
-using System.Net.Mail;
+using X.PagedList.Extensions;
 
 namespace Demo.Controllers;
 
 public class HomeController : Controller
 {
+    private readonly DB db;
     private readonly IWebHostEnvironment en;
     private readonly Helper hp;
 
-    public HomeController(IWebHostEnvironment en, Helper hp)
+    public HomeController(IWebHostEnvironment en, Helper hp, DB db)
     {
         this.en = en;
         this.hp = hp;
+        this.db = db;
     }
 
     // GET: Home/Index
-    public IActionResult Index()
+    public IActionResult Index(string? name, string? sort, string? dir, int page = 1)
     {
-        return View();
+        // (1) Searching ------------------------
+        ViewBag.Name = name = name?.Trim() ?? "";
+
+        var searched = db.Events.Where(e => e.EventTitle.Contains(name));
+
+        // (2) Sorting --------------------------
+        ViewBag.Sort = sort;
+        ViewBag.Dir = dir;
+
+        Func<Event, object> fn = sort switch
+        {
+            "Photo" => e => e.EventPhotoURL,
+            "Event Name" => e => e.EventTitle,
+            "Start Date" => e => e.EventStartDate,
+            "End Date" => e => e.EventEndDate,
+            "Start Time" => e => e.EventStartTime,
+            "End Time" => e => e.EventEndTime,
+            "Location" => e => e.EventLocation,
+            "Description" => e => e.EventDescription,
+            "Status" => e => e.EventStatus,
+            _ => e => e.EventID,
+        };
+
+        var sorted = dir == "des" ?
+                     searched.OrderByDescending(fn) :
+                     searched.OrderBy(fn);
+
+        // (3) Paging ---------------------------
+        if (page < 1)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = 1 });
+        }
+
+        var m = sorted.ToPagedList(page, 10);
+
+        if (page > m.PageCount && m.PageCount > 0)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
+        }
+
+        return View(m);
     }
 
     // GET: Home/Email

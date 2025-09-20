@@ -257,7 +257,14 @@
 
 <div class="event-details-container">
     <div class="back-button">
-        <a asp-action="Event_Index" class="btn-back">Back to Events</a>
+        @if (ViewBag.IsOrganiser == true)
+        {
+            <a asp-action="Event_Index" class="btn-back">Back to Events</a>
+        }
+        else
+        {
+            <a asp-action="Index" asp-controller="Home" class="btn-back">Back to Events</a>
+        }
     </div>
 
     <!-- Event Header Section -->
