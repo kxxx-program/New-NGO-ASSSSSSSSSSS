@@ -28,10 +28,8 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Login(LoginVM vm, string? returnURL)
     {
-        // Get user (admin or member) record based on email (PK)
         var u = db.Users.Find(vm.Email);
 
-        // Custom validation -> verify password
         if (u == null || !hp.VerifyPassword(u.Hash, vm.Password))
         {
             ModelState.AddModelError("", "Login credentials not matched.");
@@ -40,47 +38,16 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             TempData["Info"] = "Login successfully.";
-
-            // Sign in
             hp.SignIn(u!.Email, u.Role, vm.RememberMe);
 
-            // Handle return URL
             if (string.IsNullOrEmpty(returnURL))
             {
                 return RedirectToAction("Index", "Home");
             }
+            return Redirect(returnURL);
         }
 
         return View(vm);
-    }
-
-    // GET: Account/Logout
-    public IActionResult Logout(string? returnURL)
-    {
-        TempData["Info"] = "Logout successfully.";
-
-        // Sign out
-        hp.SignOut();
-
-        return RedirectToAction("Index", "Home");
-    }
-
-    // GET: Account/AccessDenied
-    public IActionResult AccessDenied(string? returnURL)
-    {
-        return View();
-    }
-
-
-
-    // ------------------------------------------------------------------------
-    // Others
-    // ------------------------------------------------------------------------
-
-    // GET: Account/CheckEmail
-    public bool CheckEmail(string email)
-    {
-        return !db.Users.Any(u => u.Email == email);
     }
 
     // GET: Account/Register
@@ -93,13 +60,14 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Register(RegisterVM vm)
     {
-        if (ModelState.IsValid("Email") &&
-            db.Users.Any(u => u.Email == vm.Email))
+        // Check for duplicate email
+        if (db.Users.Any(u => u.Email == vm.Email))
         {
             ModelState.AddModelError("Email", "Duplicated Email.");
         }
 
-        if (ModelState.IsValid("Photo"))
+        // Validate photo if it exists
+        if (vm.Photo != null)
         {
             var err = hp.ValidatePhoto(vm.Photo);
             if (err != "") ModelState.AddModelError("Photo", err);
@@ -115,12 +83,33 @@ public class AccountController : Controller
                 Name = vm.Name,
                 PhotoURL = hp.SavePhoto(vm.Photo, "photos"),
             });
+            db.SaveChanges(); // <-- Don't forget to save changes!
 
             TempData["Info"] = "Register successfully. Please login.";
             return RedirectToAction("Login");
         }
 
         return View(vm);
+    }
+
+    // GET: Account/Logout
+    public IActionResult Logout()
+    {
+        TempData["Info"] = "Logout successfully.";
+        hp.SignOut();
+        return RedirectToAction("Index", "Home");
+    }
+
+    // GET: Account/AccessDenied
+    public IActionResult AccessDenied()
+    {
+        return View();
+    }
+
+    // GET: Account/CheckEmail
+    public bool CheckEmail(string email)
+    {
+        return !db.Users.Any(u => u.Email == email);
     }
 
     // GET: Account/UpdatePassword
@@ -135,11 +124,9 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult UpdatePassword(UpdatePasswordVM vm)
     {
-        // Get user (admin or member) record based on email (PK)
         var u = db.Users.Find(User.Identity!.Name);
         if (u == null) return RedirectToAction("Index", "Home");
 
-        // If current password not matched
         if (!hp.VerifyPassword(u.Hash, vm.Current))
         {
             ModelState.AddModelError("Current", "Current Password not matched.");
@@ -147,10 +134,8 @@ public class AccountController : Controller
 
         if (ModelState.IsValid)
         {
-            // Update user password (hash)
             u.Hash = hp.HashPassword(vm.New);
             db.SaveChanges();
-
             TempData["Info"] = "Password updated.";
             return RedirectToAction();
         }
@@ -158,11 +143,11 @@ public class AccountController : Controller
         return View();
     }
 
+
     // GET: Account/UpdateProfile
     [Authorize(Roles = "Member")]
     public IActionResult UpdateProfile()
     {
-        // Get member record based on email (PK)
         var m = db.Members.Find(User.Identity!.Name);
         if (m == null) return RedirectToAction("Index", "Home");
 
@@ -181,7 +166,6 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult UpdateProfile(UpdateProfileVM vm)
     {
-        // Get member record based on email (PK)
         var m = db.Members.Find(User.Identity!.Name);
         if (m == null) return RedirectToAction("Index", "Home");
 
@@ -200,9 +184,7 @@ public class AccountController : Controller
                 hp.DeletePhoto(m.PhotoURL, "photos");
                 m.PhotoURL = hp.SavePhoto(vm.Photo, "photos");
             }
-
             db.SaveChanges();
-
             TempData["Info"] = "Profile updated.";
             return RedirectToAction();
         }
@@ -231,15 +213,10 @@ public class AccountController : Controller
 
         if (ModelState.IsValid)
         {
-            // Generate random password assssss
             string password = hp.RandomPassword();
-
-            // Update user (admin or member) record
             u!.Hash = hp.HashPassword(password);
             db.SaveChanges();
-
-            // Send reset password email
-
+            SendResetPasswordEmail(u, password);
             TempData["Info"] = $"Password reset to <b>{password}</b>.";
             return RedirectToAction();
         }
@@ -269,7 +246,7 @@ public class AccountController : Controller
 
         mail.Body = $@"
             <img src='cid:photo' style='width: 200px; height: 200px;
-                                        border: 1px solid #333'>
+                                         border: 1px solid #333'>
             <p>Dear {u.Name},<p>
             <p>Your password has been reset to:</p>
             <h1 style='color: red'>{password}</h1>
@@ -283,4 +260,3 @@ public class AccountController : Controller
         hp.SendEmail(mail);
     }
 }
-
