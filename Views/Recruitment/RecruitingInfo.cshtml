@@ -1,7 +1,20 @@
-﻿@model IEnumerable<NGO_Web_Demo.Models.VolunteerVM>
+﻿@model IEnumerable<NGO_Web_Demo.Models.VolunteerEventVM>
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@if (TempData["Info"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Info"]
+    </div>
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 
 <h1>I guess at least it works</h1>
 
@@ -13,7 +26,9 @@
         <th>Email</th>
         <th>Phone Number</th>
         <th>Age</th>
-        
+        <th>Shift starts at</th>
+        <th>Work Hour</th>
+        <th>Rewarded points</th>
     </tr>
     @foreach (var v in Model)
     {
@@ -23,7 +38,9 @@
             <td>@v.Email</td>
             <td>@v.PhoneNumber</td>
             <td>@v.Age</td>
-           
+            <td>@v.ShiftStart</td>
+            <td>@v.WorkHours</td>
+            <td>@v.Points</td>
         </tr>
     }
 </table>

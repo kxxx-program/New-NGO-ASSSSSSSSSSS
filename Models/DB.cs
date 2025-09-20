@@ -108,30 +108,35 @@ public class Volunteer
     public int Age { get; set; }
 
 
-
     public ICollection<VolunteerEvent> VolunteerEvents { get; set; } = [];
 }
 
 public class VolunteerEvent
 {
     [Key]
-    public string VolunteerEventID { get; set; }
+    public int Id { get; set; }
 
-
+    [Required]
     public string VolunteerID { get; set; }
     public Volunteer Volunteer { get; set; }
 
-    [MaxLength(4)]
+    [Required]
     public string EventID { get; set; }
     public Event Event { get; set; }
 
-    //stuff like this create this class
-    public int Point { get; set; }
+    //stuff like this created this class, if no bonus shit just many many relationshipasds dada
+    public int Points { get; set; }
     public DateTime ShiftStart { get; set; }
     public int WorkHours { get; set; }
 
-    [MaxLength(20)]
-    public string EventCompletion { get; set; } = "Waiting";
+    public EventStatus EventCompletion { get; set; } = EventStatus.Waiting;
+
+}
+public enum EventStatus
+{
+    Waiting,
+    Completed,
+    Cancelled
 }
 
 

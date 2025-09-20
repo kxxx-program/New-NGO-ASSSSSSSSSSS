@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NGO_Web_Demo.Models;
 
 
@@ -41,70 +42,100 @@ public class RecruitmentController : Controller
     //GET to display the form 
     public IActionResult AddVolunteer(string eventId)
     {
-    
-        var eventDetails = db.Events.FirstOrDefault(e => e.EventID == eventId);
-        if (eventDetails == null)
+        if (string.IsNullOrEmpty(eventId))
             return NotFound();
+
+        var e = db.Events.Find(eventId);
+        if (e == null) return NotFound();
 
         var vm = new VolunteerVM
         {
             VolunteerID = NextId(),
-            Event_Id = eventId
         };
+
+        ViewBag.EventTitle = e.EventTitle; // so view can display event name
+        ViewBag.EventID = eventId;
+        ViewBag.EventStart = e.EventStartDate.ToString("yyyy-MM-dd");
+        ViewBag.EventEnd = e.EventEndDate.ToString("yyyy-MM-dd");
+
         return View(vm);
-      
     }
 
     //POST to insert volunteer
     [HttpPost]
-    public IActionResult AddVolunteer(VolunteerVM vm)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddVolunteer(string eventId, VolunteerVM vm)
     {
+        if (!ModelState.IsValid)
+            return View(vm);
 
-        if (ModelState.IsValid)
+
+        //no duplicate email and name can be submitted
+        var dupEmail = await db.Volunteers
+          .AnyAsync(v => v.Email == vm.Email && vm.EventID == eventId);
+        var dupName = await db.Volunteers
+         .AnyAsync(v => v.Name == vm.Name && vm.EventID == eventId);
+
+        if (dupEmail || dupName)
         {
-
-            db.Volunteers.Add(new Volunteer
-            {
-                VolunteerID = vm.VolunteerID,
-                Name = vm.Name,
-                Email = vm.Email,
-                PhoneNumber = vm.PhoneNumber,
-                Age = vm.Age
-            });
-            db.SaveChanges();
-
-            TempData["Info"] = "Volunteer added!";
+            TempData["Error"] = "This email/user already signed up for this event!";
             return RedirectToAction("RecruitingInfo");
         }
 
-        return View();
-  
+
+        var v = new Volunteer
+        {
+            VolunteerID = vm.VolunteerID,
+            Name = vm.Name,
+            Email = vm.Email,
+            PhoneNumber = vm.PhoneNumber,
+            Age = vm.Age,
+
+        };
+
+        db.Volunteers.Add(v);
+        await db.SaveChangesAsync();
+
+
+        var ve = new VolunteerEvent
+        {
+            VolunteerID = v.VolunteerID,
+            EventID = eventId,
+            ShiftStart = vm.ShiftStart,
+            WorkHours = vm.WorkHours,
+            Points = 10,
+            EventCompletion = EventStatus.Waiting
+        };
+
+        db.VolunteerEvents.Add(ve);
+        await db.SaveChangesAsync();
+
+
+        TempData["Info"] = "You have submitted your form! Please await for the organizer to approve :D";
+        return RedirectToAction("RecruitingInfo");
+
     }
 
     //GET list of Volunteer
 
     public IActionResult RecruitingInfo()
     {
-        var list = db.Volunteers.Select(v => new VolunteerVM
-        {
-            VolunteerID = v.VolunteerID,
-            Name = v.Name,
-            Email = v.Email,
-            PhoneNumber = v.PhoneNumber,
-            Age = v.Age
-        }).ToList();
+        var list = db.Volunteers
+       .Join(db.VolunteerEvents,
+             v => v.VolunteerID,
+             ve => ve.VolunteerID,
+             (v, ve) => new VolunteerEventVM
+             {
+                 VolunteerID = v.VolunteerID,
+                 Name = v.Name,
+                 Email = v.Email,
+                 PhoneNumber = v.PhoneNumber,
+                 Age = v.Age,
+                 WorkHours = ve.WorkHours,
+                 ShiftStart = ve.ShiftStart
+             })
+       .ToList();
 
         return View(list);
     }
-
-
-
-
-
-
-
-
-
-
-
 }
