@@ -48,6 +48,13 @@ public class RecruitmentController : Controller
         var e = db.Events.Find(eventId);
         if (e == null) return NotFound();
 
+        //Combine date time from danieal so it fits into shiftstart
+        var eventStart = e.EventStartDate.ToDateTime(TimeOnly.MinValue)
+                                 .Add(e.EventStartTime);
+
+        var eventEnd = e.EventEndDate.ToDateTime(TimeOnly.MinValue)
+                                        .Add(e.EventEndTime);
+
         var vm = new VolunteerVM
         {
             VolunteerID = NextId(),
@@ -55,8 +62,8 @@ public class RecruitmentController : Controller
 
         ViewBag.EventTitle = e.EventTitle; // so view can display event name
         ViewBag.EventID = eventId;
-        ViewBag.EventStart = e.EventStartDate.ToString("yyyy-MM-dd");
-        ViewBag.EventEnd = e.EventEndDate.ToString("yyyy-MM-dd");
+        ViewBag.EventStart = eventStart.ToString("yyyy-MM-ddTHH:mm");
+        ViewBag.EventEnd = eventEnd.ToString("yyyy-MM-ddTHH:mm");
 
         return View(vm);
     }
@@ -68,6 +75,8 @@ public class RecruitmentController : Controller
     {
         if (!ModelState.IsValid)
             return View(vm);
+
+
 
 
         //no duplicate email and name can be submitted
@@ -104,7 +113,8 @@ public class RecruitmentController : Controller
             ShiftStart = vm.ShiftStart,
             WorkHours = vm.WorkHours,
             Points = 10,
-            EventCompletion = EventStatus.Waiting
+            EventCompletion = EventStatus.Waiting,
+            ApprovalStatus = EventApprovalStatus.Pending
         };
 
         db.VolunteerEvents.Add(ve);
@@ -132,7 +142,9 @@ public class RecruitmentController : Controller
                  PhoneNumber = v.PhoneNumber,
                  Age = v.Age,
                  WorkHours = ve.WorkHours,
-                 ShiftStart = ve.ShiftStart
+                 ShiftStart = ve.ShiftStart,
+                 EventCompletion = ve.EventCompletion,
+                 ApprovalStatus= ve.ApprovalStatus,
              })
        .ToList();
 

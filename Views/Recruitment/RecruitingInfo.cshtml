@@ -29,6 +29,8 @@
         <th>Shift starts at</th>
         <th>Work Hour</th>
         <th>Rewarded points</th>
+        <th>Event completion</th>
+        <th>Current status</th>
     </tr>
     @foreach (var v in Model)
     {
@@ -41,6 +43,8 @@
             <td>@v.ShiftStart</td>
             <td>@v.WorkHours</td>
             <td>@v.Points</td>
+            <td>@v.EventCompletion</td>
+            <td>@v.ApprovalStatus</td>
         </tr>
     }
 </table>
@@ -49,5 +53,5 @@
 <h3>Help out this event by landing your hand!</h3>
 
 <p>
-    <a asp-controller="Recruitment" asp-action="AddVolunteer" style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Click Me</a>
+    <a asp-controller="Home" asp-action="Index" style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Click Me</a>
 </p>

@@ -301,7 +301,6 @@ public class VolunteerVM
     public int WorkHours { get; set; }
 
     [Required]
-    [DataType(DataType.DateTime)]
     public DateTime ShiftStart { get; set; }
 
 
@@ -320,7 +319,9 @@ public class VolunteerEventVM
     public int Points => WorkHours * 10;
     public DateTime ShiftStart { get; set; }
     public int WorkHours { get; set; }
-    public EventStatus EventCompletion { get; set; } = EventStatus.Waiting;
+    public EventStatus EventCompletion { get; set; }
+
+    public EventApprovalStatus ApprovalStatus { get; set; }
 }
 
 

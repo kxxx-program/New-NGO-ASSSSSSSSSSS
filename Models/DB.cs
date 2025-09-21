@@ -52,9 +52,6 @@ public class Event
 
     public string? EventPhotoURL { get; set; }
 
-    [MaxLength(100)]
-    public string? CreatedBy { get; set; }
-
     //Connect to volunteerEvent 
     public ICollection<VolunteerEvent> VolunteerEvents { get; set; } = [];
 }
@@ -134,6 +131,9 @@ public class VolunteerEvent
 
     public EventStatus EventCompletion { get; set; } = EventStatus.Waiting;
 
+    //Admin approval reference here
+    public EventApprovalStatus ApprovalStatus { get; set; } = EventApprovalStatus.Pending;
+
 }
 public enum EventStatus
 {
@@ -142,6 +142,12 @@ public enum EventStatus
     Cancelled
 }
 
+public enum EventApprovalStatus
+{
+    Pending,
+    Approved,
+    Rejected
+}
 
 //=======
 //public class Volunteer
