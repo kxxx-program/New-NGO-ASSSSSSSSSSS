@@ -10,25 +10,118 @@
     <link rel="stylesheet" href="/css/pager.css">
     <link rel="stylesheet" href="/css/app.css" asp-append-version="true">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        .nav-item.dropdown .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .nav-item.dropdown .dropdown-menu {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .nav-item.dropdown {
+            position: relative;
+        }
+
+        .session-status-bar {
+            background: linear-gradient(90deg, #28a745 0%, #ffc107 70%, #dc3545 100%);
+            height: 3px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9998;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .session-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 9997;
+            display: none;
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .modal-content {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .pulse-animation {
+            animation: pulse 1.5s infinite;
+        }
+    </style>
 
     @RenderSection("Styles", false)
     @RenderSection("head", false)
 </head>
-<body>
-    <div class="info">@Html.Raw(TempData["Info"])</div>
+<body data-authenticated="@(User.Identity.IsAuthenticated ? "true" : "false")">
+
+    <div id="sessionStatusBar" class="session-status-bar"></div>
+    <div id="sessionInfo" class="session-info"></div>
+
+    @if (TempData["Info"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 0; border-radius: 0;">
+            @Html.Raw(TempData["Info"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Warning"] != null)
+    {
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin: 0; border-radius: 0;">
+            @Html.Raw(TempData["Warning"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin: 0; border-radius: 0;">
+            @Html.Raw(TempData["Error"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
 
     <header>
         <h1><a href="/">NGO</a></h1>
 
-        @* User email and role *@
         @if (User.Identity!.IsAuthenticated)
         {
-            <div>
+            <div class="user-info" data-user="@User.Identity.Name">
                 @User.Identity.Name |
                 @(User.IsInRole("Admin") ? "Admin" : "")
                 @(User.IsInRole("Organiser") ? "Organiser" : "")
                 @(User.IsInRole("Member") ? "Member" : "")
+
+                <span id="sessionTimer" style="display: none; margin-left: 15px;">
+                    <i class="fas fa-clock"></i>
+                    <span id="sessionTimeRemaining">--:--</span>
+                </span>
             </div>
         }
 
@@ -52,7 +145,6 @@
 
         @if (User.Identity.IsAuthenticated)
         {
-
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link text-white" href="#" id="navbarDropdown" role="button">Event History</a>
@@ -73,15 +165,6 @@
         }
 
         <div>
-            @* Menu trimming *@
-            @* @if (User.Identity.IsAuthenticated)
-            {
-                <a href="/Home/Both">Both</a>
-            }
-            @if (User.IsInRole("Member"))
-            {
-                <a href="/Home/Member">Member</a>
-            } *@
             @if (User.IsInRole("Admin"))
             {
                 <a href="/Home/Admin">Admin</a>
@@ -124,38 +207,21 @@
         Copyrighted &copy; @DateTime.Today.Year
     </footer>
 
+    <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/jquery.unobtrusive-ajax.min.js"></script>
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.validate.unobtrusive.min.js"></script>
     <script src="/js/app.js" asp-append-version="true"></script>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script src="~/js/sessionTimeout.js"></script>
+    }
+
     @RenderSection("Scripts", false)
     @RenderSection("foot", false)
-
 </body>
-
-<head>
-    <style>
-        /* Ensure the dropdown menu is hidden by default */
-        .nav-item.dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%; /* Places the dropdown directly below the nav item */
-            left: 0;
-            z-index: 1000;
-        }
-        /* Show the dropdown when hovering over the parent nav item */
-        .nav-item.dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        /* Optional: Add some transitions for a smoother hover effect */
-        .nav-item.dropdown .dropdown-menu {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        /* Make sure the menu doesn't jump around */
-        .nav-item.dropdown {
-            position: relative;
-        }
-    </style>
-</head>
 </html>
