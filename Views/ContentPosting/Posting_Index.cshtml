@@ -1,0 +1,398 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<PostImageModel>
+
+@{
+    ViewBag.Title = "Content Postings | Index";
+}
+
+<style>
+    .posting-card {
+        border: 3px solid greenyellow;
+        border-radius: 8px;
+        background: white;
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+    }
+
+        .posting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+    .posting-image-container {
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 2px solid #333;
+    }
+
+    .posting-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .posting-image-placeholder {
+        height: 100%;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .posting-content {
+        padding: 15px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .posting-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        height: 25px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .posting-id {
+        font-size: 0.8rem;
+        color: #666;
+        font-weight: 500;
+        margin-bottom: 8px;
+        padding: 3px 8px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        display: inline-block;
+        width: fit-content;
+    }
+
+    .created-by {
+        font-size: 0.75rem;
+        color: #999;
+        border-top: 1px solid #eee;
+        padding-top: 8px;
+        margin-top: auto;
+        margin-bottom: 10px;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+    }
+
+    .btn-update {
+        background-color: #007bff;
+        border: 2px solid #333;
+        color: white;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.2s;
+        flex: 1;
+    }
+
+        .btn-update:hover {
+            background-color: #0056b3;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+    .btn-delete {
+        background-color: #dc3545;
+        border: 2px solid #333;
+        color: white;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex: 1;
+    }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+        }
+
+    .btn-details {
+        background-color: #28a745;
+        border: 2px solid #333;
+        color: white;
+        font-weight: 500;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        transition: all 0.2s;
+        flex: 1;
+    }
+
+        .btn-details:hover {
+            background-color: #218838;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+    .no-postings {
+        background: white;
+        border: 3px solid #333;
+        border-radius: 8px;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .create-posting-btn {
+        background-color: #28a745;
+        border: 2px solid #333;
+        color: white;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+        .create-posting-btn:hover {
+            background-color: #218838;
+            color: white;
+            text-decoration: none;
+            transform: translateY(-1px);
+        }
+
+    .stats-info {
+        background: #f8f9fa;
+        border: 2px solid #333;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .stats-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #007bff;
+        margin-bottom: 5px;
+    }
+
+    .stats-label {
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container-fluid py-4">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 fw-bold text-center mb-2">Content Postings</h1>
+            <p class="lead text-center text-muted">
+                @if (ViewBag.ShowingMyPostings == true)
+                {
+                    <text>Manage your content postings</text>
+                }
+                else
+                {
+                    <text>Browse and manage all content postings</text>
+                }
+            </p>
+        </div>
+    </div>
+
+    <!-- Action Buttons for Admins/Organisers -->
+    @if (ViewBag.UserRole == "Admin" || ViewBag.UserRole == "Organiser")
+    {
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <a href="@Url.Action("Posting_Insert")" class="create-posting-btn">
+                    <i class="fas fa-plus"></i> Create New Posting
+                </a>
+            </div>
+        </div>
+    }
+
+    @if (Model.Any())
+    {
+        <!-- Postings Grid -->
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="posting-card">
+                        <!-- Posting Image -->
+                        <div class="posting-image-container">
+                            @if (!string.IsNullOrEmpty(p.PhotoURL))
+                            {
+                                <img src="/postings/@p.PhotoURL" class="posting-image" alt="@p.ImageTitle">
+                            }
+                            else
+                            {
+                                <div class="posting-image-placeholder">
+                                    <strong>No Image</strong>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Posting Content -->
+                        <div class="posting-content">
+                            <h5 class="posting-title">@p.ImageTitle</h5>
+
+                            @* Show Created By for Admins or if user is viewing their own content *@
+                            @if (ViewBag.UserRole == "Admin" && !string.IsNullOrEmpty(p.CreatedBy))
+                            {
+                                <div class="created-by">
+                                    Created by @p.CreatedBy
+                                </div>
+                            }
+                            else if (ViewBag.ShowingMyPostings == true)
+                            {
+                                <div class="created-by">
+                                    Your posting
+                                </div>
+                            }
+
+                            <!-- Action Buttons -->
+                            <div class="action-buttons">
+                                @if (ViewBag.UserRole == "Admin" ||
+                                                        (ViewBag.UserRole == "Organiser" && p.CreatedBy == User.Identity.Name))
+                                {
+                                    <a href="@Url.Action("Posting_Update", new { id = p.Id })"
+                                       class="btn-update">
+                                        Edit
+                                    </a>
+
+                                    <button type="button"
+                                            class="btn-delete"
+                                            onclick="deletePosting('@p.Id', '@p.ImageTitle')">
+                                        Delete
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        @if (Model.PageCount > 1)
+        {
+            <div class="row mt-4">
+                <div class="col-12 d-flex justify-content-center">
+                    @{
+                        var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
+                        options.LinkToFirstPageFormat = "First";
+                        options.LinkToLastPageFormat = "Last";
+                        options.LinkToPreviousPageFormat = "Previous";
+                        options.LinkToNextPageFormat = "Next";
+                        options.UlElementClasses = new[] { "pagination" };
+                        options.LiElementClasses = new[] { "page-item" };
+                        options.PageClasses = new[] { "page-link" };
+                    }
+                    @Html.PagedListPager(Model, page => Url.Action("Posting_Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page }), options)
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <!-- No Postings Found -->
+        <div class="row">
+            <div class="col-12">
+                <div class="no-postings">
+                    <h4 class="mb-3">No Postings Found</h4>
+
+                    @if (ViewBag.ShowingMyPostings == true)
+                    {
+                        <p class="mb-4">You haven't created any postings yet. Start by creating your first posting!</p>
+                        <a href="@Url.Action("Posting_Insert")" class="create-posting-btn">
+                            Create Your First Posting
+                        </a>
+                    }
+                    else if (!string.IsNullOrEmpty(ViewBag.Name))
+                    {
+                        <p class="mb-4">No postings match your search criteria. Try adjusting your search or browse all postings.</p>
+                        <a href="@Url.Action("Posting_Index")" class="create-posting-btn">
+                            Show All Postings
+                        </a>
+                    }
+                    else
+                    {
+                        <p class="mb-4">There are currently no postings available. Be the first to create a posting!</p>
+                        @if (ViewBag.UserRole == "Admin" || ViewBag.UserRole == "Organiser")
+                        {
+                            <a href="@Url.Action("Posting_Insert")" class="create-posting-btn">
+                                Create First Posting
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the posting "<span id="postingTitle"></span>"?</p>
+                <p class="text-danger">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function deletePosting(id, title) {
+            // Set the posting title in the modal
+            document.getElementById('postingTitle').textContent = title;
+
+            // Set the form action
+            document.getElementById('deleteForm').action = '@Url.Action("Delete")/' + id;
+
+            // Show the modal
+            $('#deleteModal').modal('show');
+        }
+
+        // Handle TempData messages
+        @if (TempData["Info"] != null)
+        {
+                <text>
+                $(document).ready(function() {
+                    alert('@TempData["Info"]');
+                });
+                </text>
+        }
+    </script>
+}

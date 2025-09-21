@@ -1,0 +1,284 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<PostImageModel>
+
+<style>
+    .posting-card {
+        border: 3px solid greenyellow;
+        border-radius: 8px;
+        background: white;
+        margin-bottom: 20px;
+        transition: transform 0.2s;
+        cursor: pointer;
+    }
+
+        .posting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+    .posting-image-container {
+        height: 200px;
+        overflow: hidden;
+        border-bottom: 2px solid #333;
+    }
+
+    .posting-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .posting-image-placeholder {
+        height: 100%;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .posting-content {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .posting-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0;
+        line-height: 1.3;
+        min-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .no-postings {
+        background: white;
+        border: 3px solid #333;
+        border-radius: 8px;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .gallery-header {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        padding: 40px 20px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    .gallery-title {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .gallery-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        font-weight: 400;
+    }
+
+    .stats-card {
+        background: white;
+        border: 2px solid #28a745;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .stats-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #28a745;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .stats-label {
+        font-size: 1rem;
+        color: #666;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Modal Styles */
+    .modal-image {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-bottom: none;
+    }
+
+    .modal-title {
+        font-weight: 600;
+    }
+
+    .btn-close {
+        filter: brightness(0) invert(1);
+    }
+
+    .gallery-subtitle {
+        font-size: 1rem;
+    }
+
+    .posting-image-container {
+        height: 180px;
+    }
+
+    }
+</style>
+
+<div class="container-fluid py-4">
+    <!-- Gallery Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="gallery-header">
+                <h1 class="gallery-title">🖼️ Gallery</h1>
+                <p class="gallery-subtitle">Discover our collection of inspiring moments and memories</p>
+            </div>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <!-- Gallery Grid -->
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="posting-card" onclick="openImageModal('@p.Id', '@Html.Raw(Html.Encode(p.ImageTitle))', '@p.PhotoURL')">
+                        <!-- Posting Image -->
+                        <div class="posting-image-container">
+                            @if (!string.IsNullOrEmpty(p.PhotoURL))
+                            {
+                                <img src="/postings/@p.PhotoURL" class="posting-image" alt="@p.ImageTitle" loading="lazy">
+                            }
+                            else
+                            {
+                                <div class="posting-image-placeholder">
+                                    <strong>📷 No Image Available</strong>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Posting Content -->
+                        <div class="posting-content">
+                            <h5 class="posting-title">@p.ImageTitle</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        @if (Model.PageCount > 1)
+        {
+            <div class="row mt-4">
+                <div class="col-12 d-flex justify-content-center">
+                    @{
+                        var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
+                        options.LinkToFirstPageFormat = "First";
+                        options.LinkToLastPageFormat = "Last";
+                        options.LinkToPreviousPageFormat = "Previous";
+                        options.LinkToNextPageFormat = "Next";
+                        options.UlElementClasses = new[] { "pagination" };
+                        options.LiElementClasses = new[] { "page-item" };
+                        options.PageClasses = new[] { "page-link" };
+                    }
+                    @Html.PagedListPager(Model, page => Url.Action("Gallery", new { page }), options)
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <!-- No Postings Found -->
+        <div class="row">
+            <div class="col-12">
+                <div class="no-postings">
+                    <h4 class="mb-3">🖼️ No Images Yet</h4>
+                    <p class="text-muted">The gallery is empty. Check back soon for amazing content!</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <img src="" alt="" class="modal-image" id="modalImage" style="display: none;">
+                <div id="modalNoImage" style="display: none;">
+                    <div class="text-center p-5">
+                        <i class="fas fa-image" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;"></i>
+                        <h4>No Image Available</h4>
+                        <p class="text-muted" id="modalNoImageTitle"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openImageModal(id, title, photoURL) {
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            const modalTitle = document.getElementById('imageModalLabel');
+            const modalImage = document.getElementById('modalImage');
+            const modalNoImage = document.getElementById('modalNoImage');
+            const modalNoImageTitle = document.getElementById('modalNoImageTitle');
+
+            modalTitle.textContent = title;
+
+            if (photoURL && photoURL.trim() !== '') {
+                modalImage.src = '/postings/' + photoURL;
+                modalImage.alt = title;
+                modalImage.style.display = 'block';
+                modalNoImage.style.display = 'none';
+            } else {
+                modalImage.style.display = 'none';
+                modalNoImage.style.display = 'block';
+                modalNoImageTitle.textContent = title;
+            }
+
+            modal.show();
+        }
+
+        // Handle TempData messages
+        @if (TempData["Info"] != null)
+        {
+                <text>
+                $(document).ready(function() {
+                    alert('@TempData["Info"]');
+                });
+                </text>
+        }
+    </script>
+}

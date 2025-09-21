@@ -1,0 +1,182 @@
+﻿@model PostingInsertVM
+@{
+    ViewBag.Title = "Content Posting | Insert";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Add New Posting</h3>
+                </div>
+                <div class="card-body">
+                    <form class="form" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                        <input asp-for="Id" type="hidden">
+
+                        <!-- Photo Upload Section -->
+                        <div class="mb-3">
+                            <label asp-for="Photo" class="form-label">Photo *</label>
+                            <div class="upload-container">
+                                <label class="upload d-block text-center p-4 border border-dashed rounded" style="cursor: pointer;">
+                                    <input asp-for="Photo" accept="image/jpeg,image/png" hidden id="photoInput">
+                                    <div id="uploadPreview">
+                                        <img src="/images/photo.jpg" alt="Upload placeholder" class="img-fluid mb-2" style="max-height: 150px;">
+                                        <div class="text-muted">
+                                            <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
+                                            <p>Click to select image</p>
+                                            <small>JPG or PNG, max 1MB</small>
+                                        </div>
+                                    </div>
+                                    <div id="selectedFile" style="display: none;">
+                                        <img id="previewImage" src="" alt="Preview" class="img-fluid mb-2" style="max-height: 200px;">
+                                        <p id="fileName" class="mb-0"></p>
+                                        <small class="text-muted">Click to change</small>
+                                    </div>
+                                </label>
+                            </div>
+                            <span asp-validation-for="Photo" class="text-danger"></span>
+                        </div>
+
+                        <!-- Image Title -->
+                        <div class="mb-3">
+                            <label asp-for="ImageTitle" class="form-label">Image Title *</label>
+                            <input asp-for="ImageTitle" class="form-control" placeholder="Enter image title">
+                            <span asp-validation-for="ImageTitle" class="text-danger"></span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-primary me-md-2">
+                                <i class="fas fa-save"></i> Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                            <a href="@Url.Action("Posting_Index")" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section foot {
+    <script>
+        $(document).ready(function() {
+            // Enable hidden file validation
+            $.validator.setDefaults({ ignore: '' });
+
+            // Handle file input change
+            $('#photoInput').on('change', function() {
+                const file = this.files[0];
+                const uploadPreview = $('#uploadPreview');
+                const selectedFile = $('#selectedFile');
+                const previewImage = $('#previewImage');
+                const fileName = $('#fileName');
+
+                if (file) {
+                    // Validate file type
+                    const validTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+                    if (!validTypes.includes(file.type)) {
+                        alert('Please select a valid image file (JPG or PNG)');
+                        this.value = '';
+                        return;
+                    }
+
+                    // Validate file size (1MB = 1048576 bytes)
+                    if (file.size > 1048576) {
+                        alert('File size must be less than 1MB');
+                        this.value = '';
+                        return;
+                    }
+
+                    // Show preview
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.attr('src', e.target.result);
+                        fileName.text(file.name);
+                        uploadPreview.hide();
+                        selectedFile.show();
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // No file selected, show upload placeholder
+                    uploadPreview.show();
+                    selectedFile.hide();
+                }
+            });
+
+            // Handle form reset
+            $('button[type="reset"]').on('click', function() {
+                setTimeout(function() {
+                    $('#uploadPreview').show();
+                    $('#selectedFile').hide();
+                    $('#photoInput').val('');
+                }, 100);
+            });
+
+            // Form validation
+            $('form').on('submit', function(e) {
+                const photoInput = $('#photoInput')[0];
+                const imageTitle = $('input[name="ImageTitle"]').val().trim();
+
+                // Check if photo is selected
+                if (!photoInput.files || photoInput.files.length === 0) {
+                    e.preventDefault();
+                    alert('Please select a photo');
+                    return false;
+                }
+
+                // Check if title is provided
+                if (!imageTitle) {
+                    e.preventDefault();
+                    alert('Please enter an image title');
+                    $('input[name="ImageTitle"]').focus();
+                    return false;
+                }
+
+                // Show loading state
+                $(this).find('button[type="submit"]').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
+            });
+        });
+    </script>
+
+    <style>
+        .upload-container {
+            border-radius: 8px;
+        }
+
+        .upload {
+            transition: all 0.3s ease;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .upload:hover {
+                background-color: #f8f9fa;
+                border-color: #007bff !important;
+            }
+
+        .border-dashed {
+            border-style: dashed !important;
+            border-width: 2px !important;
+        }
+
+        #selectedFile {
+            text-align: center;
+        }
+
+        #previewImage {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+}

@@ -665,3 +665,32 @@ public class EventWithDonationCountVM
     public Event Event { get; set; }
     public int DonationCount { get; set; }
 }
+
+//Post Image View Model
+public class PostingInsertVM
+{
+    public string Id { get; set; }
+    [Required(ErrorMessage = "Photo is required")]
+    [StringLength(100)]
+    [Display(Name = "Image Title")]
+    public string ImageTitle { get; set; }
+
+    // Other properties
+    [Required(ErrorMessage = "Photo is required")] // Add if photo is mandatory
+    [Display(Name = "Photo")]
+    public IFormFile Photo { get; set; }
+
+
+}
+
+public class PostingUpdateVM
+{
+    public string Id { get; set; }
+
+    [StringLength(100)]
+    public string ImageTitle { get; set; }
+
+    // Other properties
+    public string? PhotoURL { get; set; }
+    public IFormFile? Photo { get; set; }
+}

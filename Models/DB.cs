@@ -18,12 +18,12 @@ public class DB : DbContext
     public DbSet<Organiser> Organisers { get; set; }
     public DbSet<Donation> Donations { get; set; }
 
-
     public DbSet<Volunteer> Volunteers { get; set; }
 
     public DbSet<VolunteerEvent> VolunteerEvents { get; set; }
 
     public DbSet<Feedback> Feedbacks { get; set; }
+    public DbSet<PostImageModel> Postings { get; set; }
 }
 
 // Entity Classes
@@ -192,4 +192,17 @@ public class Feedback
  
 
     public DateTime SubmittedAt { get; set; } = DateTime.Now;
+}
+
+public class PostImageModel
+{
+    [Key, MaxLength(4)]
+    public string Id { get; set; }
+    [MaxLength(100)]
+    public string ImageTitle { get; set; }
+
+    [MaxLength(100)]
+    public string PhotoURL { get; set; }
+
+    public string? CreatedBy { get; set; }
 }

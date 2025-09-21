@@ -1,0 +1,29 @@
+﻿@model PostingUpdateVM
+
+@{
+    ViewBag.Title = "Product | Update";
+}
+
+<form class="form" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <label asp-for="Id"></label>
+    <b>@Model.Id</b>
+    <br>
+
+    <label asp-for="Photo"></label>
+    <label class="upload">
+        <input asp-for="Photo" accept="image/jpeg,image/png" hidden>
+        <img src="/products/@Model.PhotoURL">
+    </label>
+    <span asp-validation-for="Photo"></span>
+
+    <label asp-for="ImageTitle"></label>
+    <input asp-for="ImageTitle" autofocus>
+    <span asp-validation-for="ImageTitle"></span>
+
+    <section>
+        <button>Submit</button>
+        <button type="reset">Reset</button>
+    </section>
+</form>

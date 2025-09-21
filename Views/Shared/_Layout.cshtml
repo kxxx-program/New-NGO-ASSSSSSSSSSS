@@ -136,6 +136,8 @@
     <nav>
         <b>Home</b>
         <a href="/Home/Index">Index</a>
+        <a href="/ContentPosting/Gallery">Gallery</a>
+
         <b>Event</b>
         @if (User.IsInRole("Admin") || User.IsInRole("Organiser"))
         {
@@ -145,6 +147,8 @@
 
         @if (User.Identity.IsAuthenticated)
         {
+            <a href="/ContentPosting/Posting_Index">Your Postings</a>
+            <a href="/ContentPosting/Posting_Insert">Add a post</a>
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link text-white" href="#" id="navbarDropdown" role="button">Event History</a>
