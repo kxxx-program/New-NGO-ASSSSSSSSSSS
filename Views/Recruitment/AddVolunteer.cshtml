@@ -5,85 +5,119 @@
     ViewBag.Title = "Join as Volunteer";
 }
 
-@if (ViewBag.EventTitle != null)
+@*Security shit*@
+@if (TempData["Error"] != null)
 {
-    <h4>Sign up as Volunteer for <strong>@ViewBag.EventTitle</strong>!</h4>
+    <div style="color: red; padding: 15px; background: #ffe6e6; border: 1px solid red; border-radius: 5px; margin-bottom: 20px;">
+        <strong>Error:</strong> @TempData["Error"]
+        <br/>
+        <a asp-controller="NGO_Event_" asp-action="Event_Details" asp-route-id="@Model.EventID">Return to Event Details</a>
+    </div>
 }
-
-
-
-<h1>Volunteer Recruitment</h1>
-
-<p>This is some bullshit</p>
-
-
-<form asp-action="AddVolunteer" asp-controller="Recruitment" method="post">
-    <input type="hidden" name="eventId" value="@ViewBag.EventID" />
-    <div>
-        <label asp-for="VolunteerID">ID</label>
-        <input asp-for="VolunteerID" autofocus data-upper readonly>
-        <span asp-validation-for="VolunteerID"></span>
-    </div>
-    <div>
-        <label asp-for="Name"></label>
-        <input asp-for="Name">
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email">
-        <span asp-validation-for="Email"></span>
-
-    </div>
-    <div>
-        <label asp-for="PhoneNumber"></label>
-        <input asp-for="PhoneNumber">
-        <span asp-validation-for="PhoneNumber"></span>
-    </div>
-    <div>
-        <label asp-for="Age"></label>
-        <input asp-for="Age" type="number">
-        <span asp-validation-for="Age"></span>
-    </div>
-    <div>
-        <label asp-for="ShiftStart"></label>
-        <input asp-for="ShiftStart" 
-                    type="datetime-local"
-                    min="@ViewBag.EventStart"
-                    max="@ViewBag.EventEnd" />
-        <span asp-validation-for="ShiftStart"></span>
-    </div>
-    <div>
-        <label asp-for="WorkHours"></label>
-        <input asp-for="WorkHours" type="number">
-        <span asp-validation-for="WorkHours"></span>
-    </div>
-
-
-
-        <section>
-            <button>Submit</button>
-            <button type="reset">Reset</button>
-        </section>
-
-</form>
-
-@section foot {
-    <script>
-        // Enable hidden file validation
-        $.validator.setDefaults({ ignore: '' });
-    </script>
-}
-
-
-@if (TempData["info"] != null)
+else if (ViewBag.IsEventConcluded == true)
 {
-    <p style="color:green">@TempData["Message"]</p>
+    @* Server-side check for concluded events *@
+    <div style="color: red; padding: 20px; text-align: center; background: #ffe6e6; border: 2px solid red; border-radius: 8px;">
+        <h2>Event <strong>@ViewBag.EventTitle</strong> has concluded!</h2>
+        <p>Registration is no longer available for this event.</p>
+        <a asp-controller="NGO_Event_" asp-action="Event_Details" asp-route-id="@Model.EventID" 
+           style="background: #dc3545; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+            Return to Event Details
+        </a>
+    </div>
 }
+else if (ViewBag.IsEventCancelled == true)
+{
+    @* Server-side check for cancelled events *@
+    <div style="color: orange; padding: 20px; text-align: center; background: #fff3cd; border: 2px solid orange; border-radius: 8px;">
+        <h2>Event <strong>@ViewBag.EventTitle</strong> has been cancelled!</h2>
+        <p>Registration is not available for cancelled events.</p>
+        <a asp-controller="NGO_Event_" asp-action="Event_Details" asp-route-id="@Model.EventID"
+           style="background: #fd7e14; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+            Return to Event Details
+        </a>
+    </div>
+}
+else{
+        @if (ViewBag.EventTitle != null)
+        {
+            <h4>Sign up as Volunteer for <strong>@ViewBag.EventTitle</strong>!</h4>
+        }
 
-<a asp-action="RecruitingInfo">View All Volunteers</a>
 
 
+        <h1>Volunteer Recruitment</h1>
+
+        <p>This is some bullshit</p>
+
+
+        <form asp-action="AddVolunteer" asp-controller="Recruitment" method="post">
+            <input type="hidden" name="eventId" value="@ViewBag.EventID" />
+            <div>
+                <label asp-for="VolunteerID">ID</label>
+                <input asp-for="VolunteerID" autofocus data-upper readonly>
+                <span asp-validation-for="VolunteerID"></span>
+            </div>
+            <div>
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div>
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+                <span asp-validation-for="Email"></span>
+
+            </div>
+            <div>
+                <label asp-for="PhoneNumber"></label>
+                <input asp-for="PhoneNumber">
+                <span asp-validation-for="PhoneNumber"></span>
+            </div>
+            <div>
+                <label asp-for="Age"></label>
+                <input asp-for="Age" type="number">
+                <span asp-validation-for="Age"></span>
+            </div>
+            <div>
+                <label asp-for="ShiftStart"></label>
+                <input asp-for="ShiftStart" 
+                            type="datetime-local"
+                            min="@ViewBag.EventStart"
+                            max="@ViewBag.EventEnd" />
+                <span asp-validation-for="ShiftStart"></span>
+            </div>
+            <div>
+                <label asp-for="WorkHours"></label>
+                <input asp-for="WorkHours" type="number">
+                <span asp-validation-for="WorkHours"></span>
+            </div>
+
+
+
+                <section>
+                    <button>Submit</button>
+                    <button type="reset">Reset</button>
+                </section>
+
+        </form>
+
+        @section foot {
+            <script>
+                // Enable hidden file validation
+                $.validator.setDefaults({ ignore: '' });
+            </script>
+        }
+
+
+        @if (TempData["info"] != null)
+        {
+            <p style="color:green">@TempData["Message"]</p>
+        }
+
+        <a asp-action="RecruitingInfo">View All Volunteers</a>
+
+    }
 
 
 

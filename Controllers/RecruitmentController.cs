@@ -42,6 +42,7 @@ public class RecruitmentController : Controller
     //GET to display the form 
     public IActionResult AddVolunteer(string eventId)
     {
+
         if (string.IsNullOrEmpty(eventId))
             return NotFound();
 
@@ -64,6 +65,18 @@ public class RecruitmentController : Controller
         ViewBag.EventID = eventId;
         ViewBag.EventStart = eventStart.ToString("yyyy-MM-ddTHH:mm");
         ViewBag.EventEnd = eventEnd.ToString("yyyy-MM-ddTHH:mm");
+
+        if (DateTime.Now > eventEnd)
+        {
+            TempData["Error"] = "Cannot register for a concluded event.";
+            ViewBag.IsEventConcluded = true;
+            ViewBag.EventTitle = e.EventTitle;
+
+            // Pass the model to show the error message in the view
+            var errorModel = new VolunteerVM { EventID = eventId };
+            return View(errorModel);
+        }
+
 
         return View(vm);
     }
@@ -112,7 +125,7 @@ public class RecruitmentController : Controller
             EventID = eventId,
             ShiftStart = vm.ShiftStart,
             WorkHours = vm.WorkHours,
-            Points = 10,
+            Points = 100,
             EventCompletion = EventStatus.Waiting,
             ApprovalStatus = EventApprovalStatus.Pending
         };
