@@ -143,6 +143,8 @@
         {
             <a href="/NGO_Event_/Event_Index">Index</a>
             <a href="/NGO_Event_/Event_Insert">Insert</a>
+            <a href="/Recruitment/RecruitingInfo">Volunteer</a>
+
         }
 
         @if (User.Identity.IsAuthenticated)
@@ -172,6 +174,7 @@
             @if (User.IsInRole("Admin"))
             {
                 <a href="/Home/Admin">Admin</a>
+
             }
             @if (User.IsInRole("Organiser"))
             {

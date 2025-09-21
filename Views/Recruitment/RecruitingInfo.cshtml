@@ -47,6 +47,22 @@
             <td>@v.Points</td>
             <td>@v.EventCompletion</td>
             <td>@v.ApprovalStatus</td>
+            <td>
+                @if (v.ApprovalStatus == EventApprovalStatus.Pending)
+                {
+                    <form asp-action="Approve" asp-route-id="@v.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                    </form>
+                    <form asp-action="Reject" asp-route-id="@v.Id" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                    </form>
+                }
+                else
+                {
+                    <span class="badge bg-info">@v.ApprovalStatus</span>
+                }
+            </td>
+
         </tr>
     }
 </table>

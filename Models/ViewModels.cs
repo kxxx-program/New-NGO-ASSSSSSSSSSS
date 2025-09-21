@@ -440,8 +440,11 @@ public class VolunteerEventVM
     public EventStatus EventCompletion { get; set; }
 
     public EventApprovalStatus ApprovalStatus { get; set; }
-}
 
+    public int Id { get; set; }
+
+
+}
 public class FeedbackVM
 {
     public string FeedbackID { get; set; }

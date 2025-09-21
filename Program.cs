@@ -13,7 +13,7 @@ builder.Services.AddSqlServer<DB>($@"
 ");
 
 builder.Services.AddScoped<Helper>();
-
+builder.Services.AddHttpClient();
 // Session Configuration - Add this for timeout functionality
 builder.Services.AddSession(options =>
 {
