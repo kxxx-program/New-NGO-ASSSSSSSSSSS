@@ -189,8 +189,7 @@ public class Feedback
     [MaxLength(1000)]
     public string Comments { get; set; }
 
-  
-    public string PhotoURL { get; set; }
+ 
 
     public DateTime SubmittedAt { get; set; } = DateTime.Now;
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NGO_Web_Demo.Models;
+using System.Net.Mail;
 
 
 namespace NGO_Web_Demo.Controllers;
@@ -14,11 +15,6 @@ public class RecruitmentController : Controller
         this.db = db;
         this.en = en;
         this.hp = hp;
-    }
-
-    public IActionResult index()
-    {
-        return View();
     }
 
     //generate next id for volunteers
@@ -89,8 +85,12 @@ public class RecruitmentController : Controller
         if (!ModelState.IsValid)
             return View(vm);
 
-
-
+        var mail = new MailMessage();
+        mail.To.Add(new MailAddress(vm.Email, "Volunteer Submission"));
+        mail.Subject = "Your submission is being reviewed";
+        mail.Body = "Do not reply to this message as it is auto generated";
+        mail.IsBodyHtml = true;
+        hp.SendEmail(mail);
 
         //no duplicate email and name can be submitted for the same event
         var dupEmail = await db.VolunteerEvents

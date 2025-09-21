@@ -460,7 +460,6 @@ public class FeedbackVM
 
     [MaxLength(1000, ErrorMessage = "Comments cannot exceed 1000 characters")]
     public string Comments { get; set; }
-    public IFormFile? Photo { get; set; }
 
     [Display(Name = "Submit Anonymously")]
     public bool IsAnonymous { get; set; } = false;
@@ -523,6 +522,11 @@ public class LeaderboardVM
     // Additional display properties
     public string TotalActivities => $"{TotalEvents + TotalDonations} activities";
     public string PointsBreakdown => $"V:{VolunteerPoints} + D:{DonationPoints} = {TotalPoints}";
+}
+public class MyActivitiesVM
+{
+    public List<VolunteerHistoryVM> VolunteerHistory { get; set; } = new List<VolunteerHistoryVM>();
+    public List<DonationListVM> DonationHistory { get; set; } = new List<DonationListVM>();
 }
 
 public class AdminDashboardVM

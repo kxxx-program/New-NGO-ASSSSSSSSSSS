@@ -118,25 +118,14 @@ namespace NGO_Web_Demo.Controllers
 
             try
             {
-                // First, get all volunteer records for the current user
+                // Get volunteer history
                 var userVolunteers = db.Volunteers.Where(v => v.Email == userEmail).ToList();
+                var volunteerHistory = new List<VolunteerHistoryVM>();
 
-                if (!userVolunteers.Any())
+                if (userVolunteers.Any())
                 {
-                    // User hasn't volunteered for any events yet
-                    ViewBag.TotalVolunteers = 0;
-                    ViewBag.TotalPoints = 0;
-                    ViewBag.CompletedEvents = 0;
-                    ViewBag.PendingApprovals = 0;
-
-                    return View(new List<VolunteerHistoryVM>());
-                }
-
-                // Get volunteer IDs for the current user
-                var volunteerIds = userVolunteers.Select(v => v.VolunteerID).ToList();
-
-                // Get volunteer events with event details
-                var volunteerHistory = (from ve in db.VolunteerEvents
+                    var volunteerIds = userVolunteers.Select(v => v.VolunteerID).ToList();
+                    volunteerHistory = (from ve in db.VolunteerEvents
                                         join e in db.Events on ve.EventID equals e.EventID
                                         join v in db.Volunteers on ve.VolunteerID equals v.VolunteerID
                                         where volunteerIds.Contains(ve.VolunteerID)
@@ -156,30 +145,60 @@ namespace NGO_Web_Demo.Controllers
                                             ApprovalStatus = ve.ApprovalStatus,
                                             IsPastEvent = e.EventEndDate < DateOnly.FromDateTime(DateTime.Today)
                                         }).ToList();
+                }
+
+                // Get donation history
+                var donationHistory = (from d in db.Donations
+                                       join e in db.Events on d.EventId equals e.EventID
+                                       where d.UserEmail == userEmail
+                                       orderby d.DonationDate descending
+                                       select new DonationListVM
+                                       {
+                                           DonationID = d.DonationID,
+                                           UserEmail = d.UserEmail,
+                                           EventID = d.EventId,
+                                           EventTitle = e.EventTitle,
+                                           Amount = d.Amount,
+                                           PaymentMethod = d.PaymentMethod,
+                                           DonationDate = d.DonationDate,
+                                           Status = "Completed"
+                                       }).ToList();
 
                 // Calculate statistics
-                ViewBag.TotalVolunteers = volunteerHistory.Count;
-                ViewBag.TotalPoints = volunteerHistory
-                    .Where(v => v.ApprovalStatus == EventApprovalStatus.Approved)
-                    .Sum(v => v.Points);
-                ViewBag.CompletedEvents = volunteerHistory
-                    .Count(v => v.EventCompletion == EventStatus.Completed);
-                ViewBag.PendingApprovals = volunteerHistory
-                    .Count(v => v.ApprovalStatus == EventApprovalStatus.Pending);
+                var totalVolunteerPoints = volunteerHistory.Where(v => v.ApprovalStatus == EventApprovalStatus.Approved).Sum(v => v.Points);
+                var totalDonationPoints = (int)donationHistory.Sum(d => d.Amount);
 
-                return View(volunteerHistory);
+                ViewBag.TotalVolunteers = volunteerHistory.Count;
+                ViewBag.TotalPoints = totalVolunteerPoints;
+                ViewBag.CompletedEvents = volunteerHistory.Count(v => v.EventCompletion == EventStatus.Completed);
+                ViewBag.PendingApprovals = volunteerHistory.Count(v => v.ApprovalStatus == EventApprovalStatus.Pending);
+                ViewBag.TotalDonations = donationHistory.Count;
+                ViewBag.TotalDonationAmount = donationHistory.Sum(d => d.Amount);
+                ViewBag.TotalDonationPoints = totalDonationPoints;
+                ViewBag.TotalCombinedPoints = totalVolunteerPoints + totalDonationPoints;
+
+                var combinedVM = new MyActivitiesVM
+                {
+                    VolunteerHistory = volunteerHistory,
+                    DonationHistory = donationHistory
+                };
+
+                return View(combinedVM);
             }
             catch (Exception ex)
             {
-                TempData["Info"] = $"Error loading volunteer history: {ex.Message}";
+                TempData["Info"] = $"Error loading activity history: {ex.Message}";
 
-                // Set default values for ViewBag to prevent view errors
                 ViewBag.TotalVolunteers = 0;
                 ViewBag.TotalPoints = 0;
                 ViewBag.CompletedEvents = 0;
                 ViewBag.PendingApprovals = 0;
+                ViewBag.TotalDonations = 0;
+                ViewBag.TotalDonationAmount = 0;
+                ViewBag.TotalDonationPoints = 0;
+                ViewBag.TotalCombinedPoints = 0;
 
-                return View(new List<VolunteerHistoryVM>());
+                return View(new MyActivitiesVM());
             }
         }
 
