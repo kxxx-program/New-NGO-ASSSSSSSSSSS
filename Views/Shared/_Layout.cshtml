@@ -105,12 +105,12 @@
         }
         @if (User.IsInRole("Member"))
         {
-            <a href="/Account/UpdateProfile">Update Profile</a>
+            <a href="/UpdateProfile/Index">Update Profile</a>
             <a href="/Account/RegisterOrganiser">Register as Organiser</a>
         }
         @if (User.IsInRole("Organiser"))
         {
-            <a href="/Account/UpdateOrganiserProfile">Update Profile</a>
+            <a href="/UpdateProfile/Index">Update Profile</a>
         }
     </nav>
 
