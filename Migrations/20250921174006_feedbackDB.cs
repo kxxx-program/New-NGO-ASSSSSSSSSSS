@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace NGO_Web_Demo.Migrations
 {
     /// <inheritdoc />
-    public partial class FeedbackDB : Migration
+    public partial class feedbackDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,11 +17,9 @@ namespace NGO_Web_Demo.Migrations
                 {
                     FeedbackID = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
                     EventID = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserEmail = table.Column<string>(type: "nvarchar(100)", nullable: false),
+                    VolunteerID = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
                     Comments = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    PhotoURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SubmittedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -34,10 +32,10 @@ namespace NGO_Web_Demo.Migrations
                         principalColumn: "EventID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Feedbacks_Users_UserEmail",
-                        column: x => x.UserEmail,
-                        principalTable: "Users",
-                        principalColumn: "Email",
+                        name: "FK_Feedbacks_Volunteers_VolunteerID",
+                        column: x => x.VolunteerID,
+                        principalTable: "Volunteers",
+                        principalColumn: "VolunteerID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -47,9 +45,9 @@ namespace NGO_Web_Demo.Migrations
                 column: "EventID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Feedbacks_UserEmail",
+                name: "IX_Feedbacks_VolunteerID",
                 table: "Feedbacks",
-                column: "UserEmail");
+                column: "VolunteerID");
         }
 
         /// <inheritdoc />

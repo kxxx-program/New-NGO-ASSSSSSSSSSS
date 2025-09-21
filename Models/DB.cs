@@ -180,16 +180,11 @@ public class Feedback
     public Volunteer Volunteer { get; set; }
 
 
-   
 
     [Range(1, 5)]
     public int Rating { get; set; }
-
- 
     [MaxLength(1000)]
     public string Comments { get; set; }
-
- 
 
     public DateTime SubmittedAt { get; set; } = DateTime.Now;
 }

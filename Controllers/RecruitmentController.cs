@@ -160,9 +160,49 @@ public class RecruitmentController : Controller
                  ApprovalStatus= ve.ApprovalStatus,
                  EventID = ve.EventID,  
                  Points= ve.Points,
+                 Id = ve.Id,
              })
        .ToList();
 
         return View(list);
+    }
+
+    //Approve/Reject volunteer
+
+    [HttpPost]
+    public async Task<IActionResult> Approve(int id)
+    {
+        var ve = await db.VolunteerEvents.FindAsync(id);
+        if (ve == null)
+        {
+            return NotFound();
+        }
+
+        ve.ApprovalStatus = EventApprovalStatus.Approved;
+
+        db.VolunteerEvents.Update(ve);
+        await db.SaveChangesAsync();
+
+
+        TempData["Info"] = "Volunteer has been approved!";
+        return RedirectToAction("RecruitingInfo");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Reject(int id)
+    {
+        var ve = await db.VolunteerEvents.FindAsync(id);
+        if (ve == null)
+        {
+            return NotFound();
+        }
+
+        ve.ApprovalStatus = EventApprovalStatus.Rejected;
+
+        db.VolunteerEvents.Update(ve);
+        await db.SaveChangesAsync();
+
+        TempData["Info"] = "Volunteer has been rejected!";
+        return RedirectToAction("RecruitingInfo");
     }
 }

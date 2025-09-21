@@ -56,5 +56,40 @@ namespace NGO_Web_Demo.Controllers
 
             return View(vm);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FeedbackForm(FeedbackVM vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                // If invalid, redisplay form with event title
+                var e = await db.Events.FindAsync(vm.EventID);
+                if (e != null) ViewBag.EventTitle = e.EventTitle;
+                return View(vm);
+            }
+
+            var feedback = new Feedback
+            {
+                FeedbackID = vm.FeedbackID,
+                EventID = vm.EventID,
+                VolunteerID = vm.VolunteerID,
+                Rating = vm.Rating,
+                Comments = vm.Comments,
+                SubmittedAt = DateTime.Now
+            };
+
+            // Handle anonymous submission
+            if (vm.IsAnonymous)
+            {
+                feedback.VolunteerID = null;
+            }
+
+            db.Feedbacks.Add(feedback);
+            await db.SaveChangesAsync();
+
+            TempData["Info"] = "Thank you for your feedback!";
+            return RedirectToAction("Index", "Event"); // or wherever you want to redirect
+        }
     }
 }

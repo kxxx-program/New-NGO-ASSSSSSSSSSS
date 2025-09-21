@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NGO_Web_Demo.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20250921165538_ImagePostingDB")]
-    partial class ImagePostingDB
+    [Migration("20250921174006_feedbackDB")]
+    partial class feedbackDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,10 +124,6 @@ namespace NGO_Web_Demo.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
-                    b.Property<string>("PhotoURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
@@ -146,30 +142,6 @@ namespace NGO_Web_Demo.Migrations
                     b.HasIndex("VolunteerID");
 
                     b.ToTable("Feedbacks");
-                });
-
-            modelBuilder.Entity("Demo.Models.PostImageModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageTitle")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PhotoURL")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Postings");
                 });
 
             modelBuilder.Entity("Demo.Models.User", b =>

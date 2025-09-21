@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NGO_Web_Demo.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20250921132641_newshit")]
-    partial class newshit
+    [Migration("20250921210640_ImagePostingDB")]
+    partial class ImagePostingDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,66 @@ namespace NGO_Web_Demo.Migrations
                     b.HasKey("EventID");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Demo.Models.Feedback", b =>
+                {
+                    b.Property<string>("FeedbackID")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<string>("EventID")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SubmittedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VolunteerID")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.HasKey("FeedbackID");
+
+                    b.HasIndex("EventID");
+
+                    b.HasIndex("VolunteerID");
+
+                    b.ToTable("Feedbacks");
+                });
+
+            modelBuilder.Entity("Demo.Models.PostImageModel", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhotoURL")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Postings");
                 });
 
             modelBuilder.Entity("Demo.Models.User", b =>
@@ -258,6 +318,25 @@ namespace NGO_Web_Demo.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasDiscriminator().HasValue("Organiser");
+                });
+
+            modelBuilder.Entity("Demo.Models.Feedback", b =>
+                {
+                    b.HasOne("Demo.Models.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Demo.Models.Volunteer", "Volunteer")
+                        .WithMany()
+                        .HasForeignKey("VolunteerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Volunteer");
                 });
 
             modelBuilder.Entity("Demo.Models.VolunteerEvent", b =>

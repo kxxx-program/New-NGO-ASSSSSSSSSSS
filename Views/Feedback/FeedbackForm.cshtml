@@ -2,3 +2,50 @@
 
 
     <h1>Feedback for <strong>@ViewBag.EventTitle</strong></h1>
+
+@{
+    ViewBag.Title = "Submit Feedback";
+}
+
+<h2>Submit Feedback</h2>
+
+<div class="card shadow p-4 mt-3">
+    <h4 class="mb-3">Event: @ViewBag.EventTitle</h4>
+
+    <form asp-action="FeedbackForm" method="post">
+        <input type="hidden" asp-for="FeedbackID" />
+        <input type="hidden" asp-for="EventID" value="@ViewBag.EventID" />
+        <input type="hidden" asp-for="VolunteerID" />
+
+        <div class="mb-3">
+            <label asp-for="Rating" class="form-label"></label>
+            <select asp-for="Rating" class="form-select" required>
+                <option value="">-- Select a rating --</option>
+                <option value="1">1 - Very Poor</option>
+                <option value="2">2 - Poor</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Comments" class="form-label"></label>
+            <textarea asp-for="Comments" class="form-control" rows="4" placeholder="Write your feedback..."></textarea>
+            <span asp-validation-for="Comments" class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsAnonymous" class="form-check-input" />
+            <label asp-for="IsAnonymous" class="form-check-label"></label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        <a asp-controller="Event" asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
