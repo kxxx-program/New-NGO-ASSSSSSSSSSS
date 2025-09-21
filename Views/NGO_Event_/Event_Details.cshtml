@@ -346,7 +346,7 @@
                     <a asp-controller="Recruitment" asp-action="AddVolunteer" asp-route-eventId = "@Model.Event_Id" class="btn btn-volunteer">
                         Volunteer Now
                     </a>
-                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Donation", "Payment", new { id = @Model.Event_Id })">Donate</button>
+
 
                     <a asp-controller="Payment" asp-action="Donation" asp-route-id="@Model.Event_Id" class="btn btn-donate">
                         Donate
