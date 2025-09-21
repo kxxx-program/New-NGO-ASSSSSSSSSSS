@@ -99,11 +99,17 @@
         {
             <a href="/Account/Login">Login</a>
             <a href="/Account/Register">Register</a>
+            <a href="/Account/RegisterOrganiser">Register as Organiser</a>
             <a href="/Account/ResetPassword">Reset Password</a>
         }
         @if (User.IsInRole("Member"))
         {
             <a href="/Account/UpdateProfile">Update Profile</a>
+            <a href="/Account/RegisterOrganiser">Register as Organiser</a>
+        }
+        @if (User.IsInRole("Organiser"))
+        {
+            <a href="/Account/UpdateOrganiserProfile">Update Profile</a>
         }
     </nav>
 
@@ -122,7 +128,9 @@
     <script src="/js/jquery.validate.min.js"></script>
     <script src="/js/jquery.validate.unobtrusive.min.js"></script>
     <script src="/js/app.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", false)
     @RenderSection("foot", false)
+
 </body>
 
 <head>

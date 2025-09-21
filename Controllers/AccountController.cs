@@ -92,6 +92,109 @@ public class AccountController : Controller
         return View(vm);
     }
 
+    // GET: Account/RegisterOrganiser
+    public IActionResult RegisterOrganiser()
+    {
+        return View();
+    }
+
+    // POST: Account/RegisterOrganiser
+    [HttpPost]
+    public IActionResult RegisterOrganiser(RegisterOrganiserVM vm)
+    {
+        // Check for duplicate email
+        if (db.Users.Any(u => u.Email == vm.Email))
+        {
+            ModelState.AddModelError("Email", "Duplicated Email.");
+        }
+
+        // Validate photo if it exists
+        if (vm.Photo != null)
+        {
+            var err = hp.ValidatePhoto(vm.Photo);
+            if (err != "") ModelState.AddModelError("Photo", err);
+        }
+
+        if (ModelState.IsValid)
+        {
+            // Insert organiser
+            db.Organisers.Add(new()
+            {
+                Email = vm.Email,
+                Hash = hp.HashPassword(vm.Password),
+                Name = vm.Name,
+                OrganisationName = vm.OrganisationName,
+                OrganisationAddress = vm.OrganisationAddress,
+                OrganisationPhone = vm.OrganisationPhone,
+                PhotoURL = hp.SavePhoto(vm.Photo, "photos"),
+                ParticipatedDate = DateTime.Now
+            });
+            db.SaveChanges();
+
+            TempData["Info"] = "Organiser registered successfully. Please login.";
+            return RedirectToAction("Login");
+        }
+
+        return View(vm);
+    }
+
+    // GET: Account/UpdateOrganiserProfile
+    [Authorize(Roles = "Organiser")]
+    public IActionResult UpdateOrganiserProfile()
+    {
+        var o = db.Organisers.Find(User.Identity!.Name);
+        if (o == null) return RedirectToAction("Index", "Home");
+
+        var vm = new UpdateOrganiserProfileVM
+        {
+            Email = o.Email,
+            Name = o.Name,
+            OrganisationName = o.OrganisationName,
+            OrganisationAddress = o.OrganisationAddress,
+            OrganisationPhone = o.OrganisationPhone,
+            PhotoURL = o.PhotoURL,
+        };
+
+        return View(vm);
+    }
+
+    // POST: Account/UpdateOrganiserProfile
+    [Authorize(Roles = "Organiser")]
+    [HttpPost]
+    public IActionResult UpdateOrganiserProfile(UpdateOrganiserProfileVM vm)
+    {
+        var o = db.Organisers.Find(User.Identity!.Name);
+        if (o == null) return RedirectToAction("Index", "Home");
+
+        if (vm.Photo != null)
+        {
+            var err = hp.ValidatePhoto(vm.Photo);
+            if (err != "") ModelState.AddModelError("Photo", err);
+        }
+
+        if (ModelState.IsValid)
+        {
+            o.Name = vm.Name;
+            o.OrganisationName = vm.OrganisationName;
+            o.OrganisationAddress = vm.OrganisationAddress;
+            o.OrganisationPhone = vm.OrganisationPhone;
+            o.PhotoURL = vm.PhotoURL;
+
+            if (vm.Photo != null)
+            {
+                hp.DeletePhoto(o.PhotoURL, "photos");
+                o.PhotoURL = hp.SavePhoto(vm.Photo, "photos");
+            }
+            db.SaveChanges();
+            TempData["Info"] = "Profile updated.";
+            return RedirectToAction();
+        }
+
+        vm.Email = o.Email;
+        vm.PhotoURL = o.PhotoURL;
+        return View(vm);
+    }
+
     // GET: Account/Logout
     public IActionResult Logout()
     {
@@ -237,6 +340,7 @@ public class AccountController : Controller
         {
             Admin => Path.Combine(en.WebRootPath, "photos", "admin.png"),
             Member m => Path.Combine(en.WebRootPath, "photos", m.PhotoURL),
+            Organiser o => Path.Combine(en.WebRootPath, "photos", o.PhotoURL ?? "organiser.png"), // ADD THIS LINE
             _ => "",
         };
 

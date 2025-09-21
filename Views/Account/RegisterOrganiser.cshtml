@@ -1,0 +1,126 @@
+﻿@model NGO_Web_Demo.Models.RegisterOrganiserVM
+@{
+    ViewData["Title"] = "Register as Organiser";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-tie me-2"></i>Register as Organiser
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="RegisterOrganiser" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-4">
+                            <h5 class="text-secondary border-bottom pb-2">
+                                <i class="fas fa-user me-2"></i>Personal Information
+                            </h5>
+
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">Email Address</label>
+                                <input asp-for="Email" class="form-control" placeholder="Enter your email address" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">Full Name</label>
+                                <input asp-for="Name" class="form-control" placeholder="Enter your full name" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">Password</label>
+                                <input asp-for="Password" class="form-control" placeholder="Enter password (minimum 5 characters)" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Confirm" class="form-label">Confirm Password</label>
+                                <input asp-for="Confirm" class="form-control" placeholder="Re-enter password" />
+                                <span asp-validation-for="Confirm" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Photo" class="form-label">Profile Photo (Optional)</label>
+                                <input asp-for="Photo" class="form-control" type="file" accept="image/*" />
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                                <div class="form-text">Supported formats: JPG, PNG, GIF. Max size: 2MB</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-secondary border-bottom pb-2">
+                                <i class="fas fa-building me-2"></i>Organisation Information
+                            </h5>
+
+                            <div class="mb-3">
+                                <label asp-for="OrganisationName" class="form-label">Organisation Name</label>
+                                <input asp-for="OrganisationName" class="form-control" placeholder="Enter organisation name" />
+                                <span asp-validation-for="OrganisationName" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="OrganisationAddress" class="form-label">Organisation Address</label>
+                                <textarea asp-for="OrganisationAddress" class="form-control" rows="3" placeholder="Enter complete organisation address"></textarea>
+                                <span asp-validation-for="OrganisationAddress" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="OrganisationPhone" class="form-label">Organisation Phone</label>
+                                <input asp-for="OrganisationPhone" class="form-control" placeholder="Enter organisation phone number" />
+                                <span asp-validation-for="OrganisationPhone" class="text-danger"></span>
+                                <div class="form-text">Example: +60123456789 or 03-12345678</div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Register as Organiser
+                            </button>
+                            <a asp-action="Login" class="btn btn-outline-secondary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Already have an account? Login
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <small>
+                        By registering, you agree to our Terms of Service and Privacy Policy.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.getElementById('Photo').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    let preview = document.getElementById('photo-preview');
+                    if (!preview) {
+                        preview = document.createElement('img');
+                        preview.id = 'photo-preview';
+                        preview.className = 'img-thumbnail mt-2';
+                        preview.style.maxWidth = '150px';
+                        preview.style.maxHeight = '150px';
+                        e.target.parentNode.appendChild(preview);
+                    }
+                    preview.src = e.target.result;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
+}

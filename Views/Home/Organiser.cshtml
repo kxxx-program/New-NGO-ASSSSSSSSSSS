@@ -1,0 +1,360 @@
+﻿@{
+    ViewData["Title"] = "Organiser Dashboard";
+    var organiser = ViewBag.Organiser;
+}
+
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="jumbotron bg-gradient-primary text-white p-4 rounded">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="display-4">
+                            <i class="fas fa-tachometer-alt me-3"></i>
+                            Welcome, @User.Identity.Name!
+                        </h1>
+                        <p class="lead">Organiser Dashboard - Manage your events and organisation activities</p>
+                        <p class="mb-0">
+                            <i class="fas fa-calendar me-2"></i>
+                            Today is @DateTime.Now.ToString("dddd, MMMM dd, yyyy")
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <i class="fas fa-user-tie fa-5x opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                My Events
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Active Events
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-play-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Total Volunteers
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">156</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending Approvals
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bolt me-2"></i>Quick Actions
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-plus-circle me-2"></i>Create New Event
+                        </a>
+                        <a href="#" class="btn btn-outline-success">
+                            <i class="fas fa-users me-2"></i>Manage Volunteers
+                        </a>
+                        <a href="#" class="btn btn-outline-info">
+                            <i class="fas fa-chart-bar me-2"></i>View Reports
+                        </a>
+                        <a asp-action="UpdateOrganiserProfile" asp-controller="Account" class="btn btn-outline-warning">
+                            <i class="fas fa-user-edit me-2"></i>Update Profile
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="fas fa-envelope me-2"></i>Contact Support
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow mt-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-building me-2"></i>Organisation Info
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <strong>Name:</strong><br>
+                        <span class="text-muted">Your Organisation Name</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Address:</strong><br>
+                        <span class="text-muted">Your Organisation Address</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Phone:</strong><br>
+                        <span class="text-muted">Your Organisation Phone</span>
+                    </div>
+                    <div class="text-center">
+                        <a asp-action="UpdateOrganiserProfile" asp-controller="Account" class="btn btn-sm btn-outline-info">
+                            <i class="fas fa-edit me-1"></i>Edit Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-calendar-check me-2"></i>Upcoming Events
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Community Cleanup Drive</strong><br>
+                                        <small class="text-muted">Environmental initiative</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Oct 25, 2024</span>
+                                    </td>
+                                    <td>Taman Petaling Park</td>
+                                    <td>
+                                        <span class="badge bg-success">Active</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Food Distribution</strong><br>
+                                        <small class="text-muted">Charity program</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Nov 2, 2024</span>
+                                    </td>
+                                    <td>KL Community Center</td>
+                                    <td>
+                                        <span class="badge bg-warning">Planning</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-list me-2"></i>View All Events
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>Recent Activity
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        <div class="activity-item mb-3 p-3 border-left border-primary">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong>New volunteer registered</strong><br>
+                                    <small class="text-muted">John Doe joined "Community Cleanup Drive"</small>
+                                </div>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item mb-3 p-3 border-left border-success">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong>Event updated</strong><br>
+                                    <small class="text-muted">Modified "Food Distribution" event details</small>
+                                </div>
+                                <small class="text-muted">5 hours ago</small>
+                            </div>
+                        </div>
+
+                        <div class="activity-item mb-3 p-3 border-left border-info">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <strong>Volunteer approved</strong><br>
+                                    <small class="text-muted">Approved 3 volunteer applications</small>
+                                </div>
+                                <small class="text-muted">1 day ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-outline-secondary">
+                            <i class="fas fa-history me-2"></i>View All Activity
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stats = document.querySelectorAll('.h5.mb-0.font-weight-bold');
+            stats.forEach(function(stat) {
+                const finalValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const increment = finalValue / 20;
+                const timer = setInterval(function() {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        currentValue = finalValue;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(currentValue);
+                }, 50);
+            });
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.transition = 'transform 0.2s ease-in-out';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        function refreshStats() {
+            console.log('Refreshing dashboard stats...');
+        }
+
+        setInterval(refreshStats, 300000);
+    </script>
+}
+
+@section Styles {
+    <style>
+        .border-left-primary {
+            border-left: 0.25rem solid #4e73df !important;
+        }
+
+        .border-left-success {
+            border-left: 0.25rem solid #1cc88a !important;
+        }
+
+        .border-left-info {
+            border-left: 0.25rem solid #36b9cc !important;
+        }
+
+        .border-left-warning {
+            border-left: 0.25rem solid #f6c23e !important;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #4e73df, #224abe);
+        }
+
+        .jumbotron {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline .activity-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .card {
+            transition: all 0.3s ease-in-out;
+        }
+
+            .card:hover {
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+            }
+    </style>
+}

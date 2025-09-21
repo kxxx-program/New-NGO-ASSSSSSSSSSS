@@ -15,6 +15,7 @@ public class DB : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Admin> Admins { get; set; }
     public DbSet<Member> Members { get; set; }
+    public DbSet<Organiser> Organisers { get; set; }
     public DbSet<Donation> Donations { get; set; }
 
 
@@ -79,6 +80,18 @@ public class Member : User
 {
     [MaxLength(100)]
     public string PhotoURL { get; set; }
+}
+
+public class Organiser : User
+{
+    [MaxLength(100)]
+    public string? PhotoURL { get; set; }
+    [MaxLength(200)]
+    public string OrganisationName { get; set; }
+    [MaxLength(300)]
+    public string OrganisationAddress { get; set; }
+    [MaxLength(15)]
+    public string OrganisationPhone { get; set; }
 }
 
 public class Donation

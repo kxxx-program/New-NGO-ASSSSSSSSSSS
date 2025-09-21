@@ -95,6 +95,19 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize(Roles = "Organiser")]
+    public IActionResult Organiser()
+    {
+        return View();
+    }
+
+    // GET: Home/OrganiserAndAdmin (if you want combined access)
+    [Authorize(Roles = "Organiser,Admin")]
+    public IActionResult OrganiserAndAdmin()
+    {
+        return View();
+    }
+
     //POST: Home/Email
     [HttpPost]
     public IActionResult Email(EmailVM vm)

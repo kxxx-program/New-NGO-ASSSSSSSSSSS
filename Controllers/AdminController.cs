@@ -253,4 +253,60 @@ public class AdminController : Controller
         db.SaveChanges();
         return RedirectToAction(nameof(ManageUsers));
     }
+
+    [HttpPost]
+    public IActionResult PromoteToOrganiser(string email)
+    {
+        var user = db.Users.Find(email);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var existingOrganiser = db.Organisers.Find(email);
+        if (existingOrganiser != null)
+        {
+            return BadRequest("User is already an organiser.");
+        }
+
+        var newOrganiser = new Organiser
+        {
+            Email = user.Email,
+            Hash = user.Hash,
+            Name = user.Name,
+            ParticipatedDate = user.ParticipatedDate
+        };
+
+        db.Organisers.Add(newOrganiser);
+        db.SaveChanges();
+        return RedirectToAction(nameof(ManageUsers));
+    }
+
+    [HttpPost]
+    public IActionResult DemoteFromOrganiser(string email)
+    {
+        var organiser = db.Organisers.Find(email);
+        if (organiser == null)
+        {
+            return NotFound();
+        }
+
+        db.Organisers.Remove(organiser);
+        db.SaveChanges();
+        return RedirectToAction(nameof(ManageUsers));
+    }
+
+    [HttpPost]
+    public IActionResult DeleteOrganiserAccount(string email)
+    {
+        var organiser = db.Organisers.Find(email);
+        if (organiser == null)
+        {
+            return NotFound();
+        }
+
+        db.Organisers.Remove(organiser);
+        db.SaveChanges();
+        return RedirectToAction(nameof(ManageUsers));
+    }
 }

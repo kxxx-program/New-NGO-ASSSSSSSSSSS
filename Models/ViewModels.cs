@@ -43,6 +43,73 @@ public class RegisterVM
     public IFormFile Photo { get; set; }
 }
 
+public class RegisterOrganiserVM
+{
+    [StringLength(100)]
+    [EmailAddress]
+    [Remote("CheckEmail", "Account", ErrorMessage = "Duplicated {0}.")]
+    public string Email { get; set; }
+
+    [StringLength(100, MinimumLength = 5)]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+
+    [StringLength(100, MinimumLength = 5)]
+    [Compare("Password")]
+    [DataType(DataType.Password)]
+    [Display(Name = "Confirm Password")]
+    public string Confirm { get; set; }
+
+    [StringLength(100)]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Organisation name is required.")]
+    [StringLength(200)]
+    [Display(Name = "Organisation Name")]
+    public string OrganisationName { get; set; }
+
+    [Required(ErrorMessage = "Organisation address is required.")]
+    [StringLength(300)]
+    [Display(Name = "Organisation Address")]
+    public string OrganisationAddress { get; set; }
+
+    [Required(ErrorMessage = "Organisation phone is required.")]
+    [StringLength(15)]
+    [Phone]
+    [Display(Name = "Organisation Phone")]
+    public string OrganisationPhone { get; set; }
+
+    public IFormFile? Photo { get; set; }
+}
+
+public class UpdateOrganiserProfileVM
+{
+    public string? Email { get; set; }
+
+    [StringLength(100)]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "Organisation name is required.")]
+    [StringLength(200)]
+    [Display(Name = "Organisation Name")]
+    public string OrganisationName { get; set; }
+
+    [Required(ErrorMessage = "Organisation address is required.")]
+    [StringLength(300)]
+    [Display(Name = "Organisation Address")]
+    public string OrganisationAddress { get; set; }
+
+    [Required(ErrorMessage = "Organisation phone is required.")]
+    [StringLength(15)]
+    [Phone]
+    [Display(Name = "Organisation Phone")]
+    public string OrganisationPhone { get; set; }
+
+    public string? PhotoURL { get; set; }
+
+    public IFormFile? Photo { get; set; }
+}
+
 public class UpdatePasswordVM
 {
     [StringLength(100, MinimumLength = 5)]
