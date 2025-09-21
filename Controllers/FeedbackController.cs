@@ -44,14 +44,17 @@ namespace NGO_Web_Demo.Controllers
             if (e == null) return NotFound();
 
 
-
+            var vm = new FeedbackVM
+            {
+                FeedbackID = NextId(),
+            };
 
 
             ViewBag.EventTitle = e.EventTitle; // so view can display event name
             ViewBag.EventID = eventId;
 
 
-            return View(e);
+            return View(vm);
         }
     }
 }

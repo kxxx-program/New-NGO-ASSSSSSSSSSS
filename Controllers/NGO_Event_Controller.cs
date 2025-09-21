@@ -1,12 +1,13 @@
-﻿using System.Diagnostics.Eventing.Reader;
-using Azure;
+﻿using Azure;
 using Demo.Models; // Added for Event model
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NGO_Web_Demo;
 using NGO_Web_Demo.Models;
+using System.Diagnostics.Eventing.Reader;
 using X.PagedList.Extensions;
 
 namespace NGO_Web_Demo.Controllers;
@@ -457,6 +458,26 @@ public class NGO_Event_Controller : Controller
 
         var e = db.Events.Find(id);
 
+        //-------------------Check if user can submit feedback or not-------------------------
+
+        string currentUserEmail = GetCurrentUserEmail();
+        var volunteerParticipation = db.VolunteerEvents
+        .Include(ve => ve.Volunteer)
+        .FirstOrDefault(ve => ve.EventID == id && ve.Volunteer.Email == currentUserEmail);
+
+        // Check if user already submitted feedback
+        bool hasSubmittedFeedback = false;
+        string volunteerID = null;
+
+        if (volunteerParticipation != null)
+        {
+            volunteerID = volunteerParticipation.VolunteerID;
+            hasSubmittedFeedback = db.Feedbacks.Any(f => f.EventID == id && f.VolunteerID == volunteerID);
+        }
+
+        //-----------------------------------------------------------------------------------
+
+
         if (e == null)
         {
             TempData["Info"] = "Event not found.";
@@ -474,12 +495,22 @@ public class NGO_Event_Controller : Controller
             Event_Status = e.EventStatus,
             Event_Location = e.EventLocation,
             Event_Description = e.EventDescription,
-            Event_PhotoURL = e.EventPhotoURL
+            Event_PhotoURL = e.EventPhotoURL,
+
+            UserParticipatedInEvent = volunteerParticipation != null,
+            SubmittedFeedback = hasSubmittedFeedback,
+
         };
 
         ViewBag.IsOrganiser = IsUserOrganiser();
 
         return View(vm);
+    }
+
+
+    private string GetCurrentUserEmail()
+    {
+        return User.Identity?.Name ?? "";
     }
 
     private IActionResult RedirectBasedOnUserType()

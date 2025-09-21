@@ -92,13 +92,13 @@ public class RecruitmentController : Controller
 
 
 
-        //no duplicate email and name can be submitted
-        var dupEmail = await db.Volunteers
-          .AnyAsync(v => v.Email == vm.Email && vm.EventID == eventId);
-        var dupName = await db.Volunteers
-         .AnyAsync(v => v.Name == vm.Name && vm.EventID == eventId);
+        //no duplicate email and name can be submitted for the same event
+        var dupEmail = await db.VolunteerEvents
+          .Include(ve => ve.Volunteer)
+          .AnyAsync(ve => ve.EventID == eventId && ve.Volunteer.Email == vm.Email);
 
-        if (dupEmail || dupName)
+
+        if (dupEmail)
         {
             TempData["Error"] = "This email/user already signed up for this event!";
             return RedirectToAction("RecruitingInfo");
@@ -158,6 +158,7 @@ public class RecruitmentController : Controller
                  ShiftStart = ve.ShiftStart,
                  EventCompletion = ve.EventCompletion,
                  ApprovalStatus= ve.ApprovalStatus,
+                 EventID = ve.EventID,  
              })
        .ToList();
 

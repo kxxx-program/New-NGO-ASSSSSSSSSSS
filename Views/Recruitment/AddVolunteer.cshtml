@@ -26,18 +26,7 @@ else if (ViewBag.IsEventConcluded == true)
         </a>
     </div>
 }
-else if (ViewBag.IsEventCancelled == true)
-{
-    @* Server-side check for cancelled events *@
-    <div style="color: orange; padding: 20px; text-align: center; background: #fff3cd; border: 2px solid orange; border-radius: 8px;">
-        <h2>Event <strong>@ViewBag.EventTitle</strong> has been cancelled!</h2>
-        <p>Registration is not available for cancelled events.</p>
-        <a asp-controller="NGO_Event_" asp-action="Event_Details" asp-route-id="@Model.EventID"
-           style="background: #fd7e14; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
-            Return to Event Details
-        </a>
-    </div>
-}
+
 else{
         @if (ViewBag.EventTitle != null)
         {

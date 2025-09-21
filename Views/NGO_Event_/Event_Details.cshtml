@@ -339,6 +339,23 @@
                     <a href="/Payment/Donation" class="btn btn-donate">
                         Donate (Concluded Event is Past event)
                     </a>
+                    //Feedback button
+                    @if (Model.ProvideFeedback)
+                    {
+                        <a asp-controller="Feedback" asp-action="FeedbackForm"
+                           asp-route-eventId="@Model.Event_Id"
+                           
+                           class="btn btn-feedback">
+                            Provide Feedback
+                        </a>
+                    }
+                    else if (Model.SubmittedFeedback)
+                    {
+                        <button class="btn btn-feedback" disabled>
+                            Feedback Submitted
+                        </button>
+                    }
+                    //-------------
                 }
                 else
                 {

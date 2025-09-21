@@ -321,6 +321,23 @@ public class EventDetailsVM
             return Event_Start_Date.ToString("dddd, MMMM dd, yyyy");
         }
     }
+
+
+    //For Feedback
+    public bool UserParticipatedInEvent { get; set; } = false;
+    public bool SubmittedFeedback { get; set; } = false;
+    public string? Volunteer_Id { get; set; }
+   
+
+    [Display(Name = "Provide Feedback")]
+    public bool ProvideFeedback
+    {
+        get
+        {
+            return IsPastEvent && UserParticipatedInEvent && !SubmittedFeedback;
+        }
+    }
+
 }
 
 //Payment View Model
@@ -427,6 +444,7 @@ public class VolunteerEventVM
 
 public class FeedbackVM
 {
+    public string FeedbackID { get; set; }
     public string EventID { get; set; }
     public string EventTitle { get; set; }
     public string EventLocation { get; set; }
@@ -443,6 +461,9 @@ public class FeedbackVM
     [MaxLength(1000, ErrorMessage = "Comments cannot exceed 1000 characters")]
     public string Comments { get; set; }
     public IFormFile? Photo { get; set; }
+
+    [Display(Name = "Submit Anonymously")]
+    public bool IsAnonymous { get; set; } = false;
 }
 
 
