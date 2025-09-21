@@ -337,7 +337,7 @@
                         Volunteer (Concluded Event)
                     </button>
                     <a href="/Payment/Donation" class="btn btn-donate">
-                        Donate (Concluded Event)
+                        Donate (Concluded Event is Past event)
                     </a>
                 }
                 else
@@ -347,6 +347,10 @@
                         Volunteer Now
                     </a>
                     <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Donation", "Payment", new { id = @Model.Event_Id })">Donate</button>
+
+                    <a asp-controller="Payment" asp-action="Donation" asp-route-id="@Model.Event_Id" class="btn btn-donate">
+                        Donate
+                    </a>
                 }
             </div>
         </div>

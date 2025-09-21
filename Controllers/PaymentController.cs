@@ -21,7 +21,7 @@ public class PaymentController : Controller
 
     //// Show payment page
     [Authorize]
-    public IActionResult Index(string id)
+    public IActionResult Donation(string id)
     {
         if (string.IsNullOrEmpty(id))
         {
@@ -137,4 +137,5 @@ public class PaymentController : Controller
     {
         return View("PaymentSuccess");
     }
+
 }
