@@ -393,6 +393,17 @@ public class VolunteerVM
     [Required]
     public DateTime ShiftStart { get; set; }
 
+    public DateOnly Event_End_Date { get; set; }
+
+    [Display(Name = "Is Past Event")]
+    public bool IsPastEvent
+    {
+        get
+        {
+            return Event_End_Date < DateOnly.FromDateTime(DateTime.Today);
+        }
+    }
+
 
 }
 
@@ -412,6 +423,26 @@ public class VolunteerEventVM
     public EventStatus EventCompletion { get; set; }
 
     public EventApprovalStatus ApprovalStatus { get; set; }
+}
+
+public class FeedbackVM
+{
+    public string EventID { get; set; }
+    public string EventTitle { get; set; }
+    public string EventLocation { get; set; }
+    public DateOnly EventStartDate { get; set; }
+    public DateOnly EventEndDate { get; set; }
+    public string VolunteerID { get; set; }
+    public string VolunteerName { get; set; }
+    public string VolunteerEmail { get; set; }
+
+    [Required(ErrorMessage = "Please give us a rating")]
+    [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
+    public int Rating { get; set; }
+
+    [MaxLength(1000, ErrorMessage = "Comments cannot exceed 1000 characters")]
+    public string Comments { get; set; }
+    public IFormFile? Photo { get; set; }
 }
 
 

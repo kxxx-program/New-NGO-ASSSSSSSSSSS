@@ -22,9 +22,8 @@ public class DB : DbContext
     public DbSet<Volunteer> Volunteers { get; set; }
 
     public DbSet<VolunteerEvent> VolunteerEvents { get; set; }
-//=======
-//    public DbSet<Volunteer> Volunteers { get; set; }
-//>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
+
+    public DbSet<Feedback> Feedbacks { get; set; }
 }
 
 // Entity Classes
@@ -164,25 +163,34 @@ public enum EventApprovalStatus
     Rejected
 }
 
-//=======
-//public class Volunteer
-//{
-//    [Key]
-//    public int VolunteerID { get; set; }
+//Feedback DB
+public class Feedback
+{
+    [Key, MaxLength(4)]
+    public string FeedbackID { get; set; }
 
-//    [Required]
-//    [MaxLength(100)]
-//    public string UserEmail { get; set; }
+    [Required]
+    [MaxLength(4)]
+    public string EventID { get; set; }
+    public Event Event { get; set; }
 
-//    [Required]
-//    [MaxLength(4)]
-//    public string EventID { get; set; }
+    [Required]
+    [MaxLength(4)]
+    public string VolunteerID { get; set; }
+    public Volunteer Volunteer { get; set; }
 
-//    public DateTime VolunteerDate { get; set; }
 
-//    public int Points { get; set; } = 100; // Default points for volunteering
+   
 
-//    [MaxLength(50)]
-//    public string Status { get; set; } = "Active"; // Active, Completed, Donated, etc.
-//}
-//>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
+    [Range(1, 5)]
+    public int Rating { get; set; }
+
+ 
+    [MaxLength(1000)]
+    public string Comments { get; set; }
+
+  
+    public string PhotoURL { get; set; }
+
+    public DateTime SubmittedAt { get; set; } = DateTime.Now;
+}
