@@ -99,6 +99,7 @@
                                     </a>
                                 </th>
                             }
+							<th>Donations</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -119,9 +120,7 @@
                                     }
                                 </td>
                                 <td class="fw-bold">@e.Event.EventTitle</td>
-                                <td>
-                                    <span class="badge bg-success donation-count-badge">@e.DonationCount</span>
-                                </td>
+
                                 <td>@e.Event.EventStartDate.ToString("dd/MM/yyyy")</td>
                                 <td>@e.Event.EventEndDate.ToString("dd/MM/yyyy")</td>
                                 <td>@e.Event.EventStartTime.ToString(@"hh\:mm")</td>
@@ -156,6 +155,10 @@
                                         @(e.Event.CreatedBy ?? "N/A")
                                     </td>
                                 }
+
+                                <td>
+                                    <span class="badge bg-success donation-count-badge">@e.DonationCount</span>
+                                </td>
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
