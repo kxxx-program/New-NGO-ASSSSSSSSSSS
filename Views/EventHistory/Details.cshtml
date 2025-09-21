@@ -319,9 +319,7 @@
         border-color: #ffc107;
     }
 
-        .event-header
-
-    {
+    .event-header {
         grid-template-columns: 1fr;
         gap: 0;
     }
@@ -441,71 +439,71 @@
             </div>
 
 
-    <!-- Time Details -->
-    <div class="time-details">
-        <h3 style="margin-bottom: 20px; font-size: 1.5rem;">⏱️ Event Schedule</h3>
-        <div class="time-row">
-            <span class="time-label">Start Date & Time:</span>
-            <span class="time-value">@Model.Event_Start_Date.ToString("dd/MM/yyyy") at @Model.Event_Start_Time.ToString(@"hh\:mm")</span>
-        </div>
-        <div class="time-row">
-            <span class="time-label">End Date & Time:</span>
-            <span class="time-value">@Model.Event_End_Date.ToString("dd/MM/yyyy") at @Model.Event_End_Time.ToString(@"hh\:mm")</span>
-        </div>
-        <div class="time-row">
-            <span class="time-label">Duration:</span>
-            <span class="time-value">
-                @{
-                    var duration = Model.Event_End_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_End_Time)) -
-                    Model.Event_Start_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_Start_Time));
-                }
-                @((int)duration.TotalDays) days, @duration.Hours hours
-            </span>
-        </div>
-    </div>
+            <!-- Time Details -->
+            <div class="time-details">
+                <h3 style="margin-bottom: 20px; font-size: 1.5rem;">⏱️ Event Schedule</h3>
+                <div class="time-row">
+                    <span class="time-label">Start Date & Time:</span>
+                    <span class="time-value">@Model.Event_Start_Date.ToString("dd/MM/yyyy") at @Model.Event_Start_Time.ToString(@"hh\:mm")</span>
+                </div>
+                <div class="time-row">
+                    <span class="time-label">End Date & Time:</span>
+                    <span class="time-value">@Model.Event_End_Date.ToString("dd/MM/yyyy") at @Model.Event_End_Time.ToString(@"hh\:mm")</span>
+                </div>
+                <div class="time-row">
+                    <span class="time-label">Duration:</span>
+                    <span class="time-value">
+                        @{
+                            var duration = Model.Event_End_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_End_Time)) -
+                            Model.Event_Start_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_Start_Time));
+                        }
+                        @((int)duration.TotalDays) days, @duration.Hours hours
+                    </span>
+                </div>
+            </div>
 
-    <!-- Event Details Section -->
-    <div class="event-details">
-        <div class="details-section">
-            <!-- Location -->
-            <h2 class="section-title">
-                <div class="section-icon">📍</div>
-                Location Details
-            </h2>
-            <div class="event-location">
-                @Model.Event_Location
+            <!-- Event Details Section -->
+            <div class="event-details">
+                <div class="details-section">
+                    <!-- Location -->
+                    <h2 class="section-title">
+                        <div class="section-icon">📍</div>
+                        Location Details
+                    </h2>
+                    <div class="event-location">
+                        @Model.Event_Location
+                    </div>
+                </div>
+
+                <div class="details-section" style="border-top: 1px solid #e9ecef;">
+                    <!-- Description -->
+                    <h2 class="section-title">
+                        <div class="section-icon">📝</div>
+                        About This Event
+                    </h2>
+                    <div class="event-description">
+                        @if (!string.IsNullOrEmpty(Model.Event_Description))
+                        {
+                            @Model.Event_Description
+                        }
+                        else
+                        {
+                            <em>No detailed description available for this event.</em>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="text-center">
+                <a href="@Url.Action("Index", "Home")" class="btn-back me-3">
+                    📅 Browse More Events
+                </a>
+                @if (ViewBag.IsAuthenticated)
+                {
+                    <a href="@Url.Action("MyVolunteer")" class="btn-back">
+                        🤝 My Volunteer History
+                    </a>
+                }
             </div>
         </div>
-
-        <div class="details-section" style="border-top: 1px solid #e9ecef;">
-            <!-- Description -->
-            <h2 class="section-title">
-                <div class="section-icon">📝</div>
-                About This Event
-            </h2>
-            <div class="event-description">
-                @if (!string.IsNullOrEmpty(Model.Event_Description))
-                {
-                    @Model.Event_Description
-                }
-                else
-                {
-                    <em>No detailed description available for this event.</em>
-                }
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <div class="text-center">
-        <a href="@Url.Action("Index", "Home")" class="btn-back me-3">
-            📅 Browse More Events
-        </a>
-        @if (ViewBag.IsAuthenticated)
-        {
-            <a href="@Url.Action("MyVolunteer")" class="btn-back">
-                🤝 My Volunteer History
-            </a>
-        }
-    </div>
-</div>

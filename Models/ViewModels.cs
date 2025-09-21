@@ -421,6 +421,7 @@ public class VolunteerVM
         }
     }
 
+
 }
 
 
@@ -439,8 +440,6 @@ public class VolunteerEventVM
     public EventStatus EventCompletion { get; set; }
 
     public EventApprovalStatus ApprovalStatus { get; set; }
-
-  
 }
 
 public class FeedbackVM
@@ -523,6 +522,11 @@ public class LeaderboardVM
     // Additional display properties
     public string TotalActivities => $"{TotalEvents + TotalDonations} activities";
     public string PointsBreakdown => $"V:{VolunteerPoints} + D:{DonationPoints} = {TotalPoints}";
+}
+public class MyActivitiesVM
+{
+    public List<VolunteerHistoryVM> VolunteerHistory { get; set; } = new List<VolunteerHistoryVM>();
+    public List<DonationListVM> DonationHistory { get; set; } = new List<DonationListVM>();
 }
 
 public class AdminDashboardVM
