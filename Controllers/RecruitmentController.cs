@@ -125,7 +125,7 @@ public class RecruitmentController : Controller
             EventID = eventId,
             ShiftStart = vm.ShiftStart,
             WorkHours = vm.WorkHours,
-            Points = 100,
+            Points = vm.WorkHours * 10,
             EventCompletion = EventStatus.Waiting,
             ApprovalStatus = EventApprovalStatus.Pending
         };
@@ -159,6 +159,7 @@ public class RecruitmentController : Controller
                  EventCompletion = ve.EventCompletion,
                  ApprovalStatus= ve.ApprovalStatus,
                  EventID = ve.EventID,  
+                 Points= ve.Points,
              })
        .ToList();
 

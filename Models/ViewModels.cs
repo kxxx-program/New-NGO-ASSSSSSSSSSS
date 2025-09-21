@@ -434,7 +434,7 @@ public class VolunteerEventVM
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
     public int Age { get; set; }
-    public int Points => WorkHours * 10;
+    public int Points { get; set; }
     public DateTime ShiftStart { get; set; }
     public int WorkHours { get; set; }
     public EventStatus EventCompletion { get; set; }
