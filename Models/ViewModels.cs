@@ -531,11 +531,131 @@ public class MyActivitiesVM
 
 public class AdminDashboardVM
 {
-    //public int TotalUsers { get; set; }
-    //public int TotalEvents { get; set; }
-    //public int TotalVolunteers { get; set; }
-    //public int TotalPayments { get; set; }
-    //public decimal TotalRevenue { get; set; }
-    //public List<EventSummary> UpcomingEvents { get; set; }
-    //public List<UserSummary> RecentUsers { get; set; }
+    // Dashboard Statistics
+    public int TotalUsers { get; set; }
+    public int TotalMembers { get; set; }
+    public int TotalOrganisers { get; set; }
+    public int TotalAdmins { get; set; }
+    public int TotalEvents { get; set; }
+    public int UpcomingEvents { get; set; }
+    public int OngoingEvents { get; set; }
+    public int ConcludedEvents { get; set; }
+    public int TotalVolunteers { get; set; }
+    public int PendingApprovals { get; set; }
+    public decimal TotalDonations { get; set; }
+
+    // Recent Users List
+    public List<RecentUserVM> RecentUsers { get; set; } = new List<RecentUserVM>();
+
+    // Recent Events List
+    public List<RecentEventVM> RecentEvents { get; set; } = new List<RecentEventVM>();
+}
+
+public class RecentUserVM
+{
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Role { get; set; }
+    public DateTime ParticipatedDate { get; set; }
+    public string Status { get; set; } = "Active";
+    public string PhotoURL { get; set; }
+}
+
+public class RecentEventVM
+{
+    public string EventID { get; set; }
+    public string EventTitle { get; set; }
+    public DateOnly EventStartDate { get; set; }
+    public string EventStatus { get; set; }
+    public string EventLocation { get; set; }
+    public string CreatedBy { get; set; }
+}
+
+public class EditUserVM
+{
+    public string Email { get; set; }
+
+    [Required]
+    [StringLength(100)]
+    public string Name { get; set; }
+
+    public string Role { get; set; }
+
+    public DateTime ParticipatedDate { get; set; }
+
+    // Optional fields for specific roles
+    public string? PhotoURL { get; set; }
+
+    [StringLength(200)]
+    [Display(Name = "Organisation Name")]
+    public string? OrganisationName { get; set; }
+
+    [StringLength(300)]
+    [Display(Name = "Organisation Address")]
+    public string? OrganisationAddress { get; set; }
+
+    [StringLength(15)]
+    [Phone]
+    [Display(Name = "Organisation Phone")]
+    public string? OrganisationPhone { get; set; }
+}
+
+public class UserListVM
+{
+    public string Email { get; set; }
+    public string Name { get; set; }
+    public string Role { get; set; }
+    public DateTime ParticipatedDate { get; set; }
+    public string Status { get; set; } = "Active";
+    public string? PhotoURL { get; set; }
+
+    // Additional info for display
+    public int EventsCreated { get; set; }
+    public int VolunteerParticipations { get; set; }
+    public decimal TotalDonations { get; set; }
+}
+
+public class UserDetailsVM
+{
+    public string Email { get; set; }
+    public string Name { get; set; }
+    public string Role { get; set; }
+    public DateTime ParticipatedDate { get; set; }
+    public string? PhotoURL { get; set; }
+
+    // Role-specific fields
+    public string? OrganisationName { get; set; }
+    public string? OrganisationAddress { get; set; }
+    public string? OrganisationPhone { get; set; }
+
+    // Statistics
+    public int EventsCreated { get; set; }
+    public int VolunteerParticipations { get; set; }
+    public decimal TotalDonations { get; set; }
+
+    // Activity summary
+    public List<RecentActivityItem> RecentActivities { get; set; } = new();
+}
+
+public class RecentActivityItem
+{
+    public string ActivityType { get; set; } // "Event Created", "Volunteered", "Donated"
+    public string Description { get; set; }
+    public DateTime Date { get; set; }
+    public string? RelatedId { get; set; } // Event ID, etc.
+}
+
+public class DeleteUserVM
+{
+    public string Email { get; set; }
+    public string Name { get; set; }
+    public string Role { get; set; }
+    public DateTime ParticipatedDate { get; set; }
+
+    // Dependency information
+    public bool HasDependencies { get; set; }
+    public int EventsCount { get; set; }
+    public int VolunteeringCount { get; set; }
+    public int DonationsCount { get; set; }
+    public List<string> Dependencies { get; set; } = new();
 }
