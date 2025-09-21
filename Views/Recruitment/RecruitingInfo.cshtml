@@ -1,75 +1,238 @@
 ﻿@model IEnumerable<NGO_Web_Demo.Models.VolunteerEventVM>
-
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@{
+    ViewBag.Title = "Volunteer Management";
+}
+
+<!-- Alert Messages -->
 @if (TempData["Info"] != null)
 {
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>
         @TempData["Info"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
-
 @if (TempData["Error"] != null)
 {
-    <div class="alert alert-danger">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-circle me-2"></i>
         @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 
-<h1>I guess at least it works</h1>
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="bg-success text-white p-4 rounded">
+                <h2 class="mb-0">
+                    <i class="fas fa-users me-2"></i>
+                    Volunteer Management Dashboard
+                </h2>
+                <p class="mb-0 mt-2">Manage volunteer applications and event assignments</p>
+            </div>
+        </div>
+    </div>
 
-<h3>Submitted Users:</h3>
-<table border="1" cellpadding="5">
-    <tr>
-        <th>Volunteer ID</th>
-        <th>Event</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-        <th>Age</th>
-        <th>Shift starts at</th>
-        <th>Work Hour</th>
-        <th>Rewarded points</th>
-        <th>Event completion</th>
-        <th>Current status</th>
-    </tr>
-    @foreach (var v in Model)
-    {
-        <tr>
-            <td>@v.VolunteerID</td>
-            <td>@v.EventID</td>
-            <td>@v.Name</td>
-            <td>@v.Email</td>
-            <td>@v.PhoneNumber</td>
-            <td>@v.Age</td>
-            <td>@v.ShiftStart</td>
-            <td>@v.WorkHours</td>
-            <td>@v.Points</td>
-            <td>@v.EventCompletion</td>
-            <td>@v.ApprovalStatus</td>
-            <td>
-                @if (v.ApprovalStatus == EventApprovalStatus.Pending)
-                {
-                    <form asp-action="Approve" asp-route-id="@v.Id" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
-                    </form>
-                    <form asp-action="Reject" asp-route-id="@v.Id" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-danger btn-sm">Reject</button>
-                    </form>
-                }
-                else
-                {
-                    <span class="badge bg-info">@v.ApprovalStatus</span>
-                }
-            </td>
+    <!-- Volunteer Applications Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0">
+                        <i class="fas fa-list me-2"></i>
+                        Volunteer Applications
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th><i class="fas fa-id-badge me-1"></i>Volunteer ID</th>
+                                        <th><i class="fas fa-calendar me-1"></i>Event</th>
+                                        <th><i class="fas fa-user me-1"></i>Name</th>
+                                        <th><i class="fas fa-envelope me-1"></i>Email</th>
+                                        <th><i class="fas fa-phone me-1"></i>Phone</th>
+                                        <th><i class="fas fa-birthday-cake me-1"></i>Age</th>
+                                        <th><i class="fas fa-clock me-1"></i>Shift Start</th>
+                                        <th><i class="fas fa-hourglass-half me-1"></i>Work Hours</th>
+                                        <th><i class="fas fa-star me-1"></i>Points</th>
+                                        <th><i class="fas fa-tasks me-1"></i>Completion</th>
+                                        <th><i class="fas fa-flag me-1"></i>Status</th>
+                                        <th><i class="fas fa-cog me-1"></i>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var v in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <span class="badge bg-secondary">@v.VolunteerID</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-primary">@v.EventID</span>
+                                            </td>
+                                            <td>
+                                                <strong>@v.Name</strong>
+                                            </td>
+                                            <td>
+                                                <a href="mailto:@v.Email" class="text-decoration-none">
+                                                    @v.Email
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a href="tel:@v.PhoneNumber" class="text-decoration-none">
+                                                    @v.PhoneNumber
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-light text-dark">@v.Age years</span>
+                                            </td>
+                                            <td>
+                                                @v.ShiftStart.ToString("dd/MM/yyyy HH:mm")
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-info">@v.WorkHours hours</span>
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-warning text-dark">
+                                                    <i class="fas fa-star me-1"></i>@v.Points
+                                                </span>
+                                            </td>
+                                            <td>
+                                                @if (v.EventCompletion == EventStatus.Completed)
+                                                {
+                                                    <span class="badge bg-success">
+                                                        <i class="fas fa-check me-1"></i>Completed
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-warning">
+                                                        <i class="fas fa-hourglass-half me-1"></i>In Progress
+                                                    </span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @switch (v.ApprovalStatus)
+                                                {
+                                                    case EventApprovalStatus.Pending:
+                                                        <span class="badge bg-warning">
+                                                            <i class="fas fa-clock me-1"></i>Pending
+                                                        </span>
+                                                        break;
+                                                    case EventApprovalStatus.Approved:
+                                                        <span class="badge bg-success">
+                                                            <i class="fas fa-check me-1"></i>Approved
+                                                        </span>
+                                                        break;
+                                                    case EventApprovalStatus.Rejected:
+                                                        <span class="badge bg-danger">
+                                                            <i class="fas fa-times me-1"></i>Rejected
+                                                        </span>
+                                                        break;
+                                                    default:
+                                                        <span class="badge bg-secondary">@v.ApprovalStatus</span>
+                                                        break;
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (v.ApprovalStatus == EventApprovalStatus.Pending)
+                                                {
+                                                    <div class="btn-group" role="group">
+                                                        <form asp-action="Approve" asp-route-id="@v.Id" method="post" class="d-inline">
+                                                            <button type="submit" class="btn btn-success btn-sm"
+                                                                    onclick="return confirm('Are you sure you want to approve this volunteer application?')">
+                                                                <i class="fas fa-check me-1"></i>Approve
+                                                            </button>
+                                                        </form>
+                                                        <form asp-action="Reject" asp-route-id="@v.Id" method="post" class="d-inline">
+                                                            <button type="submit" class="btn btn-danger btn-sm ms-1"
+                                                                    onclick="return confirm('Are you sure you want to reject this volunteer application?')">
+                                                                <i class="fas fa-times me-1"></i>Reject
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">
+                                                        <i class="fas fa-check-circle me-1"></i>Processed
+                                                    </span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-users text-muted" style="font-size: 4rem;"></i>
+                            <h4 class="mt-3 text-muted">No Volunteer Applications</h4>
+                            <p class="text-muted">There are currently no volunteer applications to review.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </tr>
+    <!-- Call to Action Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card bg-light border-0">
+                <div class="card-body text-center py-5">
+                    <i class="fas fa-hands-helping text-primary" style="font-size: 4rem;"></i>
+                    <h3 class="mt-3 mb-3">Looking for More Volunteers?</h3>
+                    <p class="lead text-muted mb-4">
+                        Help spread the word about your events and recruit more volunteers to make a greater impact in the community.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-primary btn-lg">
+                            <i class="fas fa-home me-2"></i>Go to Home
+                        </a>
+                        <a asp-controller="NGO_Event_" asp-action="Event_Index" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-calendar me-2"></i>View Events
+                        </a>
+                        <a asp-controller="ContentPosting" asp-action="Posting_Insert" class="btn btn-outline-success btn-lg">
+                            <i class="fas fa-plus me-2"></i>Create Post
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table th {
+        font-weight: 600;
+        font-size: 0.9rem;
     }
-</table>
 
-<h1>Volunteer Recruitment!!</h1>
-<h3>Help out this event by landing your hand!</h3>
+    .table td {
+        vertical-align: middle;
+    }
 
-<p>
-    <a asp-controller="Home" asp-action="Index" style="padding: 8px 16px; background-color: #007bff; color: white; text-decoration: none; border-radius: 4px;">Click Me</a>
-</p>
+    .card {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: none;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+    }
+
+    .btn-group .btn {
+        font-size: 0.8rem;
+    }
+</style>

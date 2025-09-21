@@ -1,52 +1,75 @@
 ﻿@model NGO_Web_Demo.Models.UpdateOrganiserProfileVM
 @{
-    ViewData["Title"] = "Update Organiser Profile";
+    ViewBag.Title = "Update Organiser Profile";
 }
 
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
-            <div class="card">
-                <div class="card-header bg-info text-white">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white text-center">
                     <h4 class="mb-0">
                         <i class="fas fa-user-edit me-2"></i>Update Organiser Profile
                     </h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-4">
                     <form asp-action="UpdateOrganiserProfile" method="post" enctype="multipart/form-data">
-                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
-                        @if (!string.IsNullOrEmpty(Model.PhotoURL))
-                        {
-                            <div class="row mb-4">
-                                <div class="col-md-3">
-                                    <div class="text-center">
-                                        <h6 class="text-muted">Current Photo</h6>
+                        <!-- Current Profile Section -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <h6 class="text-muted mb-3">
+                                        <i class="fas fa-user-circle me-2"></i>Current Profile
+                                    </h6>
+                                    @if (!string.IsNullOrEmpty(Model.PhotoURL))
+                                    {
                                         <img src="~/photos/@Model.PhotoURL" alt="Current Profile Photo"
-                                             class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
-                                    </div>
+                                             class="img-thumbnail border border-info" style="max-width: 150px; max-height: 150px; object-fit: cover;" />
+                                        <div class="form-text text-success mt-2">
+                                            <i class="fas fa-check-circle me-1"></i>Profile Photo
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="border border-info d-flex align-items-center justify-content-center bg-light"
+                                             style="width: 150px; height: 150px; margin: 0 auto;">
+                                            <i class="fas fa-user text-muted" style="font-size: 3rem;"></i>
+                                        </div>
+                                        <div class="form-text text-warning mt-2">
+                                            <i class="fas fa-exclamation-triangle me-1"></i>No Photo
+                                        </div>
+                                    }
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="d-flex flex-column justify-content-center h-100">
-                                        <p class="text-muted mb-2">
-                                            <i class="fas fa-info-circle me-2"></i>
-                                            This is your current profile photo. Upload a new photo below to replace it.
+                            </div>
+                            <div class="col-md-9">
+                                <div class="d-flex flex-column justify-content-center h-100">
+                                    <div class="alert alert-info mb-3">
+                                        <h6 class="alert-heading mb-2">
+                                            <i class="fas fa-info-circle me-2"></i>Account Information
+                                        </h6>
+                                        <p class="mb-1">
+                                            <strong>Email:</strong> @Model.Email
                                         </p>
-                                        <small class="text-secondary">
-                                            <strong>Email:</strong> @Model.Email (Cannot be changed)
-                                        </small>
+                                        <small class="text-muted">Email address cannot be changed for security reasons.</small>
+                                    </div>
+
+                                    <div class="card bg-light border-0">
+                                        <div class="card-body p-3">
+                                            <h6 class="card-title mb-2">
+                                                <i class="fas fa-lightbulb me-2"></i>Profile Tips
+                                            </h6>
+                                            <ul class="list-unstyled small mb-0">
+                                                <li><i class="fas fa-check text-success me-2"></i>Keep your information up to date</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Use a professional profile photo</li>
+                                                <li><i class="fas fa-check text-success me-2"></i>Provide accurate organisation details</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        }
-                        else
-                        {
-                            <div class="alert alert-info mb-4">
-                                <i class="fas fa-camera me-2"></i>
-                                <strong>Email:</strong> @Model.Email (Cannot be changed)
-                                <br>You don't have a profile photo yet. Upload one below!
-                            </div>
-                        }
+                        </div>
 
                         <div class="mb-4">
                             <h5 class="text-secondary border-bottom pb-2">
@@ -54,17 +77,32 @@
                             </h5>
 
                             <div class="mb-3">
-                                <label asp-for="Name" class="form-label">Full Name</label>
+                                <label asp-for="Name" class="form-label">
+                                    <i class="fas fa-user me-2"></i>Full Name
+                                </label>
                                 <input asp-for="Name" class="form-control" placeholder="Enter your full name" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
 
                             <div class="mb-3">
-                                <label asp-for="Photo" class="form-label">Update Profile Photo</label>
+                                <label asp-for="Photo" class="form-label">
+                                    <i class="fas fa-camera me-2"></i>Update Profile Photo
+                                </label>
                                 <input asp-for="Photo" class="form-control" type="file" accept="image/*" />
                                 <span asp-validation-for="Photo" class="text-danger"></span>
                                 <div class="form-text">
                                     Leave empty to keep current photo. Supported formats: JPG, PNG, GIF. Max size: 2MB
+                                </div>
+
+                                <!-- Photo Preview -->
+                                <div id="new-photo-preview-container" class="mt-3" style="display: none;">
+                                    <div class="alert alert-success p-2">
+                                        <h6 class="alert-heading mb-2">
+                                            <i class="fas fa-eye me-2"></i>New Photo Preview
+                                        </h6>
+                                        <img id="new-photo-preview" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" alt="New Photo Preview">
+                                        <div class="form-text text-success mt-1">This will replace your current profile photo</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,20 +113,26 @@
                             </h5>
 
                             <div class="mb-3">
-                                <label asp-for="OrganisationName" class="form-label">Organisation Name</label>
+                                <label asp-for="OrganisationName" class="form-label">
+                                    <i class="fas fa-building me-2"></i>Organisation Name
+                                </label>
                                 <input asp-for="OrganisationName" class="form-control" placeholder="Enter organisation name" />
                                 <span asp-validation-for="OrganisationName" class="text-danger"></span>
                             </div>
 
                             <div class="mb-3">
-                                <label asp-for="OrganisationAddress" class="form-label">Organisation Address</label>
-                                <textarea asp-for="OrganisationAddress" class="form-control" rows="4"
+                                <label asp-for="OrganisationAddress" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Organisation Address
+                                </label>
+                                <textarea asp-for="OrganisationAddress" class="form-control" rows="4" id="OrganisationAddress"
                                           placeholder="Enter complete organisation address"></textarea>
                                 <span asp-validation-for="OrganisationAddress" class="text-danger"></span>
                             </div>
 
                             <div class="mb-3">
-                                <label asp-for="OrganisationPhone" class="form-label">Organisation Phone</label>
+                                <label asp-for="OrganisationPhone" class="form-label">
+                                    <i class="fas fa-phone me-2"></i>Organisation Phone
+                                </label>
                                 <input asp-for="OrganisationPhone" class="form-control" placeholder="Enter organisation phone number" />
                                 <span asp-validation-for="OrganisationPhone" class="text-danger"></span>
                                 <div class="form-text">Example: +60123456789 or 03-12345678</div>
@@ -114,16 +158,21 @@
                     </form>
                 </div>
 
-                <div class="card-footer">
+                <div class="card-footer bg-light">
                     <div class="row text-center">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <a asp-action="UpdatePassword" class="btn btn-warning btn-sm">
                                 <i class="fas fa-key me-2"></i>Change Password
                             </a>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <a href="mailto:support@ngo.com" class="btn btn-info btn-sm">
                                 <i class="fas fa-envelope me-2"></i>Need Help?
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a asp-action="Logout" class="btn btn-outline-danger btn-sm">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
                             </a>
                         </div>
                     </div>
@@ -139,30 +188,25 @@
     }
 
     <script>
+        // Photo preview functionality
         document.getElementById('Photo').addEventListener('change', function(e) {
-            if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            const previewContainer = document.getElementById('new-photo-preview-container');
+            const preview = document.getElementById('new-photo-preview');
+
+            if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const existingPreview = document.getElementById('new-photo-preview');
-                    if (existingPreview) {
-                        existingPreview.remove();
-                    }
-
-                    const preview = document.createElement('div');
-                    preview.id = 'new-photo-preview';
-                    preview.className = 'mt-3 text-center';
-                    preview.innerHTML = `
-                        <h6 class="text-success">New Photo Preview:</h6>
-                        <img src="${e.target.result}" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" />
-                        <div class="form-text text-success">This will be your new profile photo</div>
-                    `;
-
-                    e.target.parentNode.appendChild(preview);
+                    preview.src = e.target.result;
+                    previewContainer.style.display = 'block';
                 };
-                reader.readAsDataURL(e.target.files[0]);
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
             }
         });
 
+        // Auto-resize textarea
         const textarea = document.getElementById('OrganisationAddress');
         if (textarea) {
             textarea.addEventListener('input', function() {

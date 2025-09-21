@@ -4,41 +4,125 @@
     ViewBag.Title = "Account | Register";
 }
 
-<form class="form" method="post" enctype="multipart/form-data">
-    <div asp-validation-summary="ModelOnly"></div>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-plus me-2"></i>Register as Member
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" autofocus>
-    <span asp-validation-for="Email"></span>
+                        <div class="mb-4">
+                            <h5 class="text-secondary border-bottom pb-2">
+                                <i class="fas fa-user me-2"></i>Account Information
+                            </h5>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password">
-    <span asp-validation-for="Password"></span>
+                            <div class="mb-3">
+                                <label asp-for="Email" class="form-label">
+                                    <i class="fas fa-envelope me-2"></i>Email Address
+                                </label>
+                                <input asp-for="Email" class="form-control" placeholder="Enter your email address" autofocus>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
 
-    <label asp-for="Confirm"></label>
-    <input asp-for="Confirm">
-    <span asp-validation-for="Confirm"></span>
+                            <div class="mb-3">
+                                <label asp-for="Password" class="form-label">
+                                    <i class="fas fa-lock me-2"></i>Password
+                                </label>
+                                <input asp-for="Password" class="form-control" placeholder="Enter password (minimum 5 characters)">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
 
-    <label asp-for="Name"></label>
-    <input asp-for="Name">
-    <span asp-validation-for="Name"></span>
+                            <div class="mb-3">
+                                <label asp-for="Confirm" class="form-label">
+                                    <i class="fas fa-lock me-2"></i>Confirm Password
+                                </label>
+                                <input asp-for="Confirm" class="form-control" placeholder="Re-enter password">
+                                <span asp-validation-for="Confirm" class="text-danger"></span>
+                            </div>
+                        </div>
 
-    <label asp-for="Photo"></label>
-    <label class="upload">
-        <small>Select Photo...</small>
-        <input asp-for="Photo" accept="image/jpeg,image/png" hidden>
-        <img src="/images/photo.jpg">
-    </label>
-    <span asp-validation-for="Photo"></span>
+                        <div class="mb-4">
+                            <h5 class="text-secondary border-bottom pb-2">
+                                <i class="fas fa-id-card me-2"></i>Personal Information
+                            </h5>
 
-    <section>
-        <button>Register</button>
-        <button type="reset">Reset</button>
-    </section>
-</form>
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label">
+                                    <i class="fas fa-user me-2"></i>Full Name
+                                </label>
+                                <input asp-for="Name" class="form-control" placeholder="Enter your full name">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
 
-@section foot {
+                            <div class="mb-3">
+                                <label asp-for="Photo" class="form-label">
+                                    <i class="fas fa-camera me-2"></i>Profile Photo (Optional)
+                                </label>
+                                <input asp-for="Photo" class="form-control" type="file" accept="image/jpeg,image/png">
+                                <span asp-validation-for="Photo" class="text-danger"></span>
+                                <div class="form-text">Supported formats: JPG, PNG. Max size: 2MB</div>
+
+                                <!-- Photo Preview -->
+                                <div id="photo-preview-container" class="mt-2" style="display: none;">
+                                    <img id="photo-preview" class="img-thumbnail" style="max-width: 150px; max-height: 150px;" alt="Photo Preview">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>Register
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary">
+                                <i class="fas fa-undo me-2"></i>Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light">
+                    <small class="text-muted">
+                        Already have an account?
+                        <a href="/Account/Login" class="text-decoration-none">
+                            <i class="fas fa-sign-in-alt me-1"></i>Login here
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
     <script>
         $.validator.setDefaults({ ignore: '' });
+
+        // Photo preview functionality
+        document.getElementById('Photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const previewContainer = document.getElementById('photo-preview-container');
+            const preview = document.getElementById('photo-preview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        });
+
+        // Reset form functionality
+        document.querySelector('button[type="reset"]').addEventListener('click', function() {
+            document.getElementById('photo-preview-container').style.display = 'none';
+        });
     </script>
 }
