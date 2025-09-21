@@ -311,7 +311,7 @@ public class EventDetailsVM
             return Event_End_Date < DateOnly.FromDateTime(DateTime.Today);
         }
     }
-    
+
 
     [Display(Name = "Formatted Date")]
     public string FormattedDate
@@ -327,7 +327,7 @@ public class EventDetailsVM
     public bool UserParticipatedInEvent { get; set; } = false;
     public bool SubmittedFeedback { get; set; } = false;
     public string? Volunteer_Id { get; set; }
-   
+
 
     [Display(Name = "Provide Feedback")]
     public bool ProvideFeedback
@@ -658,4 +658,10 @@ public class DeleteUserVM
     public int VolunteeringCount { get; set; }
     public int DonationsCount { get; set; }
     public List<string> Dependencies { get; set; } = new();
+}
+
+public class EventWithDonationCountVM
+{
+    public Event Event { get; set; }
+    public int DonationCount { get; set; }
 }

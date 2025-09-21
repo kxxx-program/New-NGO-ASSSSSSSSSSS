@@ -5,12 +5,65 @@
     ViewBag.Title = "Event Details | " + Model.Event_Title;
 }
 
-@if (TempData["Success"] != null)
+@* Check for both TempData for a success message and DonationAmount for a receipt *@
+@if (TempData["Success"] != null && TempData["DonationAmount"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 20px auto; max-width: 1200px; border-radius: 8px;">
-        <i class="fas fa-check-circle me-2"></i>
-        <strong>@TempData["Success"]</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    // Retrieve the necessary data from TempData
+    var donationAmount = TempData["DonationAmount"] as decimal?;
+    var donorEmail = TempData["DonorEmail"] as string;
+    var donationTime = TempData["DonationTime"] as DateTime?;
+
+    <div class="alert alert-success alert-dismissible fade show donation-receipt-container" role="alert" style="margin: 20px auto; max-width: 1200px; border-radius: 8px;">
+        <div class="d-flex justify-content-between align-items-start">
+            <div>
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>@TempData["Success"]</strong>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-success btn-sm me-2" onclick="printReceipt()" id="printReceiptBtn">
+                    <i class="fas fa-print me-1"></i> Print Receipt
+                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div id="printableReceipt" style="display: none;">
+            <div class="receipt-content">
+                <div class="receipt-header">
+                    <h2>NGO Donation Receipt</h2>
+                    <hr>
+                </div>
+                <div class="receipt-body">
+                    <div class="receipt-row">
+                        <strong>Receipt Date:</strong> @(donationTime?.ToString("dd/MM/yyyy HH:mm") ?? DateTime.Now.ToString("dd/MM/yyyy HH:mm"))
+                    </div>
+                    <div class="receipt-row">
+                        <strong>Donor:</strong> @(User.Identity.IsAuthenticated? User.Identity.Name : donorEmail)
+                    </div>
+                    <div class="receipt-row">
+                        <strong>Donation Amount:</strong> RM @(donationAmount?.ToString("0.00") ?? "N/A")
+                    </div>
+                    <div class="receipt-row">
+                        <strong>Event:</strong> @Model.Event_Title
+                    </div>
+                    <div class="receipt-row">
+                        <strong>Location:</strong> @Model.Event_Location
+                    </div>
+                    <div class="receipt-row">
+                        <strong>Event Date:</strong> @Model.Event_Start_Date.ToString("dd/MM/yyyy")
+                    </div>
+                    <hr>
+                    <div class="receipt-success">
+                        @TempData["Success"]
+                    </div>
+                    <hr>
+                    <div class="receipt-footer">
+                        <p>Thank you for your generous donation!</p>
+                        <p><small>This receipt serves as confirmation of your donation to our NGO.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 }
 
@@ -233,34 +286,96 @@
             color: white;
         }
 
+    /* Print Receipt Styles */
+    .receipt-content {
+        font-family: 'Courier New', monospace;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background: white;
+    }
+
+    .receipt-header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .receipt-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+    .receipt-row {
+        margin-bottom: 10px;
+        padding: 5px 0;
+    }
+
+    .receipt-success {
+        text-align: center;
+        color: #27ae60;
+        font-weight: bold;
+        margin: 20px 0;
+    }
+
+    .receipt-footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Print-specific styles */
+    @@media print {
+        body * {
+            visibility: hidden;
+        }
+
+        #printableReceipt, #printableReceipt * {
+            visibility: visible;
+        }
+
+        #printableReceipt {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block !important;
+            padding: 20px;
+        }
+
+        .receipt-content {
+            box-shadow: none;
+            border: 1px solid #000;
+            page-break-inside: avoid;
+        }
+    }
+
     /* Responsive Design */
-    .event-header {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
+    @@media (max-width: 768px) {
+        .event-header {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
 
-    .event-image {
-        height: 250px;
-        border-radius: 12px 12px 0 0;
-    }
+        .event-image {
+            height: 250px;
+            border-radius: 12px 12px 0 0;
+        }
 
-    .event-image-placeholder {
-        height: 250px;
-        border-radius: 12px 12px 0 0;
-    }
+        .event-image-placeholder {
+            height: 250px;
+            border-radius: 12px 12px 0 0;
+        }
 
-    .event-title {
-        font-size: 2rem;
-    }
+        .event-title {
+            font-size: 2rem;
+        }
 
-    .action-buttons {
-        flex-direction: column;
-    }
+        .action-buttons {
+            flex-direction: column;
+        }
 
-    .event-details-container {
-        padding: 10px;
-    }
-
+        .event-details-container {
+            padding: 10px;
+        }
     }
 </style>
 
@@ -276,9 +391,7 @@
         }
     </div>
 
-    <!-- Event Header Section -->
     <div class="event-header">
-        <!-- Event Image -->
         <div class="event-image-container">
             @if (!string.IsNullOrEmpty(Model.Event_PhotoURL))
             {
@@ -292,7 +405,6 @@
             }
         </div>
 
-        <!-- Event Info -->
         <div class="event-info">
             <div>
                 <h1 class="event-title">@Model.Event_Title</h1>
@@ -306,7 +418,7 @@
                 </div>
 
                 <div>
-					<span>@Model.Event_Start_Time to @Model.Event_End_Time</span>
+                    <span>@Model.Event_Start_Time to @Model.Event_End_Time</span>
                 </div>
 
                 @if (Model.IsPastEvent)
@@ -329,7 +441,6 @@
                 }
             </div>
 
-            <!-- Action Buttons -->
             <div class="action-buttons">
                 @if (Model.IsPastEvent)
                 {
@@ -344,7 +455,6 @@
                     {
                         <a asp-controller="Feedback" asp-action="FeedbackForm"
                            asp-route-eventId="@Model.Event_Id"
-                           
                            class="btn btn-feedback">
                             Provide Feedback
                         </a>
@@ -360,7 +470,7 @@
                 else
                 {
 
-                    <a asp-controller="Recruitment" asp-action="AddVolunteer" asp-route-eventId = "@Model.Event_Id" class="btn btn-volunteer">
+                    <a asp-controller="Recruitment" asp-action="AddVolunteer" asp-route-eventId="@Model.Event_Id" class="btn btn-volunteer">
                         Volunteer Now
                     </a>
 
@@ -373,10 +483,8 @@
         </div>
     </div>
 
-    <!-- Event Details Section -->
     <div class="event-details">
         <div class="details-section">
-            <!-- Location -->
             <h2 class="section-title">
                 Location
             </h2>
@@ -386,7 +494,6 @@
         </div>
 
         <div class="details-section" style="border-top: 1px solid #e9ecef;">
-            <!-- Description -->
             <h2 class="section-title">
                 Description
             </h2>
@@ -396,3 +503,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    function printReceipt() {
+        window.print();
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

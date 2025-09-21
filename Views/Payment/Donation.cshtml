@@ -32,7 +32,19 @@
 
     <div class="form-group mb-3">
         <label asp-for="Amount" class="form-label">Donation Amount (RM)</label>
-        <input asp-for="Amount" class="form-control" placeholder="Enter amount" />
+
+        <!-- Quick Amount Selection Buttons -->
+        <div class="mb-3">
+            <small class="text-muted">Quick select:</small><br>
+            <div class="btn-group" role="group" aria-label="Quick amount selection">
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="setAmount(10)">RM 10</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="setAmount(25)">RM 25</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="setAmount(50)">RM 50</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="setAmount(100)">RM 100</button>
+            </div>
+        </div>
+
+        <input asp-for="Amount" class="form-control" placeholder="Enter amount or select above" id="donationAmount" />
         <span asp-validation-for="Amount" class="text-danger"></span>
     </div>
 
@@ -58,6 +70,21 @@
 </form>
 
 <script>
+    // Function to set donation amount from preset buttons
+    function setAmount(amount) {
+        document.getElementById("donationAmount").value = amount;
+
+        // Add visual feedback - highlight selected button briefly
+        event.target.classList.add("btn-primary");
+        event.target.classList.remove("btn-outline-primary");
+
+        setTimeout(function() {
+            event.target.classList.remove("btn-primary");
+            event.target.classList.add("btn-outline-primary");
+        }, 200);
+    }
+
+    // Existing payment method toggle functionality
     document.getElementById("paymentMethod").addEventListener("change", function () {
         let ccField = document.getElementById("creditCardField");
         if (this.value === "Credit Card" || this.value === "Debit Card") {

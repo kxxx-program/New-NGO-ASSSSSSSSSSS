@@ -23,81 +23,90 @@ public class NGO_Event_Controller : Controller
         this.hp = hp;
     }
 
+    // In NGO_Event_Controller.cs
+
     // GET: NGO_Event_/Event_Index
     [Authorize(Roles = "Admin,Organiser")]
-
     public IActionResult Event_Index(string? name, string? sort, string? dir, int page = 1)
     {
-            // (1) Searching ------------------------
-            ViewBag.Name = name = name?.Trim() ?? "";
+        // (1) Searching ------------------------
+        ViewBag.Name = name = name?.Trim() ?? "";
 
-            // Start with all events
-            var query = db.Events.AsQueryable();
+        // Start with all events and LEFT JOIN with Donations to get the count
+        var query = from e in db.Events
+                    join d in db.Donations on e.EventID equals d.EventId into eventDonations
+                    from ed in eventDonations.DefaultIfEmpty()
+                    group ed by e into grouped
+                    select new EventWithDonationCountVM
+                    {
+                        Event = grouped.Key,
+                        DonationCount = grouped.Count(d => d != null)
+                    };
 
-            // Apply role-based filtering
-            var currentUserEmail = User.Identity?.Name;
-            var currentUser = db.Users.FirstOrDefault(u => u.Email == currentUserEmail);
+        // Apply role-based filtering
+        var currentUserEmail = User.Identity?.Name;
+        var currentUser = db.Users.FirstOrDefault(u => u.Email == currentUserEmail);
 
-            if (currentUser is Organiser) // If user is a Member, show only their events
-            {
-                query = query.Where(e => e.CreatedBy == currentUserEmail);
-                ViewBag.UserRole = "Organiser";
-                ViewBag.ShowingMyEvents = true;
-            }
-            else if (currentUser is Admin) // If user is Admin, show all events
-            {
-                // No filtering needed for Admin
-                ViewBag.UserRole = "Admin";
-                ViewBag.ShowingMyEvents = false;
-            }
-            else
-            {
-                // If user is not authenticated or not found, redirect to login
-                return RedirectToAction("Login", "Account");
-            }
-
-            // Apply search filter
-            var searched = query.Where(e => e.EventTitle.Contains(name));
-
-            // (2) Sorting --------------------------
-            ViewBag.Sort = sort;
-            ViewBag.Dir = dir;
-
-            Func<Event, object> fn = sort switch
-            {
-                "Photo" => e => e.EventPhotoURL,
-                "Event Name" => e => e.EventTitle,
-                "Start Date" => e => e.EventStartDate,
-                "End Date" => e => e.EventEndDate,
-                "Start Time" => e => e.EventStartTime,
-                "End Time" => e => e.EventEndTime,
-                "Location" => e => e.EventLocation,
-                "Description" => e => e.EventDescription,
-                "Status" => e => e.EventStatus,
-                "Created By" => e => e.CreatedBy,
-                _ => e => e.EventID,
-            };
-
-            var sorted = dir == "des" ?
-                         searched.OrderByDescending(fn) :
-                         searched.OrderBy(fn);
-
-            // (3) Paging ---------------------------
-            if (page < 1)
-            {
-                return RedirectToAction(null, new { name, sort, dir, page = 1 });
-            }
-
-            var m = sorted.ToPagedList(page, 10);
-
-            if (page > m.PageCount && m.PageCount > 0)
-            {
-                return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
-            }
-
-            return View(m);
+        if (currentUser is Organiser)
+        {
+            query = query.Where(e => e.Event.CreatedBy == currentUserEmail);
+            ViewBag.UserRole = "Organiser";
+            ViewBag.ShowingMyEvents = true;
         }
-    
+        else if (currentUser is Admin)
+        {
+            ViewBag.UserRole = "Admin";
+            ViewBag.ShowingMyEvents = false;
+        }
+        else
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        // Apply search filter
+        var searched = query.Where(e => e.Event.EventTitle.Contains(name));
+
+        // (2) Sorting --------------------------
+        ViewBag.Sort = sort;
+        ViewBag.Dir = dir;
+
+        // The sorting function now needs to work with the new EventWithDonationCountVM
+        Func<EventWithDonationCountVM, object> fn = sort switch
+        {
+            "Photo" => e => e.Event.EventPhotoURL,
+            "Event Name" => e => e.Event.EventTitle,
+            "Start Date" => e => e.Event.EventStartDate,
+            "End Date" => e => e.Event.EventEndDate,
+            "Start Time" => e => e.Event.EventStartTime,
+            "End Time" => e => e.Event.EventEndTime,
+            "Location" => e => e.Event.EventLocation,
+            "Description" => e => e.Event.EventDescription,
+            "Status" => e => e.Event.EventStatus,
+            "Created By" => e => e.Event.CreatedBy,
+            "Donations" => e => e.DonationCount, // New sorting for donation count
+            _ => e => e.Event.EventID,
+        };
+
+        var sorted = dir == "des" ?
+                     searched.OrderByDescending(fn) :
+                     searched.OrderBy(fn);
+
+        // (3) Paging ---------------------------
+        if (page < 1)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = 1 });
+        }
+
+        var m = sorted.ToPagedList(page, 10);
+
+        if (page > m.PageCount && m.PageCount > 0)
+        {
+            return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
+        }
+
+        return View(m);
+    }
+
 
     // GET: NGO_Event_/CheckId - Fixed for AJAX validation
     public JsonResult CheckId(string Event_Id)

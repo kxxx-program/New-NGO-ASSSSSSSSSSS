@@ -1,0 +1,140 @@
+﻿@using NGO_Web_Demo.Models
+@model List<DonationListVM>
+
+@{
+    ViewBag.Title = "Donation Management";
+    // This is optional but good practice to use an Admin layout if you have one
+    // Layout = "_AdminLayout";
+}
+
+@* Everything outside of the C# block should be the content to be rendered in the body *@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 sidebar">
+            <h5 class="text-white text-center">NGO Admin</h5>
+            <a href="@Url.Action("Admin", "Home")">Dashboard</a>
+            <a href="@Url.Action("Event_Index", "NGO_Event_")">Manage Events</a>
+            <a href="@Url.Action("DonationList", "Payment")" class="active">Manage Donations</a>
+            <a href="@Url.Action("Logout", "Account")">Logout</a>
+        </nav>
+
+        <main class="col-md-10 p-4">
+            <h2>Donation Management</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <div class="card text-bg-primary">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Donations</h5>
+                            <p class="card-text fs-4">
+                                RM @(ViewBag.TotalDonations != null ? ((decimal)ViewBag.TotalDonations).ToString("N2") : "0.00")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-bg-success">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Count</h5>
+                            <p class="card-text fs-4">@(ViewBag.TotalCount ?? 0) donations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-bg-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Today's Donations</h5>
+                            <p class="card-text fs-4">
+                                RM @(ViewBag.TodayDonations != null ? ((decimal)ViewBag.TodayDonations).ToString("N2") : "0.00")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Recent Donations</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Donor</th>
+                                    <th>Event</th>
+                                    <th>Amount</th>
+                                    <th>Payment Method</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var donation in Model)
+                                {
+                                    <tr>
+                                        <td>#@donation.DonationID</td>
+                                        <td>@donation.UserEmail</td>
+                                        <td>
+                                            <strong>@donation.EventTitle</strong><br>
+                                            <small>@donation.EventID</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success">
+                                                RM @donation.Amount.ToString("N2")
+                                            </span>
+                                        </td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(donation.PaymentMethod))
+                                            {
+                                                if (donation.PaymentMethod == "Credit Card")
+                                                {
+                                                    <span class="badge bg-primary">Credit Card</span>
+                                                }
+                                                else if (donation.PaymentMethod == "Debit Card")
+                                                {
+                                                    <span class="badge bg-primary">Debit Card</span>
+                                                }
+                                                else if (donation.PaymentMethod == "Online Banking")
+                                                {
+                                                    <span class="badge bg-info">Online Banking</span>
+                                                }
+                                                else if (donation.PaymentMethod == "E-wallet")
+                                                {
+                                                    <span class="badge bg-warning">E-wallet</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">@donation.PaymentMethod</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <span class="badge bg-secondary">Unknown</span>
+                                            }
+                                        </td>
+                                        <td>@donation.DonationDate.ToString("dd/MM/yyyy HH:mm")</td>
+                                        <td>
+                                            <span class="badge bg-success">
+                                                @(string.IsNullOrEmpty(donation.Status) ? "Completed" : donation.Status)
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <h4 class="text-muted">No donations found</h4>
+                            <p class="text-muted">Donations will appear here once users make donations.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

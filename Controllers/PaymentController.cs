@@ -46,7 +46,7 @@ public class PaymentController : Controller
             UserEmail = u.Email
         };
 
-        return View("../NGO_Event_/Event_Payment", model);
+        return View("../Payment/Donation", model);
     }
 
     // Process donation
@@ -94,8 +94,9 @@ public class PaymentController : Controller
             db.SaveChanges();
 
             TempData["Success"] = $"Thank you for donating RM {model.Amount} to {model.EventTitle}!";
-
-            // Redirect to event details
+            TempData["DonationAmount"] = model.Amount.ToString("0.00");
+            TempData["DonorEmail"] = model.UserEmail;
+            TempData["DonationTime"] = DateTime.Now.ToString("o");
             return RedirectToAction("Event_Details", "NGO_Event_", new { id = model.EventID });
         }
         catch (Exception ex)

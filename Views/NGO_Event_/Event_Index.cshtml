@@ -1,56 +1,65 @@
 ﻿@using X.PagedList
 @using X.PagedList.Mvc.Core
-@model IPagedList<Event>
+@model IPagedList<EventWithDonationCountVM>
 
 @{
     ViewBag.Title = "Event | Index";
-    // Add "Created By" field for admins only
+    // Add "Donations" field and "Created By" field for admins only
     string[] fields = ViewBag.UserRole == "Admin"
-        ? new[] { "Photo", "Event Name", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status", "Created By" }
-        : new[] { "Photo", "Event Name", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status" };
+        ? new[] { "Photo", "Event Name", "Donations", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status", "Created By" }
+        : new[] { "Photo", "Event Name", "Donations", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status" };
 }
 
 @section head {
     <style>
-          .event-image {
-              width: 100px;
-              height: 100px;
-              object-fit: cover;
-              border: 1px solid #ddd;
-              border-radius: 8px;
-          }
+        .event-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
 
-        /*   .role-indicator {
-              margin-bottom: 20px;
-              padding: 10px 15px;
-              border-radius: 8px;
-              font-weight: 500;
-          }
+        .donation-count-badge {
+            font-size: 0.75em;
+            padding: 0.3em 0.6em;
+            vertical-align: super;
+            margin-left: 5px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 50px;
+        }
 
-          .role-admin {
-              background-color: #d4edda;
-              color: #155724;
-              border: 1px solid #c3e6cb;
-          }
+        .role-indicator {
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
 
-          .role-member {
-              background-color: #d1ecf1;
-              color: #0c5460;
-              border: 1px solid #bee5eb;
-          }
+        .role-admin {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
 
-          .created-by-column {
-              font-style: italic;
-              color: #6c757d;
-          } */
+        .role-organiser {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .created-by-column {
+            font-style: italic;
+            color: #6c757d;
+        }
     </style>
 }
 
-<!-- Role Indicator -->
 @if (ViewBag.ShowingMyEvents == true)
 {
-    <div class="role-indicator role-member">
-        <i class="fas fa-user"></i> <strong>Member View:</strong> Showing only events you created (@Model.TotalItemCount record(s))
+    <div class="role-indicator role-organiser">
+        <i class="fas fa-user-shield"></i> <strong>Organiser View:</strong> Showing only events you created (@Model.TotalItemCount record(s))
     </div>
 }
 else if (ViewBag.UserRole == "Admin")
@@ -122,9 +131,9 @@ else if (ViewBag.UserRole == "Admin")
             {
                 <tr>
                     <td>
-                        @if (!string.IsNullOrEmpty(e.EventPhotoURL))
+                        @if (!string.IsNullOrEmpty(e.Event.EventPhotoURL))
                         {
-                            <img src="/events/@e.EventPhotoURL" class="event-image" alt="@e.EventTitle">
+                            <img src="/events/@e.Event.EventPhotoURL" class="event-image" alt="@e.Event.EventTitle">
                         }
                         else
                         {
@@ -133,25 +142,30 @@ else if (ViewBag.UserRole == "Admin")
                             </div>
                         }
                     </td>
-                    <td class="fw-semibold">@e.EventTitle</td>
-                    <td>@e.EventStartDate.ToString("dd/MM/yyyy")</td>
-                    <td>@e.EventEndDate.ToString("dd/MM/yyyy")</td>
-                    <td>@e.EventStartTime.ToString(@"hh\:mm")</td>
-                    <td> @e.EventEndTime.ToString(@"hh\:mm")</td>
-                    <td>@e.EventLocation</td>
+                    <td class="fw-semibold">
+                        @e.Event.EventTitle
+                    </td>
                     <td>
-                        @if (e.EventDescription?.Length > 50)
+                        <span class="badge bg-success donation-count-badge">@e.DonationCount</span>
+                    </td>
+                    <td>@e.Event.EventStartDate.ToString("dd/MM/yyyy")</td>
+                    <td>@e.Event.EventEndDate.ToString("dd/MM/yyyy")</td>
+                    <td>@e.Event.EventStartTime.ToString(@"hh\:mm")</td>
+                    <td> @e.Event.EventEndTime.ToString(@"hh\:mm")</td>
+                    <td>@e.Event.EventLocation</td>
+                    <td>
+                        @if (e.Event.EventDescription?.Length > 50)
                         {
-                            <span title="@e.EventDescription">@e.EventDescription.Substring(0, 50)...</span>
+                            <span title="@e.Event.EventDescription">@e.Event.EventDescription.Substring(0, 50)...</span>
                         }
                         else
                         {
-                            @e.EventDescription
+                            @e.Event.EventDescription
                         }
                     </td>
                     <td>
                         @{
-                            string statusClass = e.EventStatus?.ToLower() switch
+                            string statusClass = e.Event.EventStatus?.ToLower() switch
                             {
                                 "upcoming" => "badge bg-success",
                                 "ongoing" => "badge bg-warning text-dark",
@@ -159,26 +173,26 @@ else if (ViewBag.UserRole == "Admin")
                                 _ => "badge bg-secondary"
                             };
                         }
-                        <span class="@statusClass">@e.EventStatus</span>
+                        <span class="@statusClass">@e.Event.EventStatus</span>
                     </td>
 
                     @* Show Created By column only for admins *@
                     @if (ViewBag.UserRole == "Admin")
                     {
                         <td class="created-by-column">
-                            @(e.CreatedBy ?? "N/A")
+                            @(e.Event.CreatedBy ?? "N/A")
                         </td>
                     }
 
                     <td>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-sm btn-info" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.EventID })" title="View Details">
+                            <button class="btn btn-sm btn-info" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.Event.EventID })" title="View Details">
                                 Details
                             </button>
-                            <button class="btn btn-sm btn-danger" data-get="@Url.Action("Event_Update", new { id = e.EventID })" title="Edit">
+                            <button class="btn btn-sm btn-danger" data-get="@Url.Action("Event_Update", new { id = e.Event.EventID })" title="Edit">
                                 Update
                             </button>
-                            <button class="btn btn-sm btn-secondary" data-post="@Url.Action("Delete", new { id = e.EventID })"
+                            <button class="btn btn-sm btn-secondary" data-post="@Url.Action("Delete", new { id = e.Event.EventID })"
                                     onclick="return confirm('Are you sure you want to delete this event?')" title="Delete">
                                 Delete
                             </button>
