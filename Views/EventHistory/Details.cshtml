@@ -1,5 +1,4 @@
-﻿@* @using Azure
-@model EventDetailsVM
+﻿@model EventDetailsVM
 
 @{
     ViewBag.Title = "Event Details | " + Model.Event_Title;
@@ -15,109 +14,148 @@
 
     .event-header {
         display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 30px;
-        margin-bottom: 30px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        grid-template-columns: 400px 1fr;
+        gap: 40px;
+        margin-bottom: 40px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         overflow: hidden;
     }
 
     .event-image {
         width: 100%;
-        height: 300px;
+        height: 400px;
         object-fit: cover;
-        border-radius: 12px 0 0 12px;
     }
 
     .event-image-placeholder {
         width: 100%;
-        height: 300px;
+        height: 400px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 18px;
-        border-radius: 12px 0 0 12px;
+        font-size: 20px;
+        font-weight: bold;
     }
 
     .event-info {
-        padding: 30px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
     .event-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-weight: bold;
         color: #2c3e50;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         line-height: 1.2;
     }
 
-    .event-date {
-        font-size: 1.3rem;
-        color: #3498db;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
+    .event-meta {
+        margin-bottom: 25px;
     }
 
-    .date-icon {
-        width: 24px;
-        height: 24px;
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+    }
+
+    .meta-icon {
+        width: 30px;
+        height: 30px;
         background: #3498db;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: bold;
+        flex-shrink: 0;
+    }
+
+    .meta-content {
+        color: #2c3e50;
+        font-weight: 500;
     }
 
     .event-status {
         display: inline-block;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 0.9rem;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 1rem;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        border: 2px solid;
     }
 
     .status-upcoming {
         background-color: #e8f5e8;
         color: #27ae60;
-        border: 2px solid #27ae60;
+        border-color: #27ae60;
     }
 
-    .status-past {
-        background-color: #f8f8f8;
-        color: #7f8c8d;
-        border: 2px solid #bdc3c7;
+    .status-ongoing {
+        background-color: #fff3cd;
+        color: #856404;
+        border-color: #ffc107;
+    }
+
+    .status-concluded {
+        background-color: #f8d7da;
+        color: #721c24;
+        border-color: #dc3545;
+    }
+
+    .countdown-box {
+        background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        color: white;
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        display: block;
+    }
+
+    .countdown-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        margin-top: 5px;
     }
 
     .action-buttons {
         display: flex;
         gap: 15px;
         margin-top: auto;
+        flex-wrap: wrap;
     }
 
     .btn {
-        padding: 12px 24px;
+        padding: 15px 30px;
         border: none;
-        border-radius: 8px;
-        font-size: 1rem;
+        border-radius: 25px;
+        font-size: 1.1rem;
         font-weight: bold;
         text-decoration: none;
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
         flex: 1;
+        min-width: 200px;
+        display: inline-block;
     }
 
     .btn-volunteer {
@@ -126,8 +164,8 @@
     }
 
         .btn-volunteer:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(238, 90, 82, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(238, 90, 82, 0.4);
             color: white;
             text-decoration: none;
         }
@@ -138,8 +176,8 @@
     }
 
         .btn-donate:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(68, 160, 141, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(68, 160, 141, 0.4);
             color: white;
             text-decoration: none;
         }
@@ -151,93 +189,150 @@
         box-shadow: none;
     }
 
+        .btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
     .event-details {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         overflow: hidden;
+        margin-bottom: 30px;
     }
 
     .details-section {
-        padding: 30px;
+        padding: 40px;
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         color: #2c3e50;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 15px;
     }
 
-    .location-icon, .description-icon {
-        width: 24px;
-        height: 24px;
+    .section-icon {
+        width: 35px;
+        height: 35px;
         background: #3498db;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .event-location {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         color: #2c3e50;
         background: #f8f9fa;
-        padding: 15px;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 5px solid #3498db;
+        font-weight: 500;
     }
 
     .event-description {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         line-height: 1.8;
         color: #34495e;
         white-space: pre-wrap;
         background: #f8f9fa;
-        padding: 20px;
-        border-radius: 8px;
-        border-left: 4px solid #3498db;
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 5px solid #3498db;
     }
 
     .back-button {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .btn-back {
-        background: #6c757d;
+        background: linear-gradient(135deg, #6c757d, #545b62);
         color: white;
-        padding: 10px 20px;
-        border-radius: 6px;
+        padding: 12px 25px;
+        border-radius: 25px;
         text-decoration: none;
         font-weight: 500;
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
+        display: inline-block;
     }
 
         .btn-back:hover {
-            background: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(108, 117, 125, 0.3);
             text-decoration: none;
             color: white;
         }
 
-    /* Responsive Design */
-    .event-header {
+    .time-details {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+    }
+
+    .time-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+    }
+
+        .time-row:last-child {
+            margin-bottom: 0;
+        }
+
+    .time-label {
+        font-weight: 500;
+        opacity: 0.9;
+    }
+
+    .time-value {
+        font-weight: bold;
+    }
+
+    .alert-box {
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        border-left: 5px solid;
+    }
+
+    .alert-info {
+        background: #d1ecf1;
+        color: #0c5460;
+        border-color: #17a2b8;
+    }
+
+    .alert-warning {
+        background: #fff3cd;
+        color: #856404;
+        border-color: #ffc107;
+    }
+
+        .event-header
+
+    {
         grid-template-columns: 1fr;
         gap: 0;
     }
 
-    .event-image {
-        height: 250px;
-        border-radius: 12px 12px 0 0;
-    }
-
+    .event-image,
     .event-image-placeholder {
         height: 250px;
-        border-radius: 12px 12px 0 0;
+    }
+
+    .event-info {
+        padding: 25px;
     }
 
     .event-title {
@@ -248,11 +343,22 @@
         flex-direction: column;
     }
 
-    .event-details-container {
-        padding: 10px;
+    .btn {
+        min-width: auto;
     }
 
+    .event-details-container {
+        padding: 15px;
     }
+
+    .details-section {
+        padding: 25px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
 </style>
 
 <div class="event-details-container">
@@ -271,7 +377,7 @@
             else
             {
                 <div class="event-image-placeholder">
-                    <span>📅 Event Image</span>
+                    📅 @Model.Event_Title
                 </div>
             }
         </div>
@@ -281,53 +387,80 @@
             <div>
                 <h1 class="event-title">@Model.Event_Title</h1>
 
-                <div class="event-date">
-                    <div class="date-icon">📅</div>
-                    <span>@Model.Event_Start_Date</span>
-                    <span>@Model.Event_End_Date</span>
+                <div class="event-meta">
+                    <div class="meta-item">
+                        <div class="meta-icon">📅</div>
+                        <div class="meta-content">
+                            @Model.Event_Start_Date.ToString("dddd, MMMM dd, yyyy")
+                            @if (Model.Event_Start_Date != Model.Event_End_Date)
+                            {
+                                <span> - @Model.Event_End_Date.ToString("MMMM dd, yyyy")</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="meta-item">
+                        <div class="meta-icon">⏰</div>
+                        <div class="meta-content">
+                            @Model.Event_Start_Time.ToString(@"hh\:mm") - @Model.Event_End_Time.ToString(@"hh\:mm")
+                        </div>
+                    </div>
+
+                    <div class="meta-item">
+                        <div class="meta-icon">📍</div>
+                        <div class="meta-content">@Model.Event_Location</div>
+                    </div>
                 </div>
 
+                <!-- Countdown or Past Event Notice -->
                 @if (Model.IsPastEvent)
                 {
                     <div class="event-status status-past">
-                        📋 Past Event
+                        Concluded Event
                     </div>
                 }
                 else if (Model.DaysUntilEvent == 0)
                 {
                     <div class="event-status status-upcoming">
-                        🎉 Event is Today!
+                        Event is Today!
                     </div>
                 }
                 else if (Model.DaysUntilEvent > 0)
                 {
                     <div class="event-status status-upcoming">
-                        ⏰ @Model.DaysUntilEvent days to go
+                        @Model.DaysUntilEvent days to go
+                    </div>
+                }
+                else if (Model.IsPastEvent)
+                {
+                    <div class="alert-box alert-info">
+                        <strong>📋 This event has concluded.</strong><br>
+                        Thank you to all who participated!
                     </div>
                 }
             </div>
 
-            <!-- Action Buttons -->
-            <div class="action-buttons">
-                @if (Model.IsPastEvent)
-                {
-                    <button class="btn btn-volunteer" disabled>
-                        👥 Volunteer (Past Event)
-                    </button>
-                    <a href="/NGO_Event_/Event_Payment" class="btn btn-donate">
-                        💝 Donate (Past Event)
-                    </a>
+
+    <!-- Time Details -->
+    <div class="time-details">
+        <h3 style="margin-bottom: 20px; font-size: 1.5rem;">⏱️ Event Schedule</h3>
+        <div class="time-row">
+            <span class="time-label">Start Date & Time:</span>
+            <span class="time-value">@Model.Event_Start_Date.ToString("dd/MM/yyyy") at @Model.Event_Start_Time.ToString(@"hh\:mm")</span>
+        </div>
+        <div class="time-row">
+            <span class="time-label">End Date & Time:</span>
+            <span class="time-value">@Model.Event_End_Date.ToString("dd/MM/yyyy") at @Model.Event_End_Time.ToString(@"hh\:mm")</span>
+        </div>
+        <div class="time-row">
+            <span class="time-label">Duration:</span>
+            <span class="time-value">
+                @{
+                    var duration = Model.Event_End_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_End_Time)) -
+                    Model.Event_Start_Date.ToDateTime(TimeOnly.FromTimeSpan(Model.Event_Start_Time));
                 }
-                else
-                {
-                    <a href="#" class="btn btn-volunteer" onclick="alert('Volunteer registration feature coming soon!')">
-                        👥 Volunteer Now
-                    </a>
-                    <a href="@Url.Action("Event_Payment")" class="btn btn-donate" onclick="alert('Donation feature coming soon!')">
-                        💝 Donate Now
-                    </a>
-                }
-            </div>
+                @((int)duration.TotalDays) days, @duration.Hours hours
+            </span>
         </div>
     </div>
 
@@ -336,8 +469,8 @@
         <div class="details-section">
             <!-- Location -->
             <h2 class="section-title">
-                <div class="location-icon">📍</div>
-                Location
+                <div class="section-icon">📍</div>
+                Location Details
             </h2>
             <div class="event-location">
                 @Model.Event_Location
@@ -347,12 +480,32 @@
         <div class="details-section" style="border-top: 1px solid #e9ecef;">
             <!-- Description -->
             <h2 class="section-title">
-                <div class="description-icon">📝</div>
-                Description
+                <div class="section-icon">📝</div>
+                About This Event
             </h2>
             <div class="event-description">
-                @Model.Event_Description
+                @if (!string.IsNullOrEmpty(Model.Event_Description))
+                {
+                    @Model.Event_Description
+                }
+                else
+                {
+                    <em>No detailed description available for this event.</em>
+                }
             </div>
         </div>
     </div>
-</div> *@
+
+    <!-- Navigation -->
+    <div class="text-center">
+        <a href="@Url.Action("Index", "Home")" class="btn-back me-3">
+            📅 Browse More Events
+        </a>
+        @if (ViewBag.IsAuthenticated)
+        {
+            <a href="@Url.Action("MyVolunteer")" class="btn-back">
+                🤝 My Volunteer History
+            </a>
+        }
+    </div>
+</div>

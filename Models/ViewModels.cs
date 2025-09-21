@@ -466,39 +466,64 @@ public class FeedbackVM
     public bool IsAnonymous { get; set; } = false;
 }
 
+public class VolunteerHistoryVM
+{
+    public int VolunteerEventID { get; set; }
+    public string EventID { get; set; }
+    public string EventTitle { get; set; }
+    public string EventLocation { get; set; }
+    public DateOnly EventStartDate { get; set; }
+    public DateOnly EventEndDate { get; set; }
+    public DateTime ShiftStart { get; set; }
+    public int WorkHours { get; set; }
+    public int Points { get; set; }
+    public EventStatus EventCompletion { get; set; }
+    public EventApprovalStatus ApprovalStatus { get; set; }
+    public bool IsPastEvent { get; set; }
 
-//=======
-//    @*  Volunteer View Model (CHIEN SIN TESTING VM)
-//public class VolunteerVM
-//{
-//    public int VolunteerID { get; set; }
-//    public string UserEmail { get; set; }
-//    public string EventID { get; set; }
-//    public string EventTitle { get; set; }
-//    public DateTime EventDate { get; set; }
-//    public string EventLocation { get; set; }
-//    public DateTime VolunteerDate { get; set; }
-//    public int Points { get; set; }
-//    public string Status { get; set; }
-//    public bool IsPastEvent => EventDate < DateTime.Today;
-//}
+    public string FormattedEventDate => EventStartDate.ToString("dd MMM yyyy");
+    public string FormattedShiftStart => ShiftStart.ToString("dd MMM yyyy HH:mm");
+    public string StatusBadgeClass => ApprovalStatus switch
+    {
+        EventApprovalStatus.Approved => "badge bg-success",
+        EventApprovalStatus.Pending => "badge bg-warning text-dark",
+        EventApprovalStatus.Rejected => "badge bg-danger",
+        _ => "badge bg-secondary"
+    };
+}
 
-//// Leaderboard View Model
-//public class LeaderboardVM
-//{
-//    public int Rank { get; set; }
-//    public string UserEmail { get; set; }
-//    public string UserName { get; set; }
-//    public int TotalPoints { get; set; }
-//    public int TotalEvents { get; set; }
-//    public DateTime LastActivity { get; set; }
+// Replace your LeaderboardVM in ViewModels.cs with this updated version:
+public class LeaderboardVM
+{
+    public int Rank { get; set; }
+    public string UserEmail { get; set; } = "";
+    public string UserName { get; set; } = "";
 
-//    // Helper properties for display
-//    public string DisplayName => string.IsNullOrEmpty(UserName) ? UserEmail : UserName;
-//    public string LastActivityFormatted => LastActivity.ToString("dd MMM yyyy");
-//} // *@
-//>>>>>>> 4d67e1af2d65d6d0fe6771e4e80d63ff54221b05
+    // Separate point tracking
+    public int VolunteerPoints { get; set; } // Points from volunteering
+    public int DonationPoints { get; set; }  // Points from donations (RM1 = 1pt)
+    public int TotalPoints { get; set; }     // Combined total
 
+    // Activity tracking
+    public int TotalEvents { get; set; }     // Number of volunteer events
+    public int TotalDonations { get; set; }  // Number of donations made
+    public DateTime LastActivity { get; set; }
+
+    // Display helpers
+    public string DisplayName => string.IsNullOrEmpty(UserName) ? UserEmail : UserName;
+    public string LastActivityFormatted => LastActivity.ToString("dd MMM yyyy");
+    public string RankBadgeClass => Rank switch
+    {
+        1 => "rank-gold",
+        2 => "rank-silver",
+        3 => "rank-bronze",
+        _ => "rank-other"
+    };
+
+    // Additional display properties
+    public string TotalActivities => $"{TotalEvents + TotalDonations} activities";
+    public string PointsBreakdown => $"V:{VolunteerPoints} + D:{DonationPoints} = {TotalPoints}";
+}
 
 public class AdminDashboardVM
 {

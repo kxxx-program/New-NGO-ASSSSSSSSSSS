@@ -1,104 +1,369 @@
-﻿@* @model IEnumerable<Event>
+﻿@model X.PagedList.IPagedList<Demo.Models.Event>
 
 @{
-    ViewBag.Title = "Event | History";
+    ViewBag.Title = "Event History";
 }
 
-@section head {
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <style>
-        .event-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+<style>
+    .event-card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-            .event-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            }
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
-        .event-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .event-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
 
-        .no-image {
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            height: 200px;
-        }
+    .no-image {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        height: 200px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-        .card-body h5.card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #343a40;
-        }
+    .card-body {
+        padding: 20px;
+    }
 
-        .card-body .card-text {
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
+    .event-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        line-height: 1.3;
+    }
 
-        .card-body .badge {
-            font-size: 0.8rem;
-        }
-    </style>
-} *@
+    .event-info {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-@* <h1>@ViewBag.Title</h1>
-<p>@Model.Count() record(s)</p>
-<p>
-    <a href="@Url.Action("Event_Insert", "NGO_Event_")" class="btn btn-primary">Add New Event</a>
-</p>
- *@
-@* <div class="row">
-    @foreach (var e in Model)
-    {
+    .info-icon {
+        width: 16px;
+        height: 16px;
+        background: #3498db;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 10px;
+        flex-shrink: 0;
+    }
+
+    .event-description {
+        color: #555;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .status-upcoming {
+        background: #e8f5e8;
+        color: #27ae60;
+        border: 1px solid #27ae60;
+    }
+
+    .status-ongoing {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffc107;
+    }
+
+    .status-concluded {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #dc3545;
+    }
+
+    .btn-details {
+        background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+        border: none;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-details:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(68, 160, 141, 0.3);
+        color: white;
+    }
+
+    .search-section {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+    }
+
+    .sort-links {
+        margin-bottom: 20px;
+    }
+
+    .sort-links a {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 2px;
+        background: #f8f9fa;
+        color: #495057;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .sort-links a:hover {
+        background: #e9ecef;
+        color: #212529;
+    }
+
+    .sort-links a.active {
+        background: #007bff;
+        color: white;
+    }
+
+    .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 20px;
+        border-radius: 15px;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .stats-row {
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        text-align: center;
+    }
+</style>
+
+<div class="page-header">
+    <h1 class="page-title">📅 Event History</h1>
+    <p class="page-subtitle">Browse through all our past and upcoming events</p>
+</div>
+
+<div class="stats-row">
+    <div class="row">
         <div class="col-md-4">
-            <div class="card event-card">
-                @if (!string.IsNullOrEmpty(e.EventPhotoURL))
-                {
-                    <img src="/events/@e.EventPhotoURL" class="card-img-top event-image" alt="@e.EventTitle">
-                }
-                else
-                {
-                    <div class="no-image">
-                        <small>No Image Available</small>
-                    </div>
-                }
+            <h3>@Model.TotalItemCount</h3>
+            <p>Total Events</p>
+        </div>
+        <div class="col-md-4">
+            <h3>@Model.Where(e => e.EventStatus == "Upcoming").Count()</h3>
+            <p>Upcoming Events</p>
+        </div>
+        <div class="col-md-4">
+            <h3>@Model.Where(e => e.EventStatus == "Concluded").Count()</h3>
+            <p>Past Events</p>
+        </div>
+    </div>
+</div>
 
-                <div class="card-body">
-                    <h5 class="card-title">@e.EventTitle</h5>
-                    <p class="card-text">
-                        <i class="bi bi-geo-alt"></i> @e.EventLocation
-                    </p>
-                    <p class="card-text">
-                        <i class="bi bi-calendar"></i> @e.EventStartDate.ToString("dd MMMM yyyy")
-                    </p>
-                    <p class="card-text">
-                        <i class="bi bi-calendar"></i> @e.EventEndDate.ToString("dd MMMM yyyy")
-                    </p>
-                    <p class="card-text">
-                        @(e.EventDescription?.Length > 100 ? e.EventDescription.Substring(0, 100) + "..." : e.EventDescription)
-                    </p>
+<div class="search-section">
+    <form method="get">
+        <div class="row align-items-end">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Search Events</label>
+                <input type="text" id="name" name="name" value="@ViewBag.Name"
+                       class="form-control" placeholder="Search by event title or location...">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary">🔍 Search</button>
+            </div>
+            <div class="col-md-3">
+                <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Clear</a>
+            </div>
+        </div>
+    </form>
+</div>
 
-                    <hr />
+<div class="sort-links">
+    <strong>Sort by:</strong>
+    <a href="@Url.Action("Index", new { name = ViewBag.Name, sort = "Title", dir = ViewBag.Dir == "desc" ? "" : "desc" })"
+       class="@(ViewBag.Sort == "Title" ? "active" : "")">Title</a>
+    <a href="@Url.Action("Index", new { name = ViewBag.Name, sort = "StartDate", dir = ViewBag.Dir == "desc" ? "" : "desc" })"
+       class="@(ViewBag.Sort == "StartDate" ? "active" : "")">Start Date</a>
+    <a href="@Url.Action("Index", new { name = ViewBag.Name, sort = "Location", dir = ViewBag.Dir == "desc" ? "" : "desc" })"
+       class="@(ViewBag.Sort == "Location" ? "active" : "")">Location</a>
+    <a href="@Url.Action("Index", new { name = ViewBag.Name, sort = "Status", dir = ViewBag.Dir == "desc" ? "" : "desc" })"
+       class="@(ViewBag.Sort == "Status" ? "active" : "")">Status</a>
+</div>
 
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="badge bg-secondary">Event ID: @e.EventID</span>
-                        <div class="btn-group">
-                            <a href="@Url.Action("Details", "EventHistory", new { id = e.EventID })" class="btn btn-sm btn-info text-white">Details</a>
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var e in Model)
+        {
+            // Calculate the values for each event dynamically
+            var isPastEvent = e.EventEndDate < DateOnly.FromDateTime(DateTime.Today);
+            var daysUntilEvent = isPastEvent ? -1 : (int)(e.EventStartDate.ToDateTime(TimeOnly.MinValue) - DateTime.Today).TotalDays;
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card event-card">
+                    @if (!string.IsNullOrEmpty(e.EventPhotoURL))
+                    {
+                        <img src="/events/@e.EventPhotoURL" class="event-image" alt="@e.EventTitle">
+                    }
+                    else
+                    {
+                        <div class="no-image">
+                            📅 @e.EventTitle
+                        </div>
+                    }
+
+                    <div class="card-body">
+                        <h5 class="event-title">@e.EventTitle</h5>
+
+                        <div class="event-info">
+                            <div class="info-icon">📍</div>
+                            <span>@e.EventLocation</span>
+                        </div>
+
+                        <div class="event-info">
+                            <div class="info-icon">📅</div>
+                            <span>@e.EventStartDate.ToString("dd MMM yyyy") - @e.EventEndDate.ToString("dd MMM yyyy")</span>
+                        </div>
+
+                        <div class="event-info">
+                            <div class="info-icon">⏰</div>
+                            <span>@e.EventStartTime.ToString(@"hh\:mm") - @e.EventEndTime.ToString(@"hh\:mm")</span>
+                        </div>
+
+                        <div class="event-description">
+                            @(e.EventDescription?.Length > 100 ? e.EventDescription.Substring(0, 100) + "..." : e.EventDescription)
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+
+                            @if (isPastEvent)
+                            {
+                                <div class="status-badge status-concluded">
+                                    Concluded
+                                </div>
+                            }
+                            else if (daysUntilEvent == 0)
+                            {
+                                <div class="status-badge status-ongoing">
+                                    Today!
+                                </div>
+                            }
+                            else if (daysUntilEvent > 0)
+                            {
+                                <div class="status-badge status-upcoming">
+                                    @daysUntilEvent days to go
+                                </div>
+                            }
+                            <a href="@Url.Action("Details", new { id = e.EventID })" class="btn btn-details">
+                                View Details →
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+    </div>
+
+    @if (Model.PageCount > 1)
+    {
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page = Model.PageNumber - 1 })">
+                            Previous
+                        </a>
+                    </li>
+                }
+
+                @for (int i = Math.Max(1, Model.PageNumber - 2); i <= Math.Min(Model.PageCount, Model.PageNumber + 2); i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page = i })">
+                            @i
+                        </a>
+                    </li>
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <li class="page-item">
+                        <a class="page-link" href="@Url.Action("Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page = Model.PageNumber + 1 })">
+                            Next
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
     }
-</div> *@
+}
+else
+{
+    <div class="text-center py-5">
+        <div class="mb-3" style="font-size: 4rem; opacity: 0.3;">📅</div>
+        <h3>No Events Found</h3>
+        <p class="text-muted">@(string.IsNullOrEmpty(ViewBag.Name) ? "No events are available yet." : "No events match your search criteria.")</p>
+        @if (!string.IsNullOrEmpty(ViewBag.Name))
+        {
+            <a href="@Url.Action("Index")" class="btn btn-primary">Show All Events</a>
+        }
+    </div>
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="text-center mt-5">
+        <a href="@Url.Action("MyVolunteer")" class="btn btn-info me-3">
+            🤝 My Volunteer History
+        </a>
+        <a href="@Url.Action("Leaderboard")" class="btn btn-warning">
+            🏆 View Leaderboard
+        </a>
+    </div>
+}
