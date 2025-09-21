@@ -1,8 +1,15 @@
 ﻿@model NGO_Web_Demo.Models.VolunteerVM
 
+
 @{
     ViewBag.Title = "Join as Volunteer";
 }
+
+@if (ViewBag.EventTitle != null)
+{
+    <h4>Sign up as Volunteer for <strong>@ViewBag.EventTitle</strong>!</h4>
+}
+
 
 
 <h1>Volunteer Recruitment</h1>
@@ -11,10 +18,10 @@
 
 
 <form asp-action="AddVolunteer" asp-controller="Recruitment" method="post">
-    
+    <input type="hidden" name="eventId" value="@ViewBag.EventID" />
     <div>
         <label asp-for="VolunteerID">ID</label>
-        <input asp-for="VolunteerID" autofocus data-upper>
+        <input asp-for="VolunteerID" autofocus data-upper readonly>
         <span asp-validation-for="VolunteerID"></span>
     </div>
     <div>
@@ -38,18 +45,19 @@
         <input asp-for="Age" type="number">
         <span asp-validation-for="Age"></span>
     </div>
-
-    @* <div>
+    <div>
         <label asp-for="ShiftStart"></label>
-        <input asp-for="ShiftStart" type="number">
+        <input asp-for="ShiftStart" 
+                    type="datetime-local"
+                    min="@ViewBag.EventStart"
+                    max="@ViewBag.EventEnd" />
         <span asp-validation-for="ShiftStart"></span>
     </div>
     <div>
-        <label asp-for="WorkHours">Hours you would like to work</label>
-        <input asp-for="WorkHours" type="number" class="form-control" min="1" max="12" />
-        <span asp-validation-for="WorkHours" class="text-danger"></span>
-    </div> *@
-    
+        <label asp-for="WorkHours"></label>
+        <input asp-for="WorkHours" type="number">
+        <span asp-validation-for="WorkHours"></span>
+    </div>
 
 
 
@@ -57,10 +65,6 @@
             <button>Submit</button>
             <button type="reset">Reset</button>
         </section>
-
-
-
-
 
 </form>
 
@@ -78,6 +82,10 @@
 }
 
 <a asp-action="RecruitingInfo">View All Volunteers</a>
+
+
+
+
 
 
 

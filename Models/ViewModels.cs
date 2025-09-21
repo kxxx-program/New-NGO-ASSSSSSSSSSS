@@ -277,6 +277,7 @@ public class PaymentVM
 public class VolunteerVM
 {
     public string VolunteerID { get; set; }
+    public string EventID { get; set; }
 
     [Required(ErrorMessage = "Name is required.")]
     [StringLength(100, ErrorMessage = "Too Long! >:( (100 character max)")]
@@ -295,23 +296,31 @@ public class VolunteerVM
     [Range(18, 120, ErrorMessage = "Age must be between 18 and 120")]
     public int Age { get; set; }
 
-    public string Event_Id { get; set;}
+    [Required]
+    [Range(1, 12, ErrorMessage = "Work hours must be between 1 and 12")]
+    public int WorkHours { get; set; }
 
+    [Required]
+    [DataType(DataType.DateTime)]
+    public DateTime ShiftStart { get; set; }
 
 
 }
 
-//Many to many relationship as volunteer can recruit for many event and event can have many recruited volunteer
-public enum EventStatus { Pending, Completed, Cancelled }
 
 public class VolunteerEventVM
 {
-    public string VolunteerName { get; set; }
-    public string EventName { get; set; }
-    public int Point { get; set; }
+    public string VolunteerID { get; set; }
+    public string EventID { get; set; }
+
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string PhoneNumber { get; set; }
+    public int Age { get; set; }
+    public int Points => WorkHours * 10;
     public DateTime ShiftStart { get; set; }
     public int WorkHours { get; set; }
-    public EventStatus EventCompletion { get; set; }
+    public EventStatus EventCompletion { get; set; } = EventStatus.Waiting;
 }
 
 
