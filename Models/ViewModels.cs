@@ -260,15 +260,38 @@ public class EventDetailsVM
 
 public class PaymentVM
 {
+    [Required]
+    public string EventID { get; set; }
+
+    public string EventTitle { get; set; }
+    public string EventLocation { get; set; }
+    public string UserEmail { get; set; }
+
+    [Required(ErrorMessage = "Amount is required.")]
+    [Range(0.01, double.MaxValue, ErrorMessage = "Amount must be greater than zero.")]
+    public decimal Amount { get; set; }
+
+    [Required(ErrorMessage = "Payment method is required.")]
+    public string PaymentMethod { get; set; }
+
+    [CreditCard(ErrorMessage = "Invalid credit card number.")]
+    public string? CreditCardNumber { get; set; }
+
+    public DateTime DonationDate { get; set; }
+    public string? Status { get; set; }
+}
+
+// ViewModel for displaying donations in a list
+public class DonationListVM
+{
+    public int DonationID { get; set; }
+    public string UserEmail { get; set; }
     public string EventID { get; set; }
     public string EventTitle { get; set; }
-    public DateTime ParticipatedDate { get; set; }
-    public string EventLocation { get; set; }
-
-    //Payment Fields
     public decimal Amount { get; set; }
     public string PaymentMethod { get; set; }
-    public string? CreditCardNumber { get; set; }
+    public DateTime DonationDate { get; set; }
+    public string Status { get; set; } = "Completed";
 }
 //HEAD
 

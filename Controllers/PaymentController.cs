@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using NGO_Web_Demo.Models;
-using System.Security.Cryptography;
-using System.Text;
+using Demo.Models;
+using System;
+using System.Linq;
+using NGO_Web_Demo.Helpers;
 
 namespace NGO_Web_Demo.Controllers;
 
@@ -16,6 +18,9 @@ public class PaymentController : Controller
         this.db = db;
         this.hp = hp;
     }
+
+    //// Show payment page
+    [Authorize]
     public IActionResult Index(string id)
     {
         if (string.IsNullOrEmpty(id))
@@ -26,9 +31,10 @@ public class PaymentController : Controller
 
         var e = db.Events.Find(id);
         var u = db.Users.Find(User.Identity?.Name);
-        if (e == null)
+
+        if (e == null || u == null)
         {
-            TempData["Info"] = "Event not found.";
+            TempData["Info"] = "User or event not found. Please log in.";
             return RedirectToAction("Event_Index", "NGO_Event_");
         }
 
@@ -36,70 +42,99 @@ public class PaymentController : Controller
         {
             EventID = e.EventID,
             EventTitle = e.EventTitle,
-            ParticipatedDate = u.ParticipatedDate,
-            EventLocation = e.EventLocation
+            EventLocation = e.EventLocation,
+            UserEmail = u.Email
         };
 
-        return View("~/Views/NGO_Event/Event_Payment.cshtml", model);
+        return View("../NGO_Event_/Event_Payment", model);
     }
 
-    //POST: Payment/ProcessPayment
+    // Process donation
     [HttpPost]
     [Authorize]
-    [ValidateAntiForgeryToken]
+    [ValidateAntiForgeryToken]  // Add this back
     public IActionResult Process(PaymentVM model)
     {
-        if (!ModelState.IsValid)
+        // Skip credit card validation if not card payment
+        if (model.PaymentMethod != "Credit Card" && model.PaymentMethod != "Debit Card")
         {
-            return View("~/Views/NGO_Event/Event_Payment.cshtml", model);
+            ModelState.Remove(nameof(model.CreditCardNumber));
         }
 
-        //Save payment info to database
-        var donation = new Donation
+        // Check validation
+        if (!ModelState.IsValid)
         {
-            UserEmail = User.Identity?.Name, //store email
-            EventId = model.EventID,
-            Amount = model.Amount,
-            PaymentMethod = model.PaymentMethod,
-            DonationDate = DateTime.Now,
-            CreditCardNumber = model.PaymentMethod == "Credit Card" && !string.IsNullOrEmpty(model.CreditCardNumber) ? EncryptionHelper.Encrypt(model.CreditCardNumber) : null
-        };
+            // Show validation errors on the page
+            var errorMessages = ModelState
+                .Where(x => x.Value.Errors.Count > 0)
+                .Select(x => $"{x.Key}: {string.Join(", ", x.Value.Errors.Select(e => e.ErrorMessage))}")
+                .ToList();
 
-        db.Donations.Add(donation);
-        db.SaveChanges();
+            TempData["Error"] = "Please fix the following errors: " + string.Join(" | ", errorMessages);
 
-        TempData["Success"] = $"Thank you for your donating RM {model.Amount} to {model.EventTitle}!";
-        return RedirectToAction("Success");
+            return View("../NGO_Event_/Event_Payment", model);
+        }
+
+        try
+        {
+            // Save donation to database
+            var donation = new Donation
+            {
+                UserEmail = User.Identity?.Name,
+                EventId = model.EventID,
+                Amount = model.Amount,
+                PaymentMethod = model.PaymentMethod,
+                DonationDate = DateTime.Now,
+                CreditCardNumber = (model.PaymentMethod == "Credit Card" || model.PaymentMethod == "Debit Card")
+                                   ? EncryptionHelper.Encrypt(model.CreditCardNumber!)
+                                   : null
+            };
+
+            db.Donations.Add(donation);
+            db.SaveChanges();
+
+            TempData["Success"] = $"Thank you for donating RM {model.Amount} to {model.EventTitle}!";
+
+            // Redirect to event details
+            return RedirectToAction("Event_Details", "NGO_Event_", new { id = model.EventID });
+        }
+        catch (Exception ex)
+        {
+            TempData["Error"] = $"An error occurred while processing your donation: {ex.Message}";
+            return View("../NGO_Event_/Event_Payment", model);
+        }
     }
 
-    // GET: Payment/Success
+    // Admin: List of donations
+    [Authorize(Roles = "Admin")]
+    public IActionResult DonationList()
+    {
+        var donationList = (from d in db.Donations
+                            join e in db.Events on d.EventId equals e.EventID
+                            orderby d.DonationDate descending
+                            select new DonationListVM
+                            {
+                                DonationID = d.DonationID,
+                                UserEmail = d.UserEmail,
+                                EventID = e.EventID,
+                                EventTitle = e.EventTitle,
+                                Amount = d.Amount,
+                                PaymentMethod = d.PaymentMethod,
+                                DonationDate = d.DonationDate,
+                                Status = "Completed"
+                            }).ToList();
+
+        ViewBag.TotalDonations = donationList.Sum(d => d.Amount);
+        ViewBag.TotalCount = donationList.Count;
+        ViewBag.TodayDonations = donationList.Where(d => d.DonationDate.Date == DateTime.Today).Sum(d => d.Amount);
+
+        return View("../NGO_Event_/DonationList", donationList);
+    }
+
+    // Success page
     [Authorize]
     public IActionResult Success()
     {
         return View("PaymentSuccess");
-    }
-
-    //Encryption Method
-    public static class EncryptionHelper
-    {
-        private static readonly string key = "YourStrongSecretKey123!"; // 🔑 store securely
-
-        public static string Encrypt(string plainText)
-        {
-            using (Aes aes = Aes.Create())
-            {
-                aes.Key = Encoding.UTF8.GetBytes(key.PadRight(32).Substring(0, 32));
-                aes.IV = new byte[16]; // default IV (all zero)
-                var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                using var ms = new MemoryStream();
-                using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
-                using (var sw = new StreamWriter(cs))
-                {
-                    sw.Write(plainText);
-                }
-                return Convert.ToBase64String(ms.ToArray());
-            }
-        }
     }
 }

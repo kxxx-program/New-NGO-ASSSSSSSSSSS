@@ -1,30 +1,44 @@
 ﻿@model PaymentVM
 
-@* @{
-    ViewBag.Title = "Payment";
-} *@
-<h2 class="text-center">Donate to @Model.EventTitle</h2>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+<h2 class="text-center">Donate to @Model.EventTitle</h2>
 <div class="card mt-4 p-4 shadow">
     <h4>Event Details</h4>
     <ul>
-        <li><strong>Event:</strong>@Model.EventTitle</li>
-        <li><strong>Date:</strong>@Model.ParticipatedDate.ToString("dd MM yyyy")</li>
-        <li><strong>Location:</strong>@Model.EventLocation</li>
+        <li><strong>Event:</strong> @Model.EventTitle</li>
+        <li><strong>Location:</strong> @Model.EventLocation</li>
     </ul>
 </div>
 
-<form asp-action="Process" asp-controller="Payemnt" method="post" class="mt-4">
+<form asp-action="Process" asp-controller="Payment" method="post" class="mt-4" data-ajax="false">
     @Html.AntiForgeryToken()
     <input type="hidden" asp-for="EventID" />
+    <input type="hidden" asp-for="EventTitle" />
+    <input type="hidden" asp-for="EventLocation" />
+    <input type="hidden" asp-for="UserEmail" />
+
     <div class="form-group mb-3">
         <label asp-for="Amount" class="form-label">Donation Amount (RM)</label>
         <input asp-for="Amount" class="form-control" placeholder="Enter amount" />
         <span asp-validation-for="Amount" class="text-danger"></span>
     </div>
+
     <div class="form-group mb-3">
         <label asp-for="PaymentMethod" class="form-label">Payment Method</label>
-        <select asp-for="PaymentMethod" class="form-control">
+        <select asp-for="PaymentMethod" id="paymentMethod" class="form-control">
             <option value="">-- Select Method --</option>
             <option value="Credit Card">Credit Card</option>
             <option value="Debit Card">Debit Card</option>
@@ -34,21 +48,22 @@
         <span asp-validation-for="PaymentMethod" class="text-danger"></span>
     </div>
 
-    <!-- Credir Card Input-->
     <div class="form-group mb-3" id="creditCardField" style="display:none;">
         <label asp-for="CreditCardNumber" class="form-label">Credit Card Number</label>
         <input asp-for="CreditCardNumber" class="form-control" placeholder="Enter credit card number" />
         <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
     </div>
 
-    <script>
-        document.getElementById("paymentMethod").addEventListener("change",function(){
-            let ccField = document.getElementById("creditCardField");
-            if (this.value === "Credit Card"){
-                ccField.style.display = "block";
-            }else{
-                ccField.style.display = "none";
-            }
-        });
-    </script>
+    <button type="submit" class="btn btn-primary mt-3">Donate</button>
 </form>
+
+<script>
+    document.getElementById("paymentMethod").addEventListener("change", function () {
+        let ccField = document.getElementById("creditCardField");
+        if (this.value === "Credit Card" || this.value === "Debit Card") {
+            ccField.style.display = "block";
+        } else {
+            ccField.style.display = "none";
+        }
+    });
+</script>

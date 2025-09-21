@@ -5,6 +5,15 @@
     ViewBag.Title = "Event Details | " + Model.Event_Title;
 }
 
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin: 20px auto; max-width: 1200px; border-radius: 8px;">
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>@TempData["Success"]</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 <style>
     .event-details-container {
         max-width: 1200px;
@@ -337,9 +346,7 @@
                     <a asp-controller="Recruitment" asp-action="AddVolunteer" asp-route-eventId = "@Model.Event_Id" class="btn btn-volunteer">
                         Volunteer Now
                     </a>
-                    <a href="@Url.Action("Event_Payment")" class="btn btn-donate" onclick="alert('Donation feature coming soon!')">
-                        Donate Now
-                    </a>
+                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Payment", "NGO_Event_", new { id = @Model.Event_Id })">Donate</button>
                 }
             </div>
         </div>
