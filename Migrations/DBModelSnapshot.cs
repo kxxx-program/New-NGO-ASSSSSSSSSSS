@@ -17,7 +17,7 @@ namespace NGO_Web_Demo.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.9")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -61,6 +61,10 @@ namespace NGO_Web_Demo.Migrations
                     b.Property<string>("EventID")
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("EventDescription")
                         .IsRequired()
@@ -109,8 +113,8 @@ namespace NGO_Web_Demo.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<string>("Hash")
                         .IsRequired()
@@ -134,6 +138,74 @@ namespace NGO_Web_Demo.Migrations
                     b.UseTphMappingStrategy();
                 });
 
+            modelBuilder.Entity("Demo.Models.Volunteer", b =>
+                {
+                    b.Property<string>("VolunteerID")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VolunteerID");
+
+                    b.ToTable("Volunteers");
+                });
+
+            modelBuilder.Entity("Demo.Models.VolunteerEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ApprovalStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EventCompletion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EventID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ShiftStart")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("VolunteerID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("WorkHours")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventID");
+
+                    b.HasIndex("VolunteerID");
+
+                    b.ToTable("VolunteerEvents");
+                });
+
             modelBuilder.Entity("Demo.Models.Admin", b =>
                 {
                     b.HasBaseType("Demo.Models.User");
@@ -150,7 +222,68 @@ namespace NGO_Web_Demo.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.ToTable("Users", t =>
+                        {
+                            t.Property("PhotoURL")
+                                .HasColumnName("Member_PhotoURL");
+                        });
+
                     b.HasDiscriminator().HasValue("Member");
+                });
+
+            modelBuilder.Entity("Demo.Models.Organiser", b =>
+                {
+                    b.HasBaseType("Demo.Models.User");
+
+                    b.Property<string>("OrganisationAddress")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("OrganisationName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("OrganisationPhone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("PhotoURL")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasDiscriminator().HasValue("Organiser");
+                });
+
+            modelBuilder.Entity("Demo.Models.VolunteerEvent", b =>
+                {
+                    b.HasOne("Demo.Models.Event", "Event")
+                        .WithMany("VolunteerEvents")
+                        .HasForeignKey("EventID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Demo.Models.Volunteer", "Volunteer")
+                        .WithMany("VolunteerEvents")
+                        .HasForeignKey("VolunteerID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Event");
+
+                    b.Navigation("Volunteer");
+                });
+
+            modelBuilder.Entity("Demo.Models.Event", b =>
+                {
+                    b.Navigation("VolunteerEvents");
+                });
+
+            modelBuilder.Entity("Demo.Models.Volunteer", b =>
+                {
+                    b.Navigation("VolunteerEvents");
                 });
 #pragma warning restore 612, 618
         }

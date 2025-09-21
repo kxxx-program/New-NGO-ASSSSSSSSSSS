@@ -4811,11 +4811,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\khshu\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\NGO_Web_Demo.csproj",
+      "projectUniqueName": "C:\\Users\\khshu\\Documents\\GitHub\\New-NGO-ASSSSSSSSSSS\\NGO_Web_Demo.csproj",
       "projectName": "NGO_Web_Demo",
-      "projectPath": "C:\\Users\\khshu\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\NGO_Web_Demo.csproj",
+      "projectPath": "C:\\Users\\khshu\\Documents\\GitHub\\New-NGO-ASSSSSSSSSSS\\NGO_Web_Demo.csproj",
       "packagesPath": "C:\\Users\\khshu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khshu\\Documents\\GitHub\\NGO-ASSSSSSSSSSSS\\obj\\",
+      "outputPath": "C:\\Users\\khshu\\Documents\\GitHub\\New-NGO-ASSSSSSSSSSS\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
