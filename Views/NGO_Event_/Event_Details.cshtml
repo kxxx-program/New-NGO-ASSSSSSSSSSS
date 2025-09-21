@@ -336,7 +336,7 @@
                     <button class="btn btn-volunteer" disabled>
                         Volunteer (Concluded Event)
                     </button>
-                    <a href="/NGO_Event_/Event_Payment" class="btn btn-donate">
+                    <a href="/Payment/Donation" class="btn btn-donate">
                         Donate (Concluded Event)
                     </a>
                 }
@@ -346,7 +346,7 @@
                     <a asp-controller="Recruitment" asp-action="AddVolunteer" asp-route-eventId = "@Model.Event_Id" class="btn btn-volunteer">
                         Volunteer Now
                     </a>
-                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Event_Payment", "NGO_Event_", new { id = @Model.Event_Id })">Donate</button>
+                    <button class="btn btn-sm btn-secondary" data-get="@Url.Action("Donation", "Payment", new { id = @Model.Event_Id })">Donate</button>
                 }
             </div>
         </div>
