@@ -46,7 +46,7 @@ public class Helper
 
     public string SavePhoto(IFormFile f, string folder)
     {
-        // TODO
+        
         var file = Guid.NewGuid().ToString("n") + ".jpg";
         var path = Path.Combine(en.WebRootPath, folder, file);
 
@@ -65,7 +65,7 @@ public class Helper
 
     public void DeletePhoto(string file, string folder)
     {
-        // TODO
+        
         file = Path.GetFileName(file);
         var path = Path.Combine(en.WebRootPath, folder, file);
         File.Delete(path);
@@ -130,8 +130,9 @@ public class Helper
     }
 
     //Email Helper Functions
-    public async Task SendEmail(MailMessage mail)
+    public async void SendEmail(MailMessage mail)
     {
+       
         string user = cf["Smtp:User"] ?? "";
         string pass = cf["Smtp:Pass"] ?? "";
         string name = cf["Smtp:Name"] ?? "";
@@ -140,6 +141,7 @@ public class Helper
 
         mail.From = new MailAddress(user, name);
 
+        
         using var smtp = new SmtpClient
         {
             Host = host,
@@ -148,7 +150,9 @@ public class Helper
             Credentials = new NetworkCredential(user, pass),
         };
 
-        Console.WriteLine($"{user} {pass} {host} {port}");
+        Console.WriteLine($"{user} {pass} {name} {host} {port}");
+
+        //smtp.Send(mail);
         await smtp.SendMailAsync(mail);
     }
 }

@@ -40,56 +40,60 @@ else{
         <p>This is some bullshit</p>
 
 
-        <form asp-action="AddVolunteer" asp-controller="Recruitment" method="post">
-            <input type="hidden" name="eventId" value="@ViewBag.EventID" />
-            <div>
-                <label asp-for="VolunteerID">ID</label>
-                <input asp-for="VolunteerID" autofocus data-upper readonly>
-                <span asp-validation-for="VolunteerID"></span>
-            </div>
-            <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name">
-                <span asp-validation-for="Name"></span>
-            </div>
-            <div>
-                <label asp-for="Email"></label>
-                <input asp-for="Email">
-                <span asp-validation-for="Email"></span>
+    <form asp-action="AddVolunteer" asp-controller="Recruitment" method="post" class="needs-validation" novalidate>
+        <input type="hidden" name="eventId" value="@ViewBag.EventID" />
 
-            </div>
-            <div>
-                <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber">
-                <span asp-validation-for="PhoneNumber"></span>
-            </div>
-            <div>
-                <label asp-for="Age"></label>
-                <input asp-for="Age" type="number">
-                <span asp-validation-for="Age"></span>
-            </div>
-            <div>
-                <label asp-for="ShiftStart"></label>
-                <input asp-for="ShiftStart" 
-                            type="datetime-local"
-                            min="@ViewBag.EventStart"
-                            max="@ViewBag.EventEnd" />
-                <span asp-validation-for="ShiftStart"></span>
-            </div>
-            <div>
-                <label asp-for="WorkHours"></label>
-                <input asp-for="WorkHours" type="number">
-                <span asp-validation-for="WorkHours"></span>
-            </div>
+        <div class="mb-3">
+            <label asp-for="VolunteerID" class="form-label">ID</label>
+            <input asp-for="VolunteerID" class="form-control" readonly />
+            <span asp-validation-for="VolunteerID" class="text-danger"></span>
+        </div>
 
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
 
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
 
-                <section>
-                    <button>Submit</button>
-                    <button type="reset">Reset</button>
-                </section>
+        <div class="mb-3">
+            <label asp-for="PhoneNumber" class="form-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
 
-        </form>
+        <div class="mb-3">
+            <label asp-for="Age" class="form-label"></label>
+            <input asp-for="Age" type="number" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ShiftStart" class="form-label"></label>
+            <input asp-for="ShiftStart"
+                   type="datetime-local"
+                   class="form-control"
+                   min="@ViewBag.EventStart"
+                   max="@ViewBag.EventEnd" />
+            <span asp-validation-for="ShiftStart" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="WorkHours" class="form-label"></label>
+            <input asp-for="WorkHours" type="number" class="form-control" />
+            <span asp-validation-for="WorkHours" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
 
         @section foot {
             <script>
