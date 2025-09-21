@@ -1,7 +1,4 @@
 ﻿@model PostingInsertVM
-@{
-    ViewBag.Title = "Content Posting | Insert";
-}
 
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -18,26 +15,12 @@
 
                         <!-- Photo Upload Section -->
                         <div class="mb-3">
-                            <label asp-for="Photo" class="form-label">Photo *</label>
-                            <div class="upload-container">
-                                <label class="upload d-block text-center p-4 border border-dashed rounded" style="cursor: pointer;">
-                                    <input asp-for="Photo" accept="image/jpeg,image/png" hidden id="photoInput">
-                                    <div id="uploadPreview">
-                                        <img src="/images/photo.jpg" alt="Upload placeholder" class="img-fluid mb-2" style="max-height: 150px;">
-                                        <div class="text-muted">
-                                            <i class="fas fa-cloud-upload-alt fa-2x mb-2"></i>
-                                            <p>Click to select image</p>
-                                            <small>JPG or PNG, max 1MB</small>
-                                        </div>
-                                    </div>
-                                    <div id="selectedFile" style="display: none;">
-                                        <img id="previewImage" src="" alt="Preview" class="img-fluid mb-2" style="max-height: 200px;">
-                                        <p id="fileName" class="mb-0"></p>
-                                        <small class="text-muted">Click to change</small>
-                                    </div>
-                                </label>
+                            <label asp-for="Photo"></label>
+                            <div class="upload">
+                                <input asp-for="Photo" accept="image/jpeg,image/png" class="form-control" type="file">
+                                <small class="form-text text-muted">Supported formats: JPG, PNG (Max size: 1MB)</small>
+                                <span asp-validation-for="Photo" class="text-danger"></span>
                             </div>
-                            <span asp-validation-for="Photo" class="text-danger"></span>
                         </div>
 
                         <!-- Image Title -->
@@ -71,6 +54,14 @@
         $(document).ready(function() {
             // Enable hidden file validation
             $.validator.setDefaults({ ignore: '' });
+
+                        // Preview image when selected
+            document.querySelector('input[type="file"]').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    console.log('Selected file:', file.name, file.size, 'bytes');
+                }
+            });
 
             // Handle file input change
             $('#photoInput').on('change', function() {
