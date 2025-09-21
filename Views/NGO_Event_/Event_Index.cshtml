@@ -3,240 +3,216 @@
 @model IPagedList<EventWithDonationCountVM>
 
 @{
-    ViewBag.Title = "Event | Index";
-    // Add "Donations" field and "Created By" field for admins only
+    // Add "Created By" field for admins only
     string[] fields = ViewBag.UserRole == "Admin"
-        ? new[] { "Photo", "Event Name", "Donations", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status", "Created By" }
-        : new[] { "Photo", "Event Name", "Donations", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status" };
+        ? new[] { "Photo", "Event Name", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status", "Created By" }
+        : new[] { "Photo", "Event Name", "Start Date", "End Date", "Start Time", "End Time", "Location", "Description", "Status" };
 }
 
 @section head {
     <style>
         .event-image {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .donation-count-badge {
-            font-size: 0.75em;
-            padding: 0.3em 0.6em;
-            vertical-align: super;
-            margin-left: 5px;
-            background-color: #28a745;
-            color: white;
-            border-radius: 50px;
-        }
-
-        .role-indicator {
-            margin-bottom: 20px;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-weight: 500;
-        }
-
-        .role-admin {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .role-organiser {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-
-        .created-by-column {
-            font-style: italic;
-            color: #6c757d;
         }
     </style>
 }
 
-@if (ViewBag.ShowingMyEvents == true)
-{
-    <div class="role-indicator role-organiser">
-        <i class="fas fa-user-shield"></i> <strong>Organiser View:</strong> Showing only events you created (@Model.TotalItemCount record(s))
-    </div>
-}
-else if (ViewBag.UserRole == "Admin")
-{
-    <div class="role-indicator role-admin">
-        <i class="fas fa-crown"></i> <strong>Admin View:</strong> Showing all events (@Model.TotalItemCount record(s))
-    </div>
-}
-
-<p>
-    <a href="@Url.Action("Event_Insert")" class="btn btn-primary">
-        <i class="fas fa-plus"></i> Add New Event
-    </a>
-</p>
-
-<form>
-    @Html.TextBox("name", "",
-    new { type = "search", autofocus = "", data_trim = "", placeholder = "Search events...", @class = "form-control d-inline-block", style = "width: 300px;" })
-    @Html.Hidden("sort")
-    @Html.Hidden("dir")
-    <button class="btn btn-outline-secondary ms-2">
-        <i class="fas fa-search"></i> Search
-    </button>
-    @if (!string.IsNullOrEmpty(ViewBag.Name))
-    {
-        <a href="@Url.Action("Event_Index")" class="btn btn-outline-danger ms-2">
-            <i class="fas fa-times"></i> Clear
-        </a>
-    }
-</form>
-
-<div class="table-responsive mt-3">
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                @foreach (var f in fields)
-                {
-                    string d = "asc";
-                    string c = "";
-
-                    if (f == ViewBag.Sort)
-                    {
-                        d = ViewBag.Dir == "des" ? "asc" : "des";
-                        c = ViewBag.Dir == "des" ? "desc" : "asc";
-                    }
-
-                    <th>
-                        <a href="?name=@ViewBag.Name&sort=@f&dir=@d" class="text-white text-decoration-none @c">
-                            @f
-                            @if (f == ViewBag.Sort)
-                            {
-                                if (ViewBag.Dir == "des")
-                                {
-                                    <i class="fas fa-sort-down"></i>
-                                }
-                                else
-                                {
-                                    <i class="fas fa-sort-up"></i>
-                                }
-                            }
-                        </a>
-                    </th>
-                }
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var e in Model)
+<div class="container-fluid">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h2>Events Management</h2>
+            @if (ViewBag.ShowingMyEvents == true)
             {
-                <tr>
-                    <td>
-                        @if (!string.IsNullOrEmpty(e.Event.EventPhotoURL))
-                        {
-                            <img src="/events/@e.Event.EventPhotoURL" class="event-image" alt="@e.Event.EventTitle">
-                        }
-                        else
-                        {
-                            <div class="event-image d-flex align-items-center justify-content-center bg-light text-muted">
-                                <i class="fas fa-image fa-2x"></i>
-                            </div>
-                        }
-                    </td>
-                    <td class="fw-semibold">
-                        @e.Event.EventTitle
-                    </td>
-                    <td>
-                        <span class="badge bg-success donation-count-badge">@e.DonationCount</span>
-                    </td>
-                    <td>@e.Event.EventStartDate.ToString("dd/MM/yyyy")</td>
-                    <td>@e.Event.EventEndDate.ToString("dd/MM/yyyy")</td>
-                    <td>@e.Event.EventStartTime.ToString(@"hh\:mm")</td>
-                    <td> @e.Event.EventEndTime.ToString(@"hh\:mm")</td>
-                    <td>@e.Event.EventLocation</td>
-                    <td>
-                        @if (e.Event.EventDescription?.Length > 50)
-                        {
-                            <span title="@e.Event.EventDescription">@e.Event.EventDescription.Substring(0, 50)...</span>
-                        }
-                        else
-                        {
-                            @e.Event.EventDescription
-                        }
-                    </td>
-                    <td>
-                        @{
-                            string statusClass = e.Event.EventStatus?.ToLower() switch
-                            {
-                                "upcoming" => "badge bg-success",
-                                "ongoing" => "badge bg-warning text-dark",
-                                "concluded" => "badge bg-secondary",
-                                _ => "badge bg-secondary"
-                            };
-                        }
-                        <span class="@statusClass">@e.Event.EventStatus</span>
-                    </td>
-
-                    @* Show Created By column only for admins *@
-                    @if (ViewBag.UserRole == "Admin")
-                    {
-                        <td class="created-by-column">
-                            @(e.Event.CreatedBy ?? "N/A")
-                        </td>
-                    }
-
-                    <td>
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-sm btn-info" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.Event.EventID })" title="View Details">
-                                Details
-                            </button>
-                            <button class="btn btn-sm btn-danger" data-get="@Url.Action("Event_Update", new { id = e.Event.EventID })" title="Edit">
-                                Update
-                            </button>
-                            <button class="btn btn-sm btn-secondary" data-post="@Url.Action("Delete", new { id = e.Event.EventID })"
-                                    onclick="return confirm('Are you sure you want to delete this event?')" title="Delete">
-                                Delete
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                <div class="alert alert-info">
+                    <strong>Member View:</strong> Showing only events you created (@Model.TotalItemCount record(s))
+                </div>
             }
-        </tbody>
-    </table>
+            else if (ViewBag.UserRole == "Admin")
+            {
+                <div class="alert alert-success">
+                    <strong>Admin View:</strong> Showing all events (@Model.TotalItemCount record(s))
+                </div>
+            }
+        </div>
+        <div class="col-md-6 text-end d-flex justify-content-end align-items-end">
+            <a href="@Url.Action("Event_Insert")" class="btn btn-primary btn-lg">
+                Add New Event
+            </a>
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <form class="d-flex gap-2">
+                @Html.TextBox("name", "", new {
+                type = "search",
+                                autofocus = "",
+                                data_trim = "",
+                                placeholder = "Search events...",
+                                @class = "form-control"
+                                })
+                @Html.Hidden("sort")
+                @Html.Hidden("dir")
+                <button class="btn btn-outline-secondary" type="submit">
+                    Search
+                </button>
+                @if (!string.IsNullOrEmpty(ViewBag.Name))
+                {
+                    <a href="@Url.Action("Event_Index")" class="btn btn-outline-danger">
+                        Clear
+                    </a>
+                }
+            </form>
+        </div>
+    </div>
+
+    <!-- Events Table -->
+    @if (Model.Any())
+    {
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            @foreach (var f in fields)
+                            {
+                                string d = "asc";
+                                string c = "";
+
+                                if (f == ViewBag.Sort)
+                                {
+                                    d = ViewBag.Dir == "des" ? "asc" : "des";
+                                    c = ViewBag.Dir == "des" ? "text-decoration-underline" : "text-decoration-underline";
+                                }
+
+                                <th>
+                                    <a href="?name=@ViewBag.Name&sort=@f&dir=@d" class="text-white text-decoration-none @c">
+                                        @f
+                                        @if (f == ViewBag.Sort)
+                                        {
+                                            <span>@(ViewBag.Dir == "des" ? " ↓" : " ↑")</span>
+                                        }
+                                    </a>
+                                </th>
+                            }
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(e.Event.EventPhotoURL))
+                                    {
+                                        <img src="/events/@e.Event.EventPhotoURL" class="event-image rounded" alt="@e.Event.EventTitle">
+                                    }
+                                    else
+                                    {
+                                        <div class="event-image bg-light rounded d-flex align-items-center justify-content-center text-muted">
+                                            No Image
+                                        </div>
+                                    }
+                                </td>
+                                <td class="fw-bold">@e.Event.EventTitle</td>
+                                <td>
+                                    <span class="badge bg-success donation-count-badge">@e.DonationCount</span>
+                                </td>
+                                <td>@e.Event.EventStartDate.ToString("dd/MM/yyyy")</td>
+                                <td>@e.Event.EventEndDate.ToString("dd/MM/yyyy")</td>
+                                <td>@e.Event.EventStartTime.ToString(@"hh\:mm")</td>
+                                <td>@e.Event.EventEndTime.ToString(@"hh\:mm")</td>
+                                <td>@e.Event.EventLocation</td>
+                                <td>
+                                    @if (e.Event.EventDescription?.Length > 50)
+                                    {
+                                        <span title="@e.Event.EventDescription">@e.Event.EventDescription.Substring(0, 50)...</span>
+                                    }
+                                    else
+                                    {
+                                        @e.Event.EventDescription
+                                    }
+                                </td>
+                                <td>
+                                    @{
+                                        string statusClass = e.Event.EventStatus?.ToLower() switch
+                                        {
+                                            "upcoming" => "badge bg-success",
+                                            "ongoing" => "badge bg-warning text-dark",
+                                            "concluded" => "badge bg-secondary",
+                                            _ => "badge bg-secondary"
+                                        };
+                                    }
+                                    <span class="@statusClass">@e.Event.EventStatus</span>
+                                </td>
+
+                                @if (ViewBag.UserRole == "Admin")
+                                {
+                                    <td class="text-muted">
+                                        @(e.Event.CreatedBy ?? "N/A")
+                                    </td>
+                                }
+
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-info" data-get="@Url.Action("Event_Details", "NGO_Event_", new { id = e.Event.EventID })">
+                                            Details
+                                        </button>
+                                        <button class="btn btn-primary" data-get="@Url.Action("Event_Update", new { id = e.Event.EventID })">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-danger" data-post="@Url.Action("Delete", new { id = e.Event.EventID })"
+                                                onclick="return confirm('Are you sure you want to delete this event?')">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        @if (Model.PageCount > 1)
+        {
+            <div class="d-flex justify-content-center mt-4">
+                @{
+                    var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
+                    options.LinkToFirstPageFormat = "First";
+                    options.LinkToLastPageFormat = "Last";
+                    options.LinkToPreviousPageFormat = "Previous";
+                    options.LinkToNextPageFormat = "Next";
+                    options.UlElementClasses = new[] { "pagination" };
+                    options.LiElementClasses = new[] { "page-item" };
+                    options.PageClasses = new[] { "page-link" };
+                }
+                @Html.PagedListPager(Model, page => Url.Action("Event_Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page }), options)
+            </div>
+        }
+    }
+    else
+    {
+        <!-- Empty State -->
+        <div class="alert alert-info text-center">
+            <h4>No Events Found</h4>
+            @if (ViewBag.ShowingMyEvents == true)
+            {
+                <p>You haven't created any events yet. <a href="@Url.Action("Event_Insert")" class="alert-link">Create your first event</a>!</p>
+            }
+            else if (!string.IsNullOrEmpty(ViewBag.Name))
+            {
+                <p>No events match your search criteria. <a href="@Url.Action("Event_Index")" class="alert-link">Show all events</a></p>
+            }
+            else
+            {
+                <p>There are currently no events in the system. <a href="@Url.Action("Event_Insert")" class="alert-link">Create the first event</a>!</p>
+            }
+        </div>
+    }
 </div>
-
-@* Pagination *@
-@if (Model.PageCount > 1)
-{
-    <div class="d-flex justify-content-center mt-4">
-        @{
-            var options = PagedListRenderOptions.ClassicPlusFirstAndLast;
-            options.LinkToFirstPageFormat = "First";
-            options.LinkToLastPageFormat = "Last";
-            options.LinkToPreviousPageFormat = "Previous";
-            options.LinkToNextPageFormat = "Next";
-            options.UlElementClasses = new[] { "pagination" };
-            options.LiElementClasses = new[] { "page-item" };
-            options.PageClasses = new[] { "page-link" };
-        }
-        @Html.PagedListPager(Model, page => Url.Action("Event_Index", new { name = ViewBag.Name, sort = ViewBag.Sort, dir = ViewBag.Dir, page }), options)
-    </div>
-}
-
-@if (!Model.Any())
-{
-    <div class="alert alert-info text-center">
-        <h4>No Events Found</h4>
-        @if (ViewBag.ShowingMyEvents == true)
-        {
-            <p>You haven't created any events yet. <a href="@Url.Action("Event_Insert")" class="alert-link">Create your first event</a>!</p>
-        }
-        else if (!string.IsNullOrEmpty(ViewBag.Name))
-        {
-            <p>No events match your search criteria. <a href="@Url.Action("Event_Index")" class="alert-link">Show all events</a></p>
-        }
-        else
-        {
-            <p>There are currently no events in the system. <a href="@Url.Action("Event_Insert")" class="alert-link">Create the first event</a>!</p>
-        }
-    </div>
-}
