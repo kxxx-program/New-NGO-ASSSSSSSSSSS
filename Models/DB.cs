@@ -52,6 +52,9 @@ public class Event
 
     public string? EventPhotoURL { get; set; }
 
+    [MaxLength(100)]
+    public string? CreatedBy { get; set; }
+
     //Connect to volunteerEvent 
     public ICollection<VolunteerEvent> VolunteerEvents { get; set; } = [];
 }

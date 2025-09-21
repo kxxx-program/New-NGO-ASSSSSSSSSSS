@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.Eventing.Reader;
 using Azure;
 using Demo.Models; // Added for Event model
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
@@ -24,48 +25,82 @@ public class NGO_Event_Controller : Controller
     // GET: NGO_Event_/Event_Index
     public IActionResult Event_Index(string? name, string? sort, string? dir, int page = 1)
     {
-        var model = db.Events.ToList(); // Added ToList() to ensure data is loaded
-                                        // (1) Searching ------------------------
-        ViewBag.Name = name = name?.Trim() ?? "";
-
-        var searched = db.Events.Where(e => e.EventTitle.Contains(name));
-
-        // (2) Sorting --------------------------
-        ViewBag.Sort = sort;
-        ViewBag.Dir = dir;
-
-        Func<Event, object> fn = sort switch
+        if (IsUserOrganiser() == false)
         {
-            "Photo" => e => e.EventPhotoURL,
-            "Event Name" => e => e.EventTitle,
-            "Start Date" => e => e.EventStartDate,
-            "End Date" => e => e.EventEndDate,
-            "Start Time" => e => e.EventStartTime,
-            "End Time" => e => e.EventEndTime,
-            "Location" => e => e.EventLocation,
-            "Description" => e => e.EventDescription,
-            "Status" => e => e.EventStatus,
-            _ => e => e.EventID,
-        };
-
-        var sorted = dir == "des" ?
-                     searched.OrderByDescending(fn) :
-                     searched.OrderBy(fn);
-
-        // (3) Paging ---------------------------
-        if (page < 1)
-        {
-            return RedirectToAction(null, new { name, sort, dir, page = 1 });
+            TempData["Info"] = "You do not have permission to access the This page.";
+            return RedirectBasedOnUserType();
         }
-
-        var m = sorted.ToPagedList(page, 10);
-
-        if (page > m.PageCount && m.PageCount > 0)
+        else
         {
-            return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
-        }
+            // (1) Searching ------------------------
+            ViewBag.Name = name = name?.Trim() ?? "";
 
-        return View(m);
+            // Start with all events
+            var query = db.Events.AsQueryable();
+
+            // Apply role-based filtering
+            var currentUserEmail = User.Identity?.Name;
+            var currentUser = db.Users.FirstOrDefault(u => u.Email == currentUserEmail);
+
+            if (currentUser is Member) // If user is a Member, show only their events
+            {
+                query = query.Where(e => e.CreatedBy == currentUserEmail);
+                ViewBag.UserRole = "Member";
+                ViewBag.ShowingMyEvents = true;
+            }
+            else if (currentUser is Admin) // If user is Admin, show all events
+            {
+                // No filtering needed for Admin
+                ViewBag.UserRole = "Admin";
+                ViewBag.ShowingMyEvents = false;
+            }
+            else
+            {
+                // If user is not authenticated or not found, redirect to login
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Apply search filter
+            var searched = query.Where(e => e.EventTitle.Contains(name));
+
+            // (2) Sorting --------------------------
+            ViewBag.Sort = sort;
+            ViewBag.Dir = dir;
+
+            Func<Event, object> fn = sort switch
+            {
+                "Photo" => e => e.EventPhotoURL,
+                "Event Name" => e => e.EventTitle,
+                "Start Date" => e => e.EventStartDate,
+                "End Date" => e => e.EventEndDate,
+                "Start Time" => e => e.EventStartTime,
+                "End Time" => e => e.EventEndTime,
+                "Location" => e => e.EventLocation,
+                "Description" => e => e.EventDescription,
+                "Status" => e => e.EventStatus,
+                "Created By" => e => e.CreatedBy,
+                _ => e => e.EventID,
+            };
+
+            var sorted = dir == "des" ?
+                         searched.OrderByDescending(fn) :
+                         searched.OrderBy(fn);
+
+            // (3) Paging ---------------------------
+            if (page < 1)
+            {
+                return RedirectToAction(null, new { name, sort, dir, page = 1 });
+            }
+
+            var m = sorted.ToPagedList(page, 10);
+
+            if (page > m.PageCount && m.PageCount > 0)
+            {
+                return RedirectToAction(null, new { name, sort, dir, page = m.PageCount });
+            }
+
+            return View(m);
+        }
     }
 
     // GET: NGO_Event_/CheckId - Fixed for AJAX validation
@@ -108,6 +143,7 @@ public class NGO_Event_Controller : Controller
 
     // POST: NGO_Event_/Event_Insert
     [HttpPost]
+    [Authorize(Roles = "Admin,Member")]
     public IActionResult Event_Insert(EventInsertVM vm)
     {
         // Check for duplicate ID
@@ -191,7 +227,8 @@ public class NGO_Event_Controller : Controller
                     EventStatus = vm.Event_Status,
                     EventLocation = vm.Event_Location,
                     EventDescription = vm.Event_Description,
-                    EventPhotoURL = photoUrl // FIXED: Use the photoUrl variable, not save again
+                    EventPhotoURL = photoUrl, // FIXED: Use the photoUrl variable, not save again
+                    CreatedBy = User.Identity?.Name // ADD THIS LINE
                 });
 
                 db.SaveChanges();
@@ -239,6 +276,7 @@ public class NGO_Event_Controller : Controller
 
     // POST: NGO_Event_/Event_Update
     [HttpPost]
+    [Authorize(Roles = "Admin,Member")]
     public IActionResult Event_Update(EventUpdateVM vm)
     {
 
@@ -378,6 +416,11 @@ public class NGO_Event_Controller : Controller
     {
 
         var e = db.Events.Find(id);
+        if (User.IsInRole("Member") && e.CreatedBy != User.Identity.Name)
+        {
+            TempData["Info"] = "You can only edit events you created.";
+            return RedirectToAction("Event_Index");
+        }
 
         if (e != null)
         {
