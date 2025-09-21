@@ -43,15 +43,15 @@
         <b>Home</b>
         <a href="/Home/Index">Index</a>
         <b>Event</b>
-        @if (User.IsInRole("Admin"))
+        @if (User.IsInRole("Admin") || User.IsInRole("Organiser"))
         {
             <a href="/NGO_Event_/Event_Index">Index</a>
             <a href="/NGO_Event_/Event_Insert">Insert</a>
         }
 
-
         @if (User.Identity.IsAuthenticated)
         {
+
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link text-white" href="#" id="navbarDropdown" role="button">Event History</a>

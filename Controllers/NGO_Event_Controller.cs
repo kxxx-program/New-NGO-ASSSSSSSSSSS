@@ -23,15 +23,10 @@ public class NGO_Event_Controller : Controller
     }
 
     // GET: NGO_Event_/Event_Index
+    [Authorize(Roles = "Admin,Organiser")]
+
     public IActionResult Event_Index(string? name, string? sort, string? dir, int page = 1)
     {
-        if (IsUserOrganiser() == false)
-        {
-            TempData["Info"] = "You do not have permission to access the This page.";
-            return RedirectBasedOnUserType();
-        }
-        else
-        {
             // (1) Searching ------------------------
             ViewBag.Name = name = name?.Trim() ?? "";
 
@@ -42,10 +37,10 @@ public class NGO_Event_Controller : Controller
             var currentUserEmail = User.Identity?.Name;
             var currentUser = db.Users.FirstOrDefault(u => u.Email == currentUserEmail);
 
-            if (currentUser is Member) // If user is a Member, show only their events
+            if (currentUser is Organiser) // If user is a Member, show only their events
             {
                 query = query.Where(e => e.CreatedBy == currentUserEmail);
-                ViewBag.UserRole = "Member";
+                ViewBag.UserRole = "Organiser";
                 ViewBag.ShowingMyEvents = true;
             }
             else if (currentUser is Admin) // If user is Admin, show all events
@@ -101,7 +96,7 @@ public class NGO_Event_Controller : Controller
 
             return View(m);
         }
-    }
+    
 
     // GET: NGO_Event_/CheckId - Fixed for AJAX validation
     public JsonResult CheckId(string Event_Id)
@@ -143,7 +138,7 @@ public class NGO_Event_Controller : Controller
 
     // POST: NGO_Event_/Event_Insert
     [HttpPost]
-    [Authorize(Roles = "Admin,Member")]
+    [Authorize(Roles = "Admin,Organiser")]
     public IActionResult Event_Insert(EventInsertVM vm)
     {
         // Check for duplicate ID
@@ -276,7 +271,8 @@ public class NGO_Event_Controller : Controller
 
     // POST: NGO_Event_/Event_Update
     [HttpPost]
-    [Authorize(Roles = "Admin,Member")]
+    [Authorize(Roles = "Admin,Organiser")]
+
     public IActionResult Event_Update(EventUpdateVM vm)
     {
 
@@ -412,6 +408,7 @@ public class NGO_Event_Controller : Controller
 
     // POST: NGO_Event_/Delete
     [HttpPost]
+    [Authorize(Roles = "Admin,Organiser")]
     public IActionResult Delete(string? id)
     {
 
