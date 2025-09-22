@@ -1,51 +1,191 @@
 ﻿@model NGO_Web_Demo.Models.FeedbackVM
 
-
-    <h1>Feedback for <strong>@ViewBag.EventTitle</strong></h1>
-
 @{
     ViewBag.Title = "Submit Feedback";
 }
 
-<h2>Submit Feedback</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">
+                        <i class="fas fa-comment-alt me-2"></i>
+                        Submit Feedback
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Event Information -->
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            Event: @Model.EventTitle
+                        </h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Location:</strong> @Model.EventLocation
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Date:</strong> @Model.EventStartDate.ToString("dd MMM yyyy")
+                            </div>
+                        </div>
+                    </div>
 
-<div class="card shadow p-4 mt-3">
-    <h4 class="mb-3">Event: @ViewBag.EventTitle</h4>
+                    <!-- Volunteer Information (if available) -->
+                    @if (!string.IsNullOrEmpty(Model.VolunteerName))
+                    {
+                        <div class="alert alert-light">
+                            <h6><i class="fas fa-user me-2"></i>Volunteer Information</h6>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>ID:</strong> @Model.VolunteerID
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>Name:</strong> @Model.VolunteerName
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>Email:</strong> @Model.VolunteerEmail
+                                </div>
+                            </div>
+                        </div>
+                    }
 
-    <form asp-action="FeedbackForm" method="post">
-        <input type="hidden" asp-for="FeedbackID" />
-        <input type="hidden" asp-for="EventID" value="@ViewBag.EventID" />
-        <input type="hidden" asp-for="VolunteerID" />
+                    <!-- Feedback Form -->
+                    <form asp-action="FeedbackForm" method="post">
+                        <!-- Hidden Fields -->
+                        <input type="hidden" asp-for="FeedbackID" />
+                        <input type="hidden" asp-for="EventID" />
+                        <input type="hidden" asp-for="VolunteerID" />
 
-        <div class="mb-3">
-            <label asp-for="Rating" class="form-label"></label>
-            <select asp-for="Rating" class="form-select" required>
-                <option value="">-- Select a rating --</option>
-                <option value="1">1 - Very Poor</option>
-                <option value="2">2 - Poor</option>
-                <option value="3">3 - Average</option>
-                <option value="4">4 - Good</option>
-                <option value="5">5 - Excellent</option>
-            </select>
-            <span asp-validation-for="Rating" class="text-danger"></span>
+                        <!-- Anonymous Option (at the top) -->
+                        <div class="mb-4">
+                            <div class="card border-warning">
+                                <div class="card-body">
+                                    <div class="form-check">
+                                        <input asp-for="IsAnonymous" class="form-check-input" type="checkbox" id="anonymousCheck" />
+                                        <label asp-for="IsAnonymous" class="form-check-label" for="anonymousCheck">
+                                            <strong>Submit Anonymously</strong>
+                                        </label>
+                                    </div>
+                                    <small class="text-muted">
+                                        Check this if you want to submit feedback without linking it to your volunteer profile.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rating Selection -->
+                        <div class="mb-4">
+                            <label asp-for="Rating" class="form-label">
+                                <strong>How would you rate this event?</strong>
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="Rating" class="form-select form-select-lg" required>
+                                <option value="">-- Select your rating --</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                <option value="4">⭐⭐⭐⭐ Good</option>
+                                <option value="3">⭐⭐⭐ Average</option>
+                                <option value="2">⭐⭐ Poor</option>
+                                <option value="1">⭐ Very Poor</option>
+                            </select>
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+
+                        <!-- Comments -->
+                        <div class="mb-4">
+                            <label asp-for="Comments" class="form-label">
+                                <strong>Comments</strong>
+                                <small class="text-muted">(Optional - Share your experience)</small>
+                            </label>
+                            <textarea asp-for="Comments"
+                                      class="form-control"
+                                      rows="5"
+                                      placeholder="Please share your thoughts about the event, organization, volunteer experience, etc. Your feedback helps us improve future events."></textarea>
+                            <div class="form-text">
+                                Maximum 1000 characters.
+                                <span id="charCount">0</span>/1000 used.
+                            </div>
+                            <span asp-validation-for="Comments" class="text-danger"></span>
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-controller="NGO_Event_" asp-action="Event_Details" asp-route-id="@Model.EventID"
+                               class="btn btn-secondary me-md-2">
+                                <i class="fas fa-arrow-left me-2"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div class="mb-3">
-            <label asp-for="Comments" class="form-label"></label>
-            <textarea asp-for="Comments" class="form-control" rows="4" placeholder="Write your feedback..."></textarea>
-            <span asp-validation-for="Comments" class="text-danger"></span>
-        </div>
-
-        <div class="form-check mb-3">
-            <input asp-for="IsAnonymous" class="form-check-input" />
-            <label asp-for="IsAnonymous" class="form-check-label"></label>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit Feedback</button>
-        <a asp-controller="Event" asp-action="Index" class="btn btn-secondary">Cancel</a>
-    </form>
+    </div>
 </div>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+
+    .alert {
+        border-radius: 10px;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+</style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Character counter for comments
+        document.addEventListener('DOMContentLoaded', function() {
+            const commentsTextarea = document.querySelector('#Comments');
+            const charCount = document.querySelector('#charCount');
+
+            if (commentsTextarea && charCount) {
+                function updateCharCount() {
+                    const currentLength = commentsTextarea.value.length;
+                    charCount.textContent = currentLength;
+
+                    if (currentLength > 1000) {
+                        charCount.style.color = 'red';
+                    } else if (currentLength > 800) {
+                        charCount.style.color = 'orange';
+                    } else {
+                        charCount.style.color = 'green';
+                    }
+                }
+
+                commentsTextarea.addEventListener('input', updateCharCount);
+                updateCharCount();
+            }
+        });
+
+        // Handle anonymous checkbox
+        document.getElementById('anonymousCheck').addEventListener('change', function() {
+            const volunteerInfo = document.querySelector('.alert-light');
+            if (this.checked) {
+                if (volunteerInfo) {
+                    volunteerInfo.style.opacity = '0.5';
+                }
+            } else {
+                if (volunteerInfo) {
+                    volunteerInfo.style.opacity = '1';
+                }
+            }
+        });
+    </script>
 }

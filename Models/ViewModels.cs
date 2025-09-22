@@ -448,14 +448,16 @@ public class VolunteerEventVM
 public class FeedbackVM
 {
     public string FeedbackID { get; set; }
+    [Required]
     public string EventID { get; set; }
     public string EventTitle { get; set; }
     public string EventLocation { get; set; }
     public DateOnly EventStartDate { get; set; }
     public DateOnly EventEndDate { get; set; }
-    public string VolunteerID { get; set; }
-    public string VolunteerName { get; set; }
-    public string VolunteerEmail { get; set; }
+
+    public string? VolunteerID { get; set; }
+    public string? VolunteerName { get; set; }
+    public string? VolunteerEmail { get; set; }
 
     [Required(ErrorMessage = "Please give us a rating")]
     [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
@@ -466,6 +468,9 @@ public class FeedbackVM
 
     [Display(Name = "Submit Anonymously")]
     public bool IsAnonymous { get; set; } = false;
+
+
+
 }
 
 public class VolunteerHistoryVM

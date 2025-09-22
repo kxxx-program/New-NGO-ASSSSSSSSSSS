@@ -174,9 +174,8 @@ public class Feedback
     public string EventID { get; set; }
     public Event Event { get; set; }
 
-    [Required]
     [MaxLength(4)]
-    public string VolunteerID { get; set; }
+    public string? VolunteerID { get; set; }
     public Volunteer Volunteer { get; set; }
 
 
