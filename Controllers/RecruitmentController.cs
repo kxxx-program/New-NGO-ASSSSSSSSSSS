@@ -101,7 +101,7 @@ public class RecruitmentController : Controller
         if (dupEmail)
         {
             TempData["Error"] = "This email/user already signed up for this event!";
-            return RedirectToAction("RecruitingInfo");
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -135,7 +135,7 @@ public class RecruitmentController : Controller
 
 
         TempData["Info"] = "You have submitted your form! Please await for the organizer to approve :D";
-        return RedirectToAction("RecruitingInfo");
+        return RedirectToAction("Index", "Home");
 
     }
 

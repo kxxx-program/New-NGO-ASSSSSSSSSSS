@@ -98,6 +98,35 @@ public class HomeController : Controller
     [Authorize(Roles = "Organiser")]
     public IActionResult Organiser()
     {
+        var currentUserEmail = User.Identity?.Name;
+
+        if (string.IsNullOrEmpty(currentUserEmail))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        var myEvents = db.Events.Count(e => e.CreatedBy == currentUserEmail);
+        var activeEvents = db.Events.Count(e => e.CreatedBy == currentUserEmail &&
+            (e.EventStatus == "Upcoming" || e.EventStatus == "Ongoing"));
+
+        var myEventIds = db.Events.Where(e => e.CreatedBy == currentUserEmail)
+                                  .Select(e => e.EventID).ToList();
+        var totalVolunteers = db.VolunteerEvents.Count(ve => myEventIds.Contains(ve.EventID));
+        var pendingApprovals = db.VolunteerEvents.Count(ve => myEventIds.Contains(ve.EventID) &&
+            ve.ApprovalStatus == EventApprovalStatus.Pending);
+
+        var recentEvents = db.Events
+            .Where(e => e.CreatedBy == currentUserEmail)
+            .OrderByDescending(e => e.EventStartDate)
+            .Take(4)
+            .ToList();
+
+        ViewBag.MyEvents = myEvents;
+        ViewBag.ActiveEvents = activeEvents;
+        ViewBag.TotalVolunteers = totalVolunteers;
+        ViewBag.PendingApprovals = pendingApprovals;
+        ViewBag.RecentEvents = recentEvents;
+
         return View();
     }
 
@@ -194,5 +223,5 @@ public class HomeController : Controller
         return RedirectToAction("Browse");
     }
 
-    
+
 }
