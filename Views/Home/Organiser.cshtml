@@ -1,304 +1,570 @@
-﻿@{
+﻿AlloyTitanium
+alloytitanium
+•
+🗣️ IM A FOOL, I KNOW NOTHING, I'LL TAKE A ROLE OF THE SILLY CLOWNNNNNN
+
+Handy_Dan
+
+ — 12:21 PM
+WHAT IS THIS
+Image
+Meh
+
+ — 12:21 PM
+Ur one alrdy finalize ? If sure I don't mind so far it's empty
+Handy_Dan
+
+ — 12:21 PM
+WHAT REVENUE?
+We are NGO company lah
+Meh
+
+ — 12:21 PM
+No idk how did it
+Who*
+Lemme check history edit
+Handy_Dan
+
+ — 12:22 PM
+THESE yellow highlights were examples not compulsory
+Image
+Meh
+
+ — 12:23 PM
+Oh yea Nicholas did it all
+I don't think we have transactions fees
+Danieal do u want me to help u screen shot right now  ?
+Handy_Dan
+
+ — 12:26 PM
+please
+Meh
+
+ — 12:27 PM
+Aight will do
+did i miss something to have this error ? should i delete both of the feedbackDB and create a new one?
+Image
+Handy_Dan
+
+ — 12:33 PM
+you ahve 2 feedback migration files
+Meh
+
+ — 12:34 PM
+yea
+Handy_Dan
+
+ — 12:34 PM
+Delete it lah
+Meh
+
+ — 12:34 PM
+ill delete the one thats wasnt aloysius one then
+he got add
+M0rta1
+
+ — 12:34 PM
+crazy i though is necessary...
+ks — 12:41 PM
+later i bring my laptop for our presentation?
+imma head out 2pm
+Handy_Dan
+
+ — 12:41 PM
+Yes
+ks — 12:41 PM
+kk
+anyone still want to update code?
+if no i start test whether everything function or not
+AlloyTitanium — 12:49 PM
+wait
+im gonna update
+ks — 12:49 PM
+okok
+AlloyTitanium — 12:49 PM
+final push should be
+with feedback stuff
+ks — 12:49 PM
+btw in the home page the gallary button
+its not function
+so should i comment it?
+AlloyTitanium — 12:50 PM
+dk
+ks — 12:50 PM
+later reach school discuss ba
+and also do a last test
+Handy_Dan
+
+ — 12:50 PM
+HUH what you mean not FUCNTION
+IT WORKS
+FUCK ME MAN CNAT GET SHIT DONE AT ALL
+ks — 12:51 PM
+Image
+Handy_Dan
+
+ — 12:51 PM
+Your DB dont have the table taht why
+update database until you see the table
+in the server tab
+AlloyTitanium — 12:51 PM
+remember to update-database
+hold on im pushing
+Meh
+
+ — 12:52 PM
+if fail update just delete the migration one can add-migration a new one
+AlloyTitanium — 12:52 PM
+and im gonna speedrun doc
+Meh
+
+ — 12:52 PM
+i also have the erorr
+ks — 12:52 PM
+Image
+Handy_Dan
+
+ — 12:53 PM
+add-migration addDBcontext
+AlloyTitanium — 12:53 PM
+pushed
+ks — 12:53 PM
+alr
+Handy_Dan
+
+ — 12:53 PM
+do it again
+ks — 12:53 PM
+Image
+Handy_Dan
+
+ — 12:53 PM
+just use a different name
+ks — 12:54 PM
+add migration?
+Meh
+
+ — 12:54 PM
+danieal im done with ur event management wanna double check on it, i also have error for posting lemme delete the migrate and add it again
+ks — 12:54 PM
+@AlloyTitanium ur feedback database got prob
+Image
+wait i try again
+Meh
+
+ — 12:55 PM
+delete both the ffedback
+check migration and add 1 back urself
+idk why but github give 2 feedbackDB
+i delete both and migrated a new one and fixed
+ks — 12:56 PM
+i only have one feedback
+Meh
+
+ — 12:57 PM
+huh uh try delete that one and make ur own one then ?
+ks — 12:57 PM
+Image
+i think i reclone?
+Handy_Dan
+
+ — 12:58 PM
+Why you go event_index?
+of course cannot
+that is for organiser only
+AlloyTitanium — 12:58 PM
+reclone better
+ks — 12:58 PM
+ahhh i see
+ok so far no prob lah
+Meh
+
+ — 12:59 PM
+u can access gallery ?
+AlloyTitanium — 1:00 PM
+@ks ok already?
+ks — 1:00 PM
+nope
+imma need to modify something in organiser
+Meh
+
+ — 1:01 PM
+same i trying to add posting migration but it say alrdy exist but dont see it lol
+OHH nvm its fixed
+Handy_Dan
+
+ — 1:01 PM
+i wills ay thsi once more
+Meh
+
+ — 1:01 PM
+then i can continue screenshot now, Update-Databse ed
+AlloyTitanium — 1:01 PM
+i pushed frontend a bit
+Handy_Dan
+
+ — 1:02 PM
+gallery works jsut make sure a table called postings is in table
+AlloyTitanium — 1:02 PM
+@ks get in vc i help you check
+Meh
+
+ — 1:02 PM
+yeaa no problem
+Image
+ks — 1:02 PM
+wait wait wait
+i modify something first
+AlloyTitanium — 1:03 PM
+ok
+pull first
+mmm who remove green highlight??
+Meh
+
+ — 1:06 PM
+@M0rta1 dont remove highlight part
+AlloyTitanium — 1:06 PM
+doc need hello??
+its for additional feature
+Meh
+
+ — 1:06 PM
+it means additional features
+ks — 1:12 PM
+guys update xia
+@{
     ViewData["Title"] = "Organiser Dashboard";
     Layout = "_Layout";
-    var organiser = ViewBag.Organiser;
 }
 
 <div class="container-fluid mt-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="jumbotron bg-gradient-primary text-white p-4 rounded">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h1 class="display-4">
-                            <i class="fas fa-tachometer-alt me-3"></i>
-                            Welcome, @User.Identity.Name!
-                        </h1>
-                        <p class="lead">Organiser Dashboard - Manage your events and organisation activities</p>
-                        <p class="mb-0">
-                            <i class="fas fa-calendar me-2"></i>
-                            Today is @DateTime.Now.ToString("dddd, MMMM dd, yyyy")
-                        </p>
-                    </div>
-                    <div class="col-md-4 text-end">
-                        <i class="fas fa-user-tie fa-5x opacity-50"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    Expand
+    message.txt
+    15 KB
+    organiser.cshtml one
+    i need to reclone
+    AlloyTitanium — 1:13 PM
+    okok
+﻿
+    @{
+        ViewData["Title"] = "Organiser Dashboard";
+        Layout = "_Layout";
+    }
 
-    <div class="row mb-4">
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                My Events
+        <div class="container-fluid mt-4">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="jumbotron bg-gradient-primary text-white p-4 rounded">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="display-4">
+                                    <i class="fas fa-tachometer-alt me-3"></i>
+                                    Welcome, @User.Identity.Name!
+                                </h1>
+                                <p class="lead">Organiser Dashboard - Manage your events and organisation activities</p>
+                                <p class="mb-0">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Today is @DateTime.Now.ToString("dddd, MMMM dd, yyyy")
+                                </p>
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Active Events
+                            <div class="col-md-4 text-end">
+                                <i class="fas fa-user-tie fa-5x opacity-50"></i>
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-play-circle fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Total Volunteers
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">156</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Approvals
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-clock fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <div class="col-lg-8">
-            <div class="card shadow mb-4">
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">
-                        <i class="fas fa-calendar-check me-2"></i>Upcoming Events
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Event</th>
-                                    <th>Date</th>
-                                    <th>Location</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>Community Cleanup Drive</strong><br>
-                                        <small class="text-muted">Environmental initiative</small>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary">Oct 25, 2024</span>
-                                    </td>
-                                    <td>Taman Petaling Park</td>
-                                    <td>
-                                        <span class="badge bg-success">Active</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-warning">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Food Distribution</strong><br>
-                                        <small class="text-muted">Charity program</small>
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-primary">Nov 2, 2024</span>
-                                    </td>
-                                    <td>KL Community Center</td>
-                                    <td>
-                                        <span class="badge bg-warning">Planning</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-warning">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-primary">
-                            <i class="fas fa-list me-2"></i>View All Events
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card shadow">
-                <div class="card-header bg-secondary text-white">
-                    <h5 class="mb-0">
-                        <i class="fas fa-history me-2"></i>Recent Activity
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="timeline">
-                        <div class="activity-item mb-3 p-3 border-left border-primary">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>New volunteer registered</strong><br>
-                                    <small class="text-muted">John Doe joined "Community Cleanup Drive"</small>
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        My Events
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.MyEvents</div>
                                 </div>
-                                <small class="text-muted">2 hours ago</small>
-                            </div>
-                        </div>
-
-                        <div class="activity-item mb-3 p-3 border-left border-success">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>Event updated</strong><br>
-                                    <small class="text-muted">Modified "Food Distribution" event details</small>
+                                <div class="col-auto">
+                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
                                 </div>
-                                <small class="text-muted">5 hours ago</small>
-                            </div>
-                        </div>
-
-                        <div class="activity-item mb-3 p-3 border-left border-info">
-                            <div class="d-flex justify-content-between">
-                                <div>
-                                    <strong>Volunteer approved</strong><br>
-                                    <small class="text-muted">Approved 3 volunteer applications</small>
-                                </div>
-                                <small class="text-muted">1 day ago</small>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <a href="#" class="btn btn-outline-secondary">
-                            <i class="fas fa-history me-2"></i>View All Activity
-                        </a>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Active Events
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.ActiveEvents</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-play-circle fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Total Volunteers
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalVolunteers</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-users fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                        Pending Approvals
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.PendingApprovals</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card shadow mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-calendar-check me-2"></i>Upcoming Events
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Event</th>
+                                            <th>Date</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.RecentEvents != null)
+                                        {
+                                            @foreach (var evt in ViewBag.RecentEvents)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <strong>@evt.EventTitle</strong><br>
+                                                        <small class="text-muted">@(evt.EventDescription?.Length > 50 ? evt.EventDescription.Substring(0, 50) + "..." : evt.EventDescription)</small>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-primary">@evt.EventStartDate.ToString("MMM dd, yyyy")</span>
+                                                    </td>
+                                                    <td>@evt.EventLocation</td>
+                                                    <td>
+                                                        <span class="badge bg-@(evt.EventStatus == "Upcoming" ? "info" :
+                                                                                                                                                                                            evt.EventStatus == "Ongoing" ? "success" :
+                                                                                                                                                                                            evt.EventStatus == "Active" ? "success" : "secondary")">
+                                                @evt.EventStatus
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Event_Details", "NGO_Event_", new { id = evt.EventID })"
+                                               class="btn btn-sm btn-outline-primary" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="@Url.Action("Event_Update", "NGO_Event_", new { id = evt.EventID })"
+                                               class="btn btn-sm btn-outline-warning" title="Edit Event">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                                                        }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="5" class="text-center text-muted">
+                                                    <i class="fas fa-calendar-times fa-3x mb-3 d-block"></i>
+                                                    No events found. <a href="@Url.Action("Event_Create", "NGO_Event_")">Create your first event</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="text-center">
+                                <a href="@Url.Action("Event_Index", "NGO_Event_")" class="btn btn-primary">
+                                    <i class="fas fa-list me-2"></i>View All Events
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow">
+                        <div class="card-header bg-secondary text-white">
+                            <h5 class="mb-0">
+                                <i class="fas fa-history me-2"></i>Recent Activity
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline">
+                                <div class="activity-item mb-3 p-3 border-left border-primary">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <strong>Dashboard accessed</strong><br>
+                                            <small class="text-muted">Welcome back to your organiser dashboard</small>
+                                        </div>
+                                        <small class="text-muted">Just now</small>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item mb-3 p-3 border-left border-success">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <strong>Events updated</strong><br>
+                                            <small class="text-muted">Your event data has been refreshed</small>
+                                        </div>
+                                        <small class="text-muted">Few minutes ago</small>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item mb-3 p-3 border-left border-info">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <strong>Statistics calculated</strong><br>
+                                            <small class="text-muted">Dashboard statistics updated with latest data</small>
+                                        </div>
+                                        <small class="text-muted">Few minutes ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="@Url.Action("Event_Index", "NGO_Event_")" class="btn btn-outline-secondary">
+                                    <i class="fas fa-history me-2"></i>View All Activity
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-@section Scripts {
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const stats = document.querySelectorAll('.h5.mb-0.font-weight-bold');
-            stats.forEach(function(stat) {
-                const finalValue = parseInt(stat.textContent);
-                let currentValue = 0;
-                const increment = finalValue / 20;
-                const timer = setInterval(function() {
-                    currentValue += increment;
-                    if (currentValue >= finalValue) {
-                        currentValue = finalValue;
-                        clearInterval(timer);
+    @section Scripts {
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Animate statistics numbers
+                    const stats = document.querySelectorAll('.h5.mb-0.font-weight-bold');
+                    stats.forEach(function(stat) {
+                        const finalValue = parseInt(stat.textContent);
+                        if (finalValue > 0) {
+                            let currentValue = 0;
+                            const increment = Math.max(1, finalValue / 20);
+                            const timer = setInterval(function() {
+                                currentValue += increment;
+                                if (currentValue >= finalValue) {
+                                    currentValue = finalValue;
+                                    clearInterval(timer);
+                                }
+                                stat.textContent = Math.floor(currentValue);
+                            }, 50);
+                        }
+                    });
+
+                    // Add hover effects to cards
+                    const cards = document.querySelectorAll('.card');
+                    cards.forEach(function(card) {
+                        card.addEventListener('mouseenter', function() {
+                            this.style.transform = 'translateY(-2px)';
+                            this.style.transition = 'transform 0.2s ease-in-out';
+                        });
+                        card.addEventListener('mouseleave', function() {
+                            this.style.transform = 'translateY(0)';
+                        });
+                    });
+                });
+
+                function refreshStats() {
+                    // You can implement AJAX call here to refresh stats
+                    console.log('Refreshing dashboard stats...');
+                    // Example: location.reload();
+                }
+
+                // Auto-refresh every 5 minutes
+                setInterval(refreshStats, 300000);
+            </script>
+    }
+
+    @section Styles {
+            <style>
+                .border-left-primary {
+                    border-left: 0.25rem solid #4e73df !important;
+                }
+
+                .border-left-success {
+                    border-left: 0.25rem solid #1cc88a !important;
+                }
+
+                .border-left-info {
+                    border-left: 0.25rem solid #36b9cc !important;
+                }
+
+                .border-left-warning {
+                    border-left: 0.25rem solid #f6c23e !important;
+                }
+
+                .bg-gradient-primary {
+                    background: linear-gradient(45deg, #4e73df, #224abe);
+                }
+
+                .jumbotron {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                }
+
+                .timeline .activity-item {
+                    background: #f8f9fa;
+                    border-radius: 8px;
+                }
+
+                .card {
+                    transition: all 0.3s ease-in-out;
+                }
+
+                    .card:hover {
+                        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
                     }
-                    stat.textContent = Math.floor(currentValue);
-                }, 50);
-            });
 
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(function(card) {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-2px)';
-                    this.style.transition = 'transform 0.2s ease-in-out';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
+                .progress {
+                    height: 8px;
+                    margin-top: 5px;
+                }
 
-        function refreshStats() {
-            console.log('Refreshing dashboard stats...');
-        }
-
-        setInterval(refreshStats, 300000);
-    </script>
-}
-
-@section Styles {
-    <style>
-        .border-left-primary {
-            border-left: 0.25rem solid #4e73df !important;
-        }
-
-        .border-left-success {
-            border-left: 0.25rem solid #1cc88a !important;
-        }
-
-        .border-left-info {
-            border-left: 0.25rem solid #36b9cc !important;
-        }
-
-        .border-left-warning {
-            border-left: 0.25rem solid #f6c23e !important;
-        }
-
-        .bg-gradient-primary {
-            background: linear-gradient(45deg, #4e73df, #224abe);
-        }
-
-        .jumbotron {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .timeline .activity-item {
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .card {
-            transition: all 0.3s ease-in-out;
-        }
-
-            .card:hover {
-                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-            }
-    </style>
-}
+                .badge {
+                    font-size: 0.75em;
+                }
+            </style>
+    }
+        message.txt
+        15 KB
